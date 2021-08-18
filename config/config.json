@@ -1,0 +1,40 @@
+{
+    "server": {
+        "mysqlConnObj": {
+            "host": "localhost",
+            "port": 3306,
+            "user": "root",
+            "password": "c2c2c2c2",
+            "connectionLimit": 50,
+            "database": "csistsoa30",
+            "this is tip": "csistsoa30 is hsinchu, csistworks is xinbei" 
+        },
+        "javaRestConnStr": "http://192.168.115.3:9487"
+    },
+    "app": {
+        "unit": "新竹市",
+        "platform": "防救災決策輔助系統",
+        "port": 8080,
+        "areaSelect": true,
+        "areaSelectValue": ["北區", "東區", "香山區"],
+        "xinbei_areaSelectValue": [ "萬里區", "金山區", "板橋區", "汐止區", "深坑區", "石碇區", "瑞芳區", "平溪區", "雙溪區", "貢寮區", "新店區", "坪林區", "烏來區", "永和區", "中和區", "土城區", "三峽區", "樹林區", "鶯歌區", "三重區", "新莊區", "泰山區", "林口區", "蘆洲區", "五股區", "八里區", "淡水區", "三芝區", "石門區"],
+		"google": {
+			"sheet": "https://docs.google.com/spreadsheets/d/12uw5-R9xN9r8Ed1FbpUuBNtpj7qRnzxtbcRnLxXtbeE",
+			"folder": "https://drive.google.com/drive/folders/1yhi00iWxFD0QcsM41lkAOqQE7J-RaJJE",
+            "#this is backups#": {
+                "pubwrks of xinbei": {
+                    "GoogleSheet": "https://docs.google.com/spreadsheets/d/1Ed_x9vTqQUu_EQrTejQwPz0wguEDfDf1kxx8IHVh9Z0",
+                    "GoogleDrive": "https://drive.google.com/drive/folders/1F8NevCZqMcVmMjRsHAbHvyumRkkDzp3I" 
+                },
+                "firedept of hsinchu": {
+                    "GoogleSheet": "https://docs.google.com/spreadsheets/d/12uw5-R9xN9r8Ed1FbpUuBNtpj7qRnzxtbcRnLxXtbeE",
+                    "GoogleDrive": "https://drive.google.com/drive/folders/1yhi00iWxFD0QcsM41lkAOqQE7J-RaJJE"
+                }
+            }
+		}
+    },
+    "session": {
+        "name": "_conn.sid",
+        "secret": "youshiqingzhaochenjiazheng"
+    }
+}

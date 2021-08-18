@@ -1,0 +1,23 @@
+{
+    "hc_chaoshan":      { "desc": "朝山值班台"},
+    "hc_chinshan":      { "desc": "金山值班台"},
+    "hc_chukuang":      { "desc": "竹光值班台"},
+    "hc_chungshan":     { "desc": "中山值班台"},
+    "hc_hsiangshan":    { "desc": "香山值班台"},
+    "hc_kuangfu":       { "desc": "光復值班台"},
+    "hc_minghu":        { "desc": "明湖值班台"},
+    "hc_nanliao":       { "desc": "南寮值班台"},
+    "hc_puding":        { "desc": "埔頂值班台"},
+    "hc_sanmin":        { "desc": "三民值班台"},
+    "hc_team1":         { "desc": "一大值班台"},
+    "hc_team2":         { "desc": "二大值班台"},
+    "hc_119":           { "desc": "新竹市災害應變中心值班台"},
+    "hc_firedepartment":{ "desc": "新竹市消防局"},
+    "hc_gov":           { "desc": "新竹市政府"},
+	"ntp_abgas":        { "desc": "公管值班台"},
+	"ntp_cs":           { "desc": "施工值班台"},
+	"ntp_es":           { "desc": "工程值班台"},
+	"ntp_ib":           { "desc": "違拆值班台"},
+	"ntp_oram":         { "desc": "養護值班台"},
+	"ntp_pwb":          { "desc": "新北市工務局"}
+}
