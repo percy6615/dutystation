@@ -20,7 +20,8 @@ const accessControlMiddleware = require('./middleware/accessControl');
 const rateLimitMiddleware = require('./middleware/rateLimitConfig');
 
 //const morganLoggerMiddleware = require('./middleware/morganLogger');  // log 落地
-const indexRouter = require('./routes/loginRouter');  // express first router
+const loginRouter = require('./routes/loginRouter');  // express first router
+
 const passportRouter = require('./routes/passport');    // passport 認證過程
 //const missionHandle = require('./models/missionHandle'); // 災情處理
 const connection = require('./models/database');    // query db
@@ -67,7 +68,8 @@ app.use((err, req, res, next) => {
 
 //express custom require
 passportRouter(passport); // do serial passport for configuration
-indexRouter(app, passport); // load our routes and pass in our app and fully configured passport
+loginRouter(app, passport); // load our routes and pass in our app and fully configured passport
+
 // socketio Middleware setup
 const onAuthorizeSuccess = (data, accept) => {
     //console.log('successful connection to socket.io');
@@ -88,4 +90,28 @@ io.use(passportSocketIo.authorize({
     success:      onAuthorizeSuccess,  // *optional* callback on success - read more below
     fail:         onAuthorizeFail,     // *optional* callback on fail/error - read more below
   }));
-  
+  const staticSetting = {
+    io: {
+        dashboard: '/dashboard',
+        dutystation: '/dutystation',
+        strDisconnectText: '已斷開連接，此帳號已在另一處使用。'
+    },
+    mission: {
+        areaSelect: Config.app.areaSelect ? Config.app.areaSelectValue : ['全區']
+    },
+    error: {
+        string: '無法顯示'
+    }
+}
+// passport 是否認證完成
+const isAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.redirect('/login'); //未登入帳號直接導回
+
+// 值班台
+app.get(['/main', '/dutystation'], isAuthenticated, (req, res) => { 
+ 
+  res.render('main.ejs', {
+      "FULLNAME": req.user.user.FULLNAME || staticSetting.error.string, 
+      
+  });
+
+});

@@ -6,7 +6,7 @@
     "configurations": [
 
         {
-            "type": "pwa-chrome",
+            "type": "node",
             "request": "launch",
             "name": "Launch Chrome against localhost",
             "program": "${workspaceFolder}/app.js",

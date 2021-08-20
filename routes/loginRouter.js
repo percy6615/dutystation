@@ -46,7 +46,7 @@ module.exports = function (app, passport) {
 
     // 登入表單處理
     app.post('/login', passport.authenticate('local-login', { //分隊登入使用passpor認證
-		successRedirect: '/verify', // 認證正確導向正確網頁
+		successRedirect: '/main', // 認證正確導向正確網頁
 		failureRedirect: '/login', // 認證錯誤導向錯誤網頁
 		failureFlash: true // 允許錯誤回傳訊息
 	}));

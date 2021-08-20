@@ -22,7 +22,7 @@
 	<link rel="stylesheet" href="css/logincss/css/style.css">
 	<style>
 		.fixedElement {
-			background-color: #c0c0c0;
+			background-color: rgba(180, 180, 180, 0.5);
 			position: fixed;
 			top: 95%;
 			width: 100%;
@@ -30,6 +30,8 @@
 			z-index: 100;
 		}
 	</style>
+	
+
 </head>
 
 <body class="img js-fullheight" style="background-image: url(images/bg1.jpg);opacity:0.9">
@@ -47,7 +49,7 @@
 						<h3 class="mb-4 text-center" style="font-weight: bold;">Hope This Helps !!</h3>
 						<form action="/login" class="signin-form" method="post">
 							<div class="form-group">
-								<input type="text" name="username" class="form-control" placeholder="Username" required>
+								<input  id="username-field" type="text" name="username" class="form-control" placeholder="Username" required>
 							</div>
 							<div class="form-group">
 								<input id="password-field" name="password" type="password" class="form-control"
@@ -56,12 +58,12 @@
 									class="fa fa-fw fa-eye field-icon toggle-password"></span>
 							</div>
 							<div class="form-group">
-								<button type="submit" class="form-control btn btn-primary submit px-3">登入</button>
+								<button type="submit" class="form-control btn btn-primary submit px-3" id="btn_login">登入</button>
 							</div>
 							<div class="form-group d-md-flex">
 								<div class="w-50">
 									<label class="checkbox-wrap checkbox-primary">Remember Me
-										<input type="checkbox" checked>
+										<input type="checkbox" checked id="remember">
 										<span class="checkmark"></span>
 									</label>
 								</div>
@@ -87,14 +89,15 @@
 		</div>
 
 		<div class="fixedElement" onclick="fun()">
-
+			
 		</div>
 	</section>
 
 	<script src="js/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 	<!-- <script src="js/popper.js"></script> -->
 	<script src="js/bootstrap.min.js"></script>
-	<script src="js/main.js"></script>
+	<script src="js/login.js"></script>
 
 </body>
 <script>
@@ -114,8 +117,8 @@
 			}, 2000);
 		}
 
-
 	}
+
 
 </script>
 

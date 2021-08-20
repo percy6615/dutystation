@@ -17,19 +17,20 @@ module.exports = function (passport) {
 
     // 判斷資料存取地方 空值儲存於註冊資料表內，反之儲存於帳號資料表內
     passport.serializeUser((user, done) => { 
-        console.log('serializeUser', user)
+        // console.log('serializeUser', user)
         // 將帳號資訊及資料庫id加進session 
-        return done(null, user.USERNAME);
+        return done(null, user);
     });
 
     // used to deserialize the user
     passport.deserializeUser((user, done) => {
-        console.log('deserializeUser', user)
-        let sql = "SELECT u.USERNAME, u.FULLNAME, u.GROUPCITY, u.GROUPNAME, u.GROUPCHARACTER, u.PHONE, u.CHECKFINISH, u.ADMIN, ogm.manager AS GROUPMANAGER, ogm.level AS GROUPLEVEL FROM `disaster_account`u INNER JOIN `org_group_manager`ogm ON u.GROUPNAME = ogm.group_name  WHERE u.USERNAME = ? AND u.CHECKFINISH = 1 LIMIT 1";
-        connection.query(sql, [user], (err, rows) => {
-            if (err || !rows.length) return done(err, false);
-            if (rows.length) return done(err, rows[0]);
-        });
+        // console.log('deserializeUser', user)
+        // let sql = "SELECT u.USERNAME, u.FULLNAME, u.GROUPCITY, u.GROUPNAME, u.GROUPCHARACTER, u.PHONE, u.CHECKFINISH, u.ADMIN, ogm.manager AS GROUPMANAGER, ogm.level AS GROUPLEVEL FROM `disaster_account`u INNER JOIN `org_group_manager`ogm ON u.GROUPNAME = ogm.group_name  WHERE u.USERNAME = ? AND u.CHECKFINISH = 1 LIMIT 1";
+        // connection.query(sql, [user.USERNAME], (err, rows) => {
+        //     if (err || !rows.length) return done(err, false);
+        //     if (rows.length) return done(err, rows[0]);
+        // });
+        return done(null, user);
     });
 
     // =========================================================================
@@ -180,7 +181,7 @@ module.exports = function (passport) {
 					let userData = rows[0]
                     if ( !bcrypt.compareSync(password, userData.PASSWORD) ) return done(null, false, req.flash('loginMessage', '密碼錯誤.'));
                     if ( !Boolean(userData.CHECKFINISH) ) return done(null, false, req.flash('loginMessage', '審核中...'));
-                    return done(null, { "USERNAME": userData.USERNAME });
+                    return done(null, { "user": userData });
                 }
             });
         }));
