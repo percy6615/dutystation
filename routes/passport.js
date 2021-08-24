@@ -181,7 +181,7 @@ module.exports = function (passport) {
 					let userData = rows[0]
                     if ( !bcrypt.compareSync(password, userData.PASSWORD) ) return done(null, false, req.flash('loginMessage', '密碼錯誤.'));
                     if ( !Boolean(userData.CHECKFINISH) ) return done(null, false, req.flash('loginMessage', '審核中...'));
-                    return done(null, { "user": userData });
+                    return done(null, { "userinfo": userData });
                 }
             });
         }));

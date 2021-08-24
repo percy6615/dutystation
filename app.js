@@ -107,10 +107,11 @@ const staticSetting = {
 const isAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.redirect('/login'); //未登入帳號直接導回
 
 // 值班台
+// req.query url param
 app.get(['/main'], (req, res) => {
   // , isAuthenticated
   res.render('main.ejs', {
-    // "FULLNAME": req.user.user.FULLNAME || staticSetting.error.string,
+    // "FULLNAME": req.userinfo.user.FULLNAME || staticSetting.error.string,
 
   });
 
