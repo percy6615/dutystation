@@ -12,7 +12,10 @@ var map = new ol.Map({
   });
 
 
-
+  $(".sidebar-item").click(function () {
+    $(".sidebar-item.active").removeClass('active')
+    $(this).addClass('active')
+ });
 // map.setCenter(new OpenLayers.LonLat(0, 0), 0);
 
 // var newl = new OpenLayers.Layer.Text( "text", { location:"./textfile.txt"} );
