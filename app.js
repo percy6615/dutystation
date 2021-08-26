@@ -116,3 +116,12 @@ app.get(['/main'], (req, res) => {
   });
 
 });
+
+app.get(['/test'], (req, res) => {
+  // , isAuthenticated
+  res.render('test.ejs', {
+    // "FULLNAME": req.userinfo.user.FULLNAME || staticSetting.error.string,
+
+  });
+
+});

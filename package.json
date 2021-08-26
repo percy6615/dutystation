@@ -25,6 +25,7 @@
     "http": "0.0.0",
     "http-errors": "~1.6.2",
     "jfile": "^1.1.12",
+    "mdb-ui-kit": "^3.9.0",
     "moment": "^2.24.0",
     "mongodb": "^2.2.36",
     "morgan": "^1.9.1",
