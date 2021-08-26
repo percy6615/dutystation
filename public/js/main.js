@@ -1,13 +1,20 @@
 var map = new ol.Map({
     target: 'map',
+    renderer: 'webgl',
+    controls : ol.control.defaults({
+      attribution : false,
+      zoom : false,
+    }),
+    loadTilesWhileAnimating: true,
+    loadTilesWhileInteracting: true,
     layers: [
       new ol.layer.Tile({
         source: new ol.source.OSM()
       })
     ],
     view: new ol.View({
-      center: ol.proj.fromLonLat([37.41, 8.82]),
-      zoom: 4
+      center: new ol.proj.fromLonLat([121, 23.4696923]),
+      zoom: 8
     })
   });
 
@@ -40,3 +47,17 @@ var map = new ol.Map({
 // map.zoomToMaxExtent();
 
 // halfIcon.setOpacity(0.5);
+
+map.on('singleclick', function(e){
+  // alert(e.coordinate);
+  alert(ol.proj.transform(e.coordinate, 'EPSG:3857', 'EPSG:4326'));
+  
+      // 通過getEventCoordinate方法獲取地理位置，再轉換為wgs84座標，並彈出對話方塊顯示
+  // alert(map.getEventCoordinate(e.originalEvent));
+      // alert(ol.proj.transform(map.getEventCoordinate(e.originalEvent), 'EPSG:3857', 'EPSG:4326'));
+  
+      // var lonlat = map.getCoordinateFromPixel(e.pixel);
+    // alert(lonlat);
+      // alert(ol.proj.transform(lonlat,"EPSG:3857", "EPSG:4326")); //由3857座標系轉為4326
+　　　　 
+  })
