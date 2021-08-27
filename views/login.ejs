@@ -4,7 +4,7 @@
 <head>
 	<title></title>
 	<meta charset="utf-8">
-	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta charset='utf-8'>
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, shrink-to-fit=no" />
@@ -20,7 +20,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link rel="stylesheet" href="css/logincss/css/loginstyle.css">
-	<style>
+	<!-- <style>
 		.fixedElement {
 			background-color: rgba(180, 180, 180, 0.5);
 			position: fixed;
@@ -29,7 +29,7 @@
 			height: 100%;
 			z-index: 100;
 		}
-	</style>
+	</style> -->
 	
 
 </head>
@@ -88,36 +88,36 @@
 			</div>
 		</div>
 
-		<div class="fixedElement" onclick="fun()">
+		<!-- <div class="fixedElement" onclick="fun()"> -->
 			
 		</div>
 	</section>
 
 	<script src="js/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-	<!-- <script src="js/popper.js"></script> -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.min.v5.1.1.js"></script>
 	<script src="js/login.js"></script>
 
 </body>
 <script>
 
-	function fun() {
-		var position = $('.fixedElement').position();
-		var percentLeft = position.left / $(window).width() * 100;
-		var percentTop = position.top / $(window).height() * 100;
+	// function fun() {
+	// 	var position = $('.fixedElement').position();
+	// 	var percentLeft = position.left / $(window).width() * 100;
+	// 	var percentTop = position.top / $(window).height() * 100;
 
-		if (percentTop > 50) {
-			$(".fixedElement").animate({
-				top: "10%",
-			}, 2000);
-		} else {
-			$(".fixedElement").animate({
-				top: "95%",
-			}, 2000);
-		}
+	// 	if (percentTop > 50) {
+	// 		$(".fixedElement").animate({
+	// 			top: "10%",
+	// 		}, 2000);
+	// 	} else {
+	// 		$(".fixedElement").animate({
+	// 			top: "95%",
+	// 		}, 2000);
+	// 	}
 
-	}
+	// }
 
 
 </script>

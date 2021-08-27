@@ -720,7 +720,9 @@ progress {
 @media (min-width:576px) {
 	.container,
 	.container-sm {
-		max-width: 540px
+		/* max-width: 540px */
+		max-width: 100%;
+		min-width: 100%;
 	}
 }
 
@@ -728,7 +730,8 @@ progress {
 	.container,
 	.container-md,
 	.container-sm {
-		max-width: 720px
+		max-width: 100%;
+		min-width: 100%;
 	}
 }
 
@@ -737,7 +740,8 @@ progress {
 	.container-lg,
 	.container-md,
 	.container-sm {
-		max-width: 960px
+		max-width: 100%;
+		min-width: 100%;
 	}
 }
 
@@ -747,7 +751,8 @@ progress {
 	.container-md,
 	.container-sm,
 	.container-xl {
-		max-width: 1200px
+		max-width: 100%;
+		min-width: 100%;
 	}
 }
 
@@ -12769,7 +12774,7 @@ button.close {
 footer.footer {
 /*	padding: 1rem .875rem; */
 	direction: ltr;
-	background: #fff
+	background: #ececec
 }
 
 footer.footer ul {

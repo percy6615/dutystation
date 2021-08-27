@@ -1,42 +1,114 @@
-<script src="js/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-<script src="js/popper.js"></script>
+<head>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202108240101/show_ads_impl_fy2019.js" id="google_shimpl"></script><script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-
-<script src="js/jquery-ui.min.js"></script>
-
-<!-- Nav tabs -->
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-	<li class="nav-item">
-	  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
-	</li>
-	<li class="nav-item">
-	  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
-	</li>
-	<li class="nav-item">
-	  <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Messages</a>
-	</li>
-	<li class="nav-item">
-	  <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Settings</a>
-	</li>
-  </ul>
-  
-  <!-- Tab panes -->
-  <div class="tab-content">
-	<div class="tab-pane active fade" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-	<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">..111.</div>
-	<div class="tab-pane fade" id="messages" role="tabpanel" aria-labelledby="messages-tab">..222.</div>
-	<div class="tab-pane fade id="settings" role="tabpanel" aria-labelledby="settings-tab">..ss.</div>
-  </div>
-
-
-<script>
-
-$('#myTab a').on('click', function (e) {
-  e.preventDefault()
-  $(this).tab('show')
-})
-</script>
+    <style>
+a:hover,a:focus{
+    outline: none;
+    text-decoration: none;
+}
+.tab .nav-tabs{
+    border-bottom: 0 none;
+}
+.tab .nav-tabs li{
+    margin-right: 2px;
+}
+.tab .nav-tabs li a{
+    font-size: 14px;
+    color: #333;
+    padding: 18px 25px;
+    border: none;
+    border-radius: 0;
+    background: #efefef;
+    text-transform: uppercase;
+    position: relative;
+}
+.tab .nav-tabs li.active a:after{
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid #4aaaa5;
+}
+.tab .nav-tabs li.active a,
+.tab .nav-tabs li.active a:focus,
+.tab .nav-tabs li.active a:hover{
+    border: none;
+    background: #4aaaa5;
+    color: #fff;
+    transition: all 0.20s linear 0s;
+}
+.tab .tab-content{
+    font-size: 15px;
+    color: #808080;
+    border: 0 none;
+    line-height: 25px;
+    padding: 5px 0;
+    margin-top: 15px;
+}
+.tab .tab-content h3{
+    margin-top: 10px;
+    font-size: 24px;
+}
+@media only screen and (max-width: 479px){
+    .tab .nav-tabs li{
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .tab .nav-tabs li a{
+        padding: 20px;
+    }
+    .tab .nav-tabs li.active a:after{
+        border: none;
+    }
+    .tab .tab-content{
+        margin-top: 5px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="tab" role="tabpanel">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#Section1" aria-controls="home" role="tab" data-toggle="tab">Section 1</a></li>
+                        <li role="presentation"><a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab">Section 2</a></li>
+                        <li role="presentation"><a href="#Section3" aria-controls="settings" role="tab" data-toggle="tab">Section 3</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade in show active" id="Section1">
+                            <h3>Section 1</h3>
+                            <p>
+                               1 Lorem 5ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pretium, metus et scelerisque dignissim, ligula est imperdiet nisl, sit amet malesuada nunc felis in nisi. Nullam dapibus ligula dui, in rhoncus purus euismod nec. Duis in lacinia neque. Etiam tellus.
+                            </p>
+                        </div>
+     
+                        <div role="tabpanel" class="tab-pane fade show" id="Section2">
+                            <h3>Section 2</h3>
+                            <p>
+                               2 Lorem4 ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pretium, metus et scelerisque dignissim, ligula est imperdiet nisl, sit amet malesuada nunc felis in nisi. Nullam dapibus ligula dui, in rhoncus purus euismod nec. Duis in lacinia neque. Etiam tellus.
+                            </p>
+                        </div>
+     
+                        <div role="tabpanel" class="tab-pane fade show" id="Section3">
+                            <h3>Section 3</h3>
+                            <p>
+                               3 Lorem6 ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pretium, metus et scelerisque dignissim, ligula est imperdiet nisl, sit amet malesuada nunc felis in nisi. Nullam dapibus ligula dui, in rhoncus purus euismod nec. Duis in lacinia neque. Etiam tellus.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
