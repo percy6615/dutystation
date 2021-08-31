@@ -46,6 +46,14 @@ export default class MapClass {
   }
 
   satelliteMap() {
+    this.addWMTSLayer('https://wmts.nlsc.gov.tw/wmts/PHOTO2/default/EPSG:3857/{TileMatrix}/{TileRow}/{TileCol}', "taiwan-sate")
+    this.addWMTSLayer('https://wmts.nlsc.gov.tw/wmts/EMAP2/default/EPSG:3857/{TileMatrix}/{TileRow}/{TileCol}', "taiwan-sate-road")
+
+  }
+  addTileLayer() {
+
+  }
+  addWMTSLayer(_url, _id) {
     var projection = ol.proj.get('EPSG:3857');
     var projectionExtent = projection.getExtent();
     var size = ol.extent.getWidth(projectionExtent) / 256;
@@ -58,7 +66,7 @@ export default class MapClass {
     var layer = new ol.layer.Tile
       ({
         source: new ol.source.WMTS({
-          url: 'https://wmts.nlsc.gov.tw/wmts/PHOTO2/default/EPSG:3857/{TileMatrix}/{TileRow}/{TileCol}',
+          url: _url,
           layer: 'EMAP',
           crossOrigin: "anonymous",
           requestEncoding: "REST",
@@ -75,34 +83,11 @@ export default class MapClass {
           maxZoom: 20
         }),
       });
-    var roadLayer = new ol.layer.Tile
-      ({
-        source: new ol.source.WMTS({
-          url: 'https://wmts.nlsc.gov.tw/wmts/EMAP2/default/EPSG:3857/{TileMatrix}/{TileRow}/{TileCol}',
-          layer: 'EMAP',
-          crossOrigin: "anonymous",
-          requestEncoding: "REST",
-          matrixSet: "GoogleMapsCompatible",
-          format: "image/jpg",
-          transparente: true,
-          projection: projection,
-          tileGrid: new ol.tilegrid.WMTS({
-            origin: ol.extent.getTopLeft(projectionExtent),
-            matrixIds: matrixIds,
-            resolutions: resolutions
-          }),
-          style: 'default',
-          maxZoom: 20
-        }),
-      });
-    layer.set("id", "taiwan-sate", false);
-    roadLayer.set("id", "taiwan-sate-road", false);
+    layer.set("id", _id, false);
     layer.setVisible(true);
-    roadLayer.setVisible(true);
     this.getMap().addLayer(layer);
-    this.getMap().addLayer(roadLayer);
   }
-  
+
   findLayerByID(id) {
     var layer = map.getLayers().getArray();
     for (var i in layer) {
