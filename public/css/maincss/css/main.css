@@ -49,16 +49,19 @@ a:hover,a:focus{
 @media only screen and (max-width: 479px){
     .tab .nav-tabs li{
         width: 100%;
-        margin-bottom: 5px;
+        margin-bottom: 20px;
     }
     .tab .nav-tabs li a{
-        padding: 20px;
+        padding: 10px;
     }
     .tab .nav-tabs li.active a:after{
         border: none;
     }
     .tab .tab-content{
         margin-top: 5px;
+    }
+    .container{
+        margin-top: 1%;
     }
 }
 .org {
@@ -78,3 +81,92 @@ a:hover,a:focus{
     height: 100%;
     width: 100%;
  }
+
+ .ol-popup {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.68);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    /* padding: 15px; */
+    border-radius: 10px;
+    border: 1px solid rgba(73, 73, 73, 0.507);
+    bottom: 12px;
+    left: -50px;
+    min-width: 400px;
+    /* 280 */
+  }
+
+  .ol-popup:after, .ol-popup:before {
+    top: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  .ol-popup:after {
+    border-top-color: white;
+    border-width: 10px;
+    left: 48px;
+    margin-left: -10px;
+  }
+  .ol-popup:before {
+    border-top-color: #cccccc;
+    border-width: 11px;
+    left: 48px;
+    margin-left: -11px;
+  }
+
+
+
+  .toggle-check-input {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+  }
+  
+  .toggle-check-text {
+    display: inline-block;
+    position: relative;
+    text-transform: uppercase;
+    background: #CCC;
+    padding: 0.25em 0.5em 0.25em 2em;
+    border-radius: 0.5em;
+    min-width: 2em;
+    max-width:4em;
+    color: #FFF;
+    cursor: pointer;
+    transition: background-color 0.15s;
+  }
+  
+  .toggle-check-text:after {
+    content: ' ';
+    display: block;
+    background: #FFF;
+    width: 1.1em;
+    height: 1.1em;
+    border-radius: 1em;
+    position: absolute;
+    left: 0.3em;
+    top: 0.35em;
+    transition: left 0.15s, margin-left 0.15s;
+  }
+  
+  .toggle-check-text:before {
+    content: 'No';
+  }
+  
+  .toggle-check-input:checked ~ .toggle-check-text {
+    background: #8ad869;
+    padding-left: 0.5em;
+    padding-right: 2em;
+  }
+  
+  .toggle-check-input:checked ~ .toggle-check-text:before {
+    content: 'Yes';
+  }
+  
+  .toggle-check-input:checked ~ .toggle-check-text:after {
+    left: 100%;
+    margin-left: -1.4em;
+  }

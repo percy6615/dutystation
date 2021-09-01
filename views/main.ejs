@@ -20,8 +20,8 @@
    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
    <link href="css/maincss/css/app.css" rel="stylesheet">
    <link href="css/maincss/css/main.css" rel="stylesheet">
-   <script src="js/bootstrap.min.js"></script>
-   <script src="js/popper.js"></script>
+   <script src="js/official/bootstrap.min.js"></script>
+   <script src="js/official/popper.js"></script>
 
 
    <!-- <script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202108240101/show_ads_impl_fy2019.js"
@@ -54,7 +54,7 @@
                </li>
 
                <li class="sidebar-item">
-                  <a class="sidebar-link"  href=javascript:void(0); id="setting" >
+                  <a class="sidebar-link" href=javascript:void(0); id="setting">
                      <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Settings</span>
                   </a>
                </li>
@@ -129,15 +129,25 @@
                </li>
             </ul>
 
-            <!-- <div class="sidebar-cta">
-					<div class="sidebar-cta-content">
+            <div class="sidebar-cta">
+					<div class="sidebar-cta-content" style="overflow:auto" >
 						<strong class="d-inline-block mb-2">Upgrade to Pro</strong>
 						<div class="mb-3 text-sm">
 							Are you looking for more components? Check out our premium version.
 						</div>
 						<a href="https://adminkit.io/pricing" target="_blank" class="btn btn-primary btn-block">Upgrade to Pro</a>
+                  <strong class="d-inline-block mb-2">Upgrade to Pro</strong>
+						<div class="mb-3 text-sm">
+							Are you looking for more components? Check out our premium version.
+						</div>
+						<a href="https://adminkit.io/pricing" target="_blank" class="btn btn-primary btn-block">Upgrade to Pro</a>
+                  <strong class="d-inline-block mb-2">Upgrade to Pro</strong>
+						<div class="mb-3 text-sm">
+							Are you looking for more components? Check out our premium version.
+						</div>
+						<a href="https://adminkit.io/pricing" target="_blank" class="btn btn-primary btn-block">Upgrade to Pro</a>
 					</div>
-				</div> -->
+				</div>
          </div>
       </nav>
 
@@ -147,14 +157,14 @@
                <i class="hamburger align-self-center"></i>
             </a>
 
-            <form class="d-none d-sm-inline-block">
+            <!-- <form class="d-none d-sm-inline-block">
                <div class="input-group input-group-navbar">
                   <input type="text" class="form-control" placeholder="Search…" aria-label="Search">
                   <button class="btn" type="button">
                      <i class="align-middle" data-feather="search"></i>
                   </button>
                </div>
-            </form>
+            </form> -->
 
             <div class="navbar-collapse collapse">
                <ul class="navbar-nav navbar-align">
@@ -327,8 +337,22 @@
          </nav>
 
          <main class="content">
-            <div id="map" class="map " style="display: block;"></div>
-            <div id="org" class="org " style="display: none;">
+            <div id="map" class="map " style="display: block;">
+               <div
+                  style="border-radius: 0.5em; background-color: rgba(150, 179, 193,0.5); position: absolute; right:0rem; z-index: 99999;">
+                  <label class="toggle-check"
+                     style="margin-left: 4px;margin-right: auto;margin-top: auto;margin-bottom: auto;position: relative;top: 25%;">
+                     <span id="lb_satellite">衛照圖</span>
+                     <input type="checkbox" class="toggle-check-input" />
+                     <span class="toggle-check-text"></span>
+                  </label>
+               </div>
+               <div id="popup" class="ol-popup" >
+               <img src="\static\icon\setting.png">
+
+               </div>
+            </div>
+            <div id=" org" class="org " style="display: none;">
                <% include orgtemplate %>
             </div>
 

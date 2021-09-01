@@ -1,9 +1,20 @@
+'use strict'
 export default class MapClass {
   constructor() {
-    this.map = this.createmap();
+    this.map,this.overlay = this.createmap();
     console.log("new")
   }
   createmap() {
+
+    var container = document.getElementById('popup');
+    var overlay = new ol.Overlay({
+      element: container,
+      autoPan: true,
+      autoPanAnimation: {
+        duration: 250
+      }
+    });
+
     var map = new ol.Map({
       target: 'map',
       renderer: 'webgl',
@@ -11,6 +22,8 @@ export default class MapClass {
         attribution: false,
         zoom: false,
       }),
+      overlays: [overlay],
+      hitTolerance:3,
       loadTilesWhileAnimating: true,
       loadTilesWhileInteracting: true,
       layers: [
@@ -23,15 +36,17 @@ export default class MapClass {
         zoom: 8
       })
     });
+    this.singleclick(map,overlay)
 
-    this.singleclick(map)
 
-    return map;
+    return map,overlay;
   }
-  singleclick(map) {
+  singleclick(map,overlay) {
     map.on('singleclick', function (e) {
       // alert(e.coordinate);
-      alert(ol.proj.transform(e.coordinate, 'EPSG:3857', 'EPSG:4326'));
+      var coordinate = e.coordinate;
+      overlay.setPosition(coordinate);
+      // alert(ol.proj.transform(e.coordinate, 'EPSG:3857', 'EPSG:4326'));
       // 通過getEventCoordinate方法獲取地理位置，再轉換為wgs84座標，並彈出對話方塊顯示
       // alert(map.getEventCoordinate(e.originalEvent));
       // alert(ol.proj.transform(map.getEventCoordinate(e.originalEvent), 'EPSG:3857', 'EPSG:4326'));
@@ -46,54 +61,81 @@ export default class MapClass {
   }
 
   satelliteMap() {
-    this.addWMTSLayer('https://wmts.nlsc.gov.tw/wmts/PHOTO2/default/EPSG:3857/{TileMatrix}/{TileRow}/{TileCol}', "taiwan-sate")
-    this.addWMTSLayer('https://wmts.nlsc.gov.tw/wmts/EMAP2/default/EPSG:3857/{TileMatrix}/{TileRow}/{TileCol}', "taiwan-sate-road")
-
+    var tf = true;
+    if (!this.addWMTSLayer('https://wmts.nlsc.gov.tw/wmts/PHOTO2/default/EPSG:3857/{TileMatrix}/{TileRow}/{TileCol}', "taiwan-sate")) {
+      this.removeLayerByID("taiwan-sate")
+      tf = false;
+    }
+    if (!this.addWMTSLayer('https://wmts.nlsc.gov.tw/wmts/EMAP2/default/EPSG:3857/{TileMatrix}/{TileRow}/{TileCol}', "taiwan-sate-road")) {
+      this.removeLayerByID("taiwan-sate-road")
+      tf = false;
+    }
+    return tf;
   }
   addTileLayer() {
 
   }
-  addWMTSLayer(_url, _id) {
-    var projection = ol.proj.get('EPSG:3857');
-    var projectionExtent = projection.getExtent();
-    var size = ol.extent.getWidth(projectionExtent) / 256;
-    var resolutions = new Array(21);
-    var matrixIds = new Array(21);
-    for (var z = 0; z < 21; ++z) {
-      resolutions[z] = size / Math.pow(2, z);
-      matrixIds[z] = z;
-    }
-    var layer = new ol.layer.Tile
-      ({
-        source: new ol.source.WMTS({
-          url: _url,
-          layer: 'EMAP',
-          crossOrigin: "anonymous",
-          requestEncoding: "REST",
-          matrixSet: "GoogleMapsCompatible",
-          format: "image/jpg",
-          transparente: true,
-          projection: projection,
-          tileGrid: new ol.tilegrid.WMTS({
-            origin: ol.extent.getTopLeft(projectionExtent),
-            matrixIds: matrixIds,
-            resolutions: resolutions
-          }),
-          style: 'default',
-          maxZoom: 20
-        }),
-      });
-    layer.set("id", _id, false);
-    layer.setVisible(true);
-    this.getMap().addLayer(layer);
-  }
 
   findLayerByID(id) {
-    var layer = map.getLayers().getArray();
+    var layer = this.getMap().getLayers().getArray();
     for (var i in layer) {
       if (layer[i].get("id") == id) {
         return layer[i];
       }
+    }
+    return undefined
+  }
+
+  addWMTSLayer(_url, _id) {
+    if (this.findLayerByID(_id) == undefined) {
+      var projection = ol.proj.get('EPSG:3857');
+      var projectionExtent = projection.getExtent();
+      var size = ol.extent.getWidth(projectionExtent) / 256;
+      var resolutions = new Array(21);
+      var matrixIds = new Array(21);
+      for (var z = 0; z < 21; ++z) {
+        resolutions[z] = size / Math.pow(2, z);
+        matrixIds[z] = z;
+      }
+      var layer = new ol.layer.Tile
+        ({
+          source: new ol.source.WMTS({
+            url: _url,
+            layer: 'EMAP',
+            crossOrigin: "anonymous",
+            requestEncoding: "REST",
+            matrixSet: "GoogleMapsCompatible",
+            format: "image/jpg",
+            transparente: true,
+            projection: projection,
+            tileGrid: new ol.tilegrid.WMTS({
+              origin: ol.extent.getTopLeft(projectionExtent),
+              matrixIds: matrixIds,
+              resolutions: resolutions
+            }),
+            style: 'default',
+            maxZoom: 20
+          }),
+        });
+      layer.set("id", _id, false);
+      layer.setVisible(true);
+      this.getMap().addLayer(layer);
+      return true
+    } else {
+      return false
+    }
+
+  }
+
+
+
+  removeLayerByID(id) {
+    var layer = this.findLayerByID(id)
+    if (layer != undefined) {
+      this.getMap().removeLayer(layer);
+      return true
+    } else {
+      return false
     }
   }
 }
