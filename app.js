@@ -21,7 +21,7 @@ const accessControlMiddleware = require('./middleware/accessControl');
 const rateLimitMiddleware = require('./middleware/rateLimitConfig');
 
 //const morganLoggerMiddleware = require('./middleware/morganLogger');  // log 落地
-const loginRouter = require('./routes/loginRouter');  // express first router
+const loginRouter = require('./routes/login_router');  // express first router
 
 const passportRouter = require('./routes/passport');    // passport 認證過程
 //const missionHandle = require('./models/missionHandle'); // 災情處理
