@@ -1,11 +1,11 @@
-'use strict'
+
 export default class MapClass {
   constructor() {
-    this.map,this.overlay = this.createmap();
+    this.overlay = this.createOverlayer();
+    this.map = this.createmap(this.overlay );
     console.log("new")
   }
-  createmap() {
-
+  createOverlayer(){
     var container = document.getElementById('popup');
     var overlay = new ol.Overlay({
       element: container,
@@ -15,6 +15,10 @@ export default class MapClass {
       }
     });
 
+    return overlay;
+  }
+  createmap(overlay) {
+
     var map = new ol.Map({
       target: 'map',
       renderer: 'webgl',
@@ -23,7 +27,7 @@ export default class MapClass {
         zoom: false,
       }),
       overlays: [overlay],
-      hitTolerance:3,
+      // hitTolerance:3,
       loadTilesWhileAnimating: true,
       loadTilesWhileInteracting: true,
       layers: [
@@ -39,7 +43,7 @@ export default class MapClass {
     this.singleclick(map,overlay)
 
 
-    return map,overlay;
+    return map;
   }
   singleclick(map,overlay) {
     map.on('singleclick', function (e) {

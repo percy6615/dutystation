@@ -170,3 +170,13 @@ a:hover,a:focus{
     left: 100%;
     margin-left: -1.4em;
   }
+
+  #online-header:hover{
+    background-color:rgb(50 ,111 ,121);
+    color:white;
+  }
+  #online-header{
+    background-color: rgba(50 ,111 ,121,0.2);
+    color:#858788;
+  }
+  

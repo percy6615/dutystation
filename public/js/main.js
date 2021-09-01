@@ -40,8 +40,21 @@ $(document).ready(function () {
       $("#lb_satellite").css("color", "black");
     }
   });
+ $("#online-header").on("click",function(e){
+  var clientHeight = document.getElementById('online-content').clientHeight;
 
+  if (clientHeight > 0) {
+    $("#online-content").animate({
+      height: "0px",
+    }, 500);
+  } else {
+    $("#online-content").animate({
+      height: "100px",
+    }, 1000);
+  }
+ })
 })
+
 // window._map = _map
 // window.mapClass = mapClass
 function clickMenu(type) {
