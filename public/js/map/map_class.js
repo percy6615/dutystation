@@ -1,8 +1,7 @@
 
 export default class MapClass {
   constructor() {
-    this.overlay = this.createOverlayer();
-    this.map = this.createmap(this.overlay );
+    this.map = this.createmap(this.createOverlayer() );
     console.log("new")
   }
   createOverlayer(){
@@ -50,6 +49,7 @@ export default class MapClass {
       // alert(e.coordinate);
       var coordinate = e.coordinate;
       overlay.setPosition(coordinate);
+      console.log(e)
       // alert(ol.proj.transform(e.coordinate, 'EPSG:3857', 'EPSG:4326'));
       // 通過getEventCoordinate方法獲取地理位置，再轉換為wgs84座標，並彈出對話方塊顯示
       // alert(map.getEventCoordinate(e.originalEvent));
@@ -57,6 +57,17 @@ export default class MapClass {
       // var lonlat = map.getCoordinateFromPixel(e.pixel);
       // alert(lonlat);
       // alert(ol.proj.transform(lonlat,"EPSG:3857", "EPSG:4326")); //由3857座標系轉為4326
+    });
+
+    // map.on('doubleClick', function (e) {
+    //   // e.preventDefault()
+    //   console.log(e)
+    // })
+    map.getViewport().addEventListener("contextmenu",function(e){
+      e.preventDefault()
+      console.log("contextmenu")
+      console.log( map.getEventCoordinate(e))
+      overlay.setPosition(map.getEventCoordinate(e));
     })
   }
 
