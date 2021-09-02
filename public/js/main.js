@@ -49,7 +49,6 @@ $(function () {
     } else {
       fullScreen(content);
     }
-
   });
 
   $(".toggle-check-input").on('change', function () {
@@ -57,7 +56,6 @@ $(function () {
     this.checked = isopen;
     if (this.checked) {
       $("#lb_satellite").css("color", "white");
-
     } else {
       $("#lb_satellite").css("color", "black");
     }
