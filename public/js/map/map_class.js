@@ -17,7 +17,6 @@ export default class MapClass {
         return overlay;
     }
     createmap(overlay) {
-
         var map = new ol.Map({
             target: 'map',
             renderer: 'webgl',
@@ -40,9 +39,6 @@ export default class MapClass {
             })
         });
         this.mapListener(map, overlay)
-
-
-
 
         return map;
     }
@@ -67,6 +63,8 @@ export default class MapClass {
         //   // console.log( map.getEventCoordinate(e))
         //   overlay.setPosition(map.getEventCoordinate(e));
         // })
+
+
     }
 
     getMap() {

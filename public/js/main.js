@@ -83,7 +83,48 @@ $(function() {
         mapClass.overlay.setVisible(false);
     })
 
+    $.contextMenu({
+        selector: '.map',
+        callback: function(key, options) {
+            // var m = "clicked: " + key;
+            // window.console && console.log(m) || alert(m);
+            // console.log(options)
+            if (key == "refresh") {
 
+                // mapClass.overlay = mapClass.createOverlayer()
+                // mapClass.map = mapClass.createmap(mapClass.overlay);
+            }
+        },
+        items: {
+            "refresh": {
+                name: "更新",
+                icon: "fa-solid fa-arrow-rotate-right"
+            },
+            "cut": {
+                name: "Cut",
+                icon: "cut"
+            },
+            copy: {
+                name: "Copy",
+                icon: "copy"
+            },
+            "paste": {
+                name: "Paste",
+                icon: "paste"
+            },
+            "delete": {
+                name: "Delete",
+                icon: "delete"
+            },
+            "sep1": "---------",
+            "quit": {
+                name: "Quit",
+                icon: function() {
+                    return 'context-menu-icon context-menu-icon-quit';
+                }
+            }
+        }
+    });
 
 
 
