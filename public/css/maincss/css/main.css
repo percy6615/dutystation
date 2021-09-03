@@ -1,14 +1,18 @@
-a:hover,a:focus{
+a:hover,
+a:focus {
     outline: none;
     text-decoration: none;
 }
-.tab .nav-tabs{
+
+.tab .nav-tabs {
     border-bottom: 0 none;
 }
-.tab .nav-tabs li{
+
+.tab .nav-tabs li {
     margin-right: 10px;
 }
-.tab .nav-tabs li a{
+
+.tab .nav-tabs li a {
     font-size: 16px;
     color: #333;
     padding: 18px 25px;
@@ -18,7 +22,8 @@ a:hover,a:focus{
     text-transform: uppercase;
     position: relative;
 }
-.tab .nav-tabs li.active a:after{
+
+.tab .nav-tabs li.active a:after {
     content: "";
     position: absolute;
     bottom: -12px;
@@ -26,15 +31,17 @@ a:hover,a:focus{
     border-bottom: 15px solid transparent;
     border-left: 15px solid #777979;
 }
+
 .tab .nav-tabs li.active a,
 .tab .nav-tabs li.active a:focus,
-.tab .nav-tabs li.active a:hover{
+.tab .nav-tabs li.active a:hover {
     border: none;
     background: #777979;
     color: #fff;
     transition: all 0.20s linear 0s;
 }
-.tab .tab-content{
+
+.tab .tab-content {
     font-size: 15px;
     color: #808080;
     border: 0 none;
@@ -42,28 +49,31 @@ a:hover,a:focus{
     padding: 5px 0;
     margin-top: 15px;
 }
-.tab .tab-content h3{
+
+.tab .tab-content h3 {
     margin-top: 10px;
     font-size: 24px;
 }
-@media only screen and (max-width: 479px){
-    .tab .nav-tabs li{
+
+@media only screen and (max-width: 479px) {
+    .tab .nav-tabs li {
         width: 100%;
         margin-bottom: 20px;
     }
-    .tab .nav-tabs li a{
+    .tab .nav-tabs li a {
         padding: 10px;
     }
-    .tab .nav-tabs li.active a:after{
+    .tab .nav-tabs li.active a:after {
         border: none;
     }
-    .tab .tab-content{
+    .tab .tab-content {
         margin-top: 5px;
     }
-    .container{
+    .container {
         margin-top: 1%;
     }
 }
+
 .formate {
     background-color: rgb(233, 233, 233);
     width: 100%;
@@ -71,33 +81,32 @@ a:hover,a:focus{
     z-index: 100;
 }
 
-
-
-.formate h2{
+.formate h2 {
     color: rgb(0, 0, 0);
-    font-weight:bold;
+    font-weight: bold;
     padding: 1%;
 }
 
 .map {
     height: 100%;
     width: 100%;
- }
+}
 
- .ol-popup {
+.ol-popup {
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.68);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    background-color: rgba(255, 255, 255, 0.68);
+    box-shadow: 0 1px 4px rgb(0 0 0 / 50%);
     /* padding: 15px; */
     border-radius: 10px;
-    border: 1px solid rgba(73, 73, 73, 0.507);
+    border: 1.5px solid rgb(82 127 226 / 48%);
     bottom: 12px;
     left: -50px;
     min-width: 400px;
     /* 280 */
-  }
+}
 
-  .ol-popup:after, .ol-popup:before {
+.ol-popup:after,
+.ol-popup:before {
     top: 100%;
     border: solid transparent;
     content: " ";
@@ -105,29 +114,41 @@ a:hover,a:focus{
     width: 0;
     position: absolute;
     pointer-events: none;
-  }
-  .ol-popup:after {
+}
+
+.ol-popup:after {
     border-top-color: white;
     border-width: 10px;
     left: 48px;
     margin-left: -10px;
-  }
-  .ol-popup:before {
+}
+
+.ol-popup:before {
     border-top-color: #cccccc;
     border-width: 11px;
     left: 48px;
     margin-left: -11px;
-  }
+}
 
+.ol-popup-closer {
+    text-decoration: none;
+    position: absolute;
+    font-family: auto;
+    top: 2px;
+    right: 8px;
+}
 
+.ol-popup-closer:after {
+    content: "✖";
+}
 
-  .toggle-check-input {
+.toggle-check-input {
     width: 1px;
     height: 1px;
     position: absolute;
-  }
-  
-  .toggle-check-text {
+}
+
+.toggle-check-text {
     display: inline-block;
     position: relative;
     text-transform: uppercase;
@@ -135,13 +156,13 @@ a:hover,a:focus{
     padding: 0.25em 0.5em 0.25em 2em;
     border-radius: 0.5em;
     min-width: 2em;
-    max-width:4em;
+    max-width: 4em;
     color: #FFF;
     cursor: pointer;
     transition: background-color 0.15s;
-  }
-  
-  .toggle-check-text:after {
+}
+
+.toggle-check-text:after {
     content: ' ';
     display: block;
     background: #FFF;
@@ -152,33 +173,33 @@ a:hover,a:focus{
     left: 0.3em;
     top: 0.35em;
     transition: left 0.15s, margin-left 0.15s;
-  }
-  
-  .toggle-check-text:before {
+}
+
+.toggle-check-text:before {
     content: 'No';
-  }
-  
-  .toggle-check-input:checked ~ .toggle-check-text {
+}
+
+.toggle-check-input:checked~.toggle-check-text {
     background: #8ad869;
     padding-left: 0.5em;
     padding-right: 2em;
-  }
-  
-  .toggle-check-input:checked ~ .toggle-check-text:before {
+}
+
+.toggle-check-input:checked~.toggle-check-text:before {
     content: 'Yes';
-  }
-  
-  .toggle-check-input:checked ~ .toggle-check-text:after {
+}
+
+.toggle-check-input:checked~.toggle-check-text:after {
     left: 100%;
     margin-left: -1.4em;
-  }
+}
 
-  #online-header:hover{
-    background-color:rgb(50 ,111 ,121);
-    color:white;
-  }
-  #online-header{
-    background-color: rgba(50 ,111 ,121,0.2);
-    color:#858788;
-  }
-  
+#online-header:hover {
+    background-color: rgb(50, 111, 121);
+    color: white;
+}
+
+#online-header {
+    background-color: rgba(50, 111, 121, 0.2);
+    color: #858788;
+}

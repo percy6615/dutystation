@@ -2,71 +2,72 @@
 <html lang="en">
 
 <head>
-   <meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <meta name="description" content="">
-   <meta name="author" content="Percy">
-   <meta name="keywords" content="web">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Percy">
+    <meta name="keywords" content="web">
 
-   <title>Service</title>
+    <title>Service</title>
 
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.6.1/css/ol.css"
-      type="text/css">
-   <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.6.1/build/ol.js"></script>
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-   <link href="css/maincss/css/app.css" rel="stylesheet">
-   <link href="css/maincss/css/main.css" rel="stylesheet">
-   <script src="js/official/bootstrap.min.js"></script>
-   <script src="js/official/popper.js"></script>
-   <script src="/socket.io/socket.io.js" charset="utf-8"></script>
-   <!-- https://cdnjs.com/libraries/nanogallery2 -->
-   <!-- <script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202108240101/show_ads_impl_fy2019.js"
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.6.1/css/ol.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.6.1/build/ol.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <link href="css/maincss/css/app.css" rel="stylesheet">
+    <link href="css/maincss/css/main.css" rel="stylesheet">
+    <script src="js/official/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.ui.position.js"></script>
+    <script src="js/official/popper.js"></script>
+    <script src="/socket.io/socket.io.js" charset="utf-8"></script>
+    <!-- https://cdnjs.com/libraries/nanogallery2 -->
+    <!-- <script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202108240101/show_ads_impl_fy2019.js"
       id="google_shimpl"></script> -->
 </head>
 
 <body>
-   <div class="wrapper" id="whole"> 
-      <nav id="sidebar" class="sidebar">
-         <div class="sidebar-content js-simplebar">
-            <a class="sidebar-brand" href="\main">
-               <span class="align-middle">Home</span>
-            </a>
+    <div class="wrapper" id="whole">
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-content js-simplebar">
+                <a class="sidebar-brand" href="\main">
+                    <span class="align-middle">Home</span>
+                </a>
 
-            <ul class="sidebar-nav">
-               <li class="sidebar-header">
-                  Common
-               </li>
+                <ul class="sidebar-nav">
+                    <li class="sidebar-header">
+                        Common
+                    </li>
 
-               <li class="sidebar-item active">
-                  <a class="sidebar-link" href=javascript:void(0); id="sysmap">
-                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">地圖</span>
-                  </a>
-               </li>
+                    <li class="sidebar-item active">
+                        <a class="sidebar-link" href=javascript:void(0); id="sysmap">
+                            <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">地圖</span>
+                        </a>
+                    </li>
 
-               <li class="sidebar-item">
-                  <a class="sidebar-link" href=javascript:void(0); id=syschart>
-                     <i class="align-middle" data-feather="pie-chart"></i> <span class="align-middle">圖表</span>
-                  </a>
-               </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href=javascript:void(0); id="syschart">
+                            <i class="align-middle" data-feather="pie-chart"></i> <span class="align-middle">圖表</span>
+                        </a>
+                    </li>
 
-               <li class="sidebar-item">
-                  <a class="sidebar-link" href=javascript:void(0);>
-                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">照片集</span>
-                  </a>
-               </li>
-               <li class="sidebar-item">
-                  <a class="sidebar-link" href=javascript:void(0); id="profile">
-                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
-                  </a>
-               </li>
-               <li class="sidebar-header">
-                  Administrator
-               </li>
-               <!-- <li class="sidebar-item">
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href=javascript:void(0); id="sysalbum">
+                            <i class="align-middle" data-feather="image"></i> <span class="align-middle">照片集</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href=javascript:void(0); id="sysprofile">
+                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-header">
+                        Administrator
+                    </li>
+                    <!-- <li class="sidebar-item">
                   <a data-target="#ui" data-toggle="collapse" class="sidebar-link collapsed">
                      <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">UI Elements</span>
                   </a>
@@ -82,45 +83,44 @@
                </li> -->
 
 
-               <li class="sidebar-item">
-                  <a data-target="#ui" data-toggle="collapse" class="sidebar-link collapsed" href=javascript:void(0);
-                     id="setting">
-                     <i class="align-middle" data-feather="settings"></i> <span class="align-middle">設定</span>
-                  </a>
-                  <ul id="ui" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                     <li class="sidebar-item"><a class="sidebar-link" href=javascript:void(0); id="orgmanager">組織管理</a>
-                     </li>
-                     <li class="sidebar-item"><a class="sidebar-link" href=javascript:void(0); id="permanager">員工管理</a>
-                     </li>
-                     <li class="sidebar-item"><a class="sidebar-link" href=javascript:void(0); id="jobmanager">職位管理</a>
-                     </li>
-                  </ul>
-               </li>
+                    <li class="sidebar-item">
+                        <a data-target="#ui" data-toggle="collapse" class="sidebar-link collapsed" href=javascript:void(0); id="setting">
+                            <i class="align-middle" data-feather="settings"></i> <span class="align-middle">設定</span>
+                        </a>
+                        <ul id="ui" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                            <li class="sidebar-item"><a class="sidebar-link" href=javascript:void(0); id="orgmanager">組織管理</a>
+                            </li>
+                            <li class="sidebar-item"><a class="sidebar-link" href=javascript:void(0); id="permanager">員工管理</a>
+                            </li>
+                            <li class="sidebar-item"><a class="sidebar-link" href=javascript:void(0); id="jobmanager">職位管理</a>
+                            </li>
+                        </ul>
+                    </li>
 
-               <li class="sidebar-item">
-                  <a class="sidebar-link" href="icons-feather.html">
-                     <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Icons</span>
-                  </a>
-               </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="icons-feather.html">
+                            <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Icons</span>
+                        </a>
+                    </li>
 
-               <li class="sidebar-item">
-                  <a data-target="#forms" data-toggle="collapse" class="sidebar-link collapsed">
-                     <i class="align-middle" data-feather="check-circle"></i> <span class="align-middle">Forms</span>
-                  </a>
-                  <ul id="forms" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                     <li class="sidebar-item"><a class="sidebar-link" href="forms-layouts.html">Form Layouts</a></li>
-                     <li class="sidebar-item"><a class="sidebar-link" href="forms-basic-inputs.html">Basic Inputs</a>
-                     </li>
-                  </ul>
-               </li>
+                    <li class="sidebar-item">
+                        <a data-target="#forms" data-toggle="collapse" class="sidebar-link collapsed">
+                            <i class="align-middle" data-feather="check-circle"></i> <span class="align-middle">Forms</span>
+                        </a>
+                        <ul id="forms" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                            <li class="sidebar-item"><a class="sidebar-link" href="forms-layouts.html">Form Layouts</a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="forms-basic-inputs.html">Basic Inputs</a>
+                            </li>
+                        </ul>
+                    </li>
 
-               <li class="sidebar-item">
-                  <a class="sidebar-link" href="tables-bootstrap.html">
-                     <i class="align-middle" data-feather="list"></i> <span class="align-middle">Tables</span>
-                  </a>
-               </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="tables-bootstrap.html">
+                            <i class="align-middle" data-feather="list"></i> <span class="align-middle">Tables</span>
+                        </a>
+                    </li>
 
-               <!-- <li class="sidebar-header">
+                    <!-- <li class="sidebar-header">
                   Plugins & Addons
                </li>
 
@@ -135,79 +135,78 @@
                      <i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
                   </a>
                </li> -->
-            </ul>
+                </ul>
 
-            <div class="sidebar-cta">
-               <div class="dropdown-menu-header" id="online-header" style="border-radius: 0.35em; border-style: unset;">
-                  系統在線人數:20
-               </div>
-               <div class="sidebar-cta-content" id="online-content"
-                  style="overflow:auto;margin: auto;padding: 0em;height: 0px;">
+                <div class="sidebar-cta">
+                    <div class="dropdown-menu-header" id="online-header" style="border-radius: 0.35em; border-style: unset;">
+                        系統在線人數:20
+                    </div>
+                    <div class="sidebar-cta-content" id="online-content" style="overflow:auto;margin: auto;padding: 0em;height: 0px;">
 
-                  <!-- <strong class="d-inline-block mb-2">Upgrade to Pro</strong>
+                        <!-- <strong class="d-inline-block mb-2">Upgrade to Pro</strong>
 						<div class="mb-3 text-sm">
 							Are you looking for more components? Check out our premium version.
 						</div>
 						<a href="https://adminkit.io/pricing" target="_blank" class="btn btn-primary btn-block">Upgrade to Pro</a> -->
 
-                  <div class="list-group">
-                     <a href="#" class="list-group-item">
-                        <div class="row g-0 align-items-center">
-                           <div class="col-2">
-                              <i class="text-success" data-feather="user-check"></i>
-                           </div>
-                           <div class="col-10">
-                              <div class="text-muted small mt-1">team1-percy</div>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <i class="text-success" data-feather="user-check"></i>
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="text-muted small mt-1">team1-percy</div>
 
-                           </div>
-                        </div>
-                     </a>
-                     <a href="#" class="list-group-item">
-                        <div class="row g-0 align-items-center">
-                           <div class="col-2">
-                              <i class="text-success" data-feather="user-check"></i>
-                           </div>
-                           <div class="col-10">
-                              <div class="text-muted small mt-1">team2-percy</div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <i class="text-success" data-feather="user-check"></i>
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="text-muted small mt-1">team2-percy</div>
 
-                           </div>
-                        </div>
-                     </a>
-                     <a href="#" class="list-group-item">
-                        <div class="row g-0 align-items-center">
-                           <div class="col-2">
-                              <i class="text-success" data-feather="user-check"></i>
-                           </div>
-                           <div class="col-10">
-                              <div class="text-muted small mt-1">team3-percy</div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <i class="text-success" data-feather="user-check"></i>
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="text-muted small mt-1">team3-percy</div>
 
-                           </div>
-                        </div>
-                     </a>
-                     <a href="#" class="list-group-item">
-                        <div class="row g-0 align-items-center">
-                           <div class="col-2">
-                              <i class="text-success" data-feather="user-check"></i>
-                           </div>
-                           <div class="col-10">
-                              <div class="text-muted small mt-1">team4-percy</div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item">
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-2">
+                                        <i class="text-success" data-feather="user-check"></i>
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="text-muted small mt-1">team4-percy</div>
 
-                           </div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                     </a>
-                  </div>
-               </div>
+                    </div>
+                </div>
             </div>
-         </div>
-      </nav>
+        </nav>
 
-      <div class="main">
-         <nav class="navbar navbar-expand navbar-light navbar-bg">
-            <a class="sidebar-toggle d-flex">
-               <i class="hamburger align-self-center"></i>
-            </a>
+        <div class="main">
+            <nav class="navbar navbar-expand navbar-light navbar-bg">
+                <a class="sidebar-toggle d-flex">
+                    <i class="hamburger align-self-center"></i>
+                </a>
 
-            <!-- <form class="d-none d-sm-inline-block">
+                <!-- <form class="d-none d-sm-inline-block">
                <div class="input-group input-group-navbar">
                   <input type="text" class="form-control" placeholder="Search…" aria-label="Search">
                   <button class="btn" type="button">
@@ -216,233 +215,230 @@
                </div>
             </form> -->
 
-            <div class="navbar-collapse collapse">
-               
-               <ul class="navbar-nav navbar-align">
-                  <li class="nav-item">
-                     <a class="nav-icon js-fullscreen d-none d-lg-block" href="#" id="bigsmall">
-                        <div class="position-relative">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-maximize align-middle">
+                <div class="navbar-collapse collapse">
+
+                    <ul class="navbar-nav navbar-align">
+                        <li class="nav-item">
+                            <a class="nav-icon js-fullscreen d-none d-lg-block" href="#" id="fullscreen">
+                                <div class="position-relative">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-maximize align-middle">
                               <path
                                  d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
                               </path>
                            </svg>
-                        </div>
-                        <div id="bigsmall" style="display: none;"></div>
-                     </a>
-                  </li>
+                                </div>
+                                <div id="bigsmall" style="display: none;"></div>
+                            </a>
+                        </li>
 
-                  <li class="nav-item dropdown">
-                     <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-toggle="dropdown">
-                        <div class="position-relative">
-                           <i class="align-middle" data-feather="bell"></i>
-                           <span class="indicator">0</span>
-                        </div>
-                     </a>
-                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right py-0"
-                        aria-labelledby="alertsDropdown">
-                        <div class="dropdown-menu-header">
-                           4 New Notifications
-                        </div>
-                        <div class="list-group">
-                           <a href="#" class="list-group-item">
-                              <div class="row g-0 align-items-center">
-                                 <div class="col-2">
-                                    <i class="text-danger" data-feather="alert-circle"></i>
-                                 </div>
-                                 <div class="col-10">
-                                    <div class="text-dark">Update completed</div>
-                                    <div class="text-muted small mt-1">Restart server 12 to complete the update.</div>
-                                    <div class="text-muted small mt-1">30m ago</div>
-                                 </div>
-                              </div>
-                           </a>
-                           <a href="#" class="list-group-item">
-                              <div class="row g-0 align-items-center">
-                                 <div class="col-2">
-                                    <i class="text-warning" data-feather="bell"></i>
-                                 </div>
-                                 <div class="col-10">
-                                    <div class="text-dark">Lorem ipsum</div>
-                                    <div class="text-muted small mt-1">Aliquam ex eros, imperdiet vulputate hendrerit
-                                       et.</div>
-                                    <div class="text-muted small mt-1">2h ago</div>
-                                 </div>
-                              </div>
-                           </a>
-                           <a href="#" class="list-group-item">
-                              <div class="row g-0 align-items-center">
-                                 <div class="col-2">
-                                    <i class="text-primary" data-feather="home"></i>
-                                 </div>
-                                 <div class="col-10">
-                                    <div class="text-dark">Login from 192.186.1.8</div>
-                                    <div class="text-muted small mt-1">5h ago</div>
-                                 </div>
-                              </div>
-                           </a>
-                           <a href="#" class="list-group-item">
-                              <div class="row g-0 align-items-center">
-                                 <div class="col-2">
-                                    <i class="text-success" data-feather="user-plus"></i>
-                                 </div>
-                                 <div class="col-10">
-                                    <div class="text-dark">New connection</div>
-                                    <div class="text-muted small mt-1">Christina accepted your request.</div>
-                                    <div class="text-muted small mt-1">14h ago</div>
-                                 </div>
-                              </div>
-                           </a>
-                        </div>
-                        <div class="dropdown-menu-footer">
-                           <a href="#" class="text-muted">Show all notifications</a>
-                        </div>
-                     </div>
-                  </li>
-                  <li class="nav-item dropdown">
-                     <a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-toggle="dropdown">
-                        <div class="position-relative">
-                           <i class="align-middle" data-feather="message-square"></i>
-                        </div>
-                     </a>
-                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right py-0"
-                        aria-labelledby="messagesDropdown">
-                        <div class="dropdown-menu-header">
-                           <div class="position-relative">
-                              4 New Messages
-                           </div>
-                        </div>
-                        <div class="list-group">
-                           <a href="#" class="list-group-item">
-                              <div class="row g-0 align-items-center">
-                                 <div class="col-2">
-                                    <img src="images/avatars/avatar-5.jpg" class="avatar img-fluid rounded-circle"
-                                       alt="Vanessa Tucker">
-                                 </div>
-                                 <div class="col-10 pl-2">
-                                    <div class="text-dark">Vanessa Tucker</div>
-                                    <div class="text-muted small mt-1">Nam pretium turpis et arcu. Duis arcu tortor.
+                        <li class="nav-item dropdown">
+                            <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-toggle="dropdown">
+                                <div class="position-relative">
+                                    <i class="align-middle" data-feather="bell"></i>
+                                    <span class="indicator">0</span>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right py-0" aria-labelledby="alertsDropdown">
+                                <div class="dropdown-menu-header">
+                                    4 New Notifications
+                                </div>
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item">
+                                        <div class="row g-0 align-items-center">
+                                            <div class="col-2">
+                                                <i class="text-danger" data-feather="alert-circle"></i>
+                                            </div>
+                                            <div class="col-10">
+                                                <div class="text-dark">Update completed</div>
+                                                <div class="text-muted small mt-1">Restart server 12 to complete the update.</div>
+                                                <div class="text-muted small mt-1">30m ago</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <div class="row g-0 align-items-center">
+                                            <div class="col-2">
+                                                <i class="text-warning" data-feather="bell"></i>
+                                            </div>
+                                            <div class="col-10">
+                                                <div class="text-dark">Lorem ipsum</div>
+                                                <div class="text-muted small mt-1">Aliquam ex eros, imperdiet vulputate hendrerit et.
+                                                </div>
+                                                <div class="text-muted small mt-1">2h ago</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <div class="row g-0 align-items-center">
+                                            <div class="col-2">
+                                                <i class="text-primary" data-feather="home"></i>
+                                            </div>
+                                            <div class="col-10">
+                                                <div class="text-dark">Login from 192.186.1.8</div>
+                                                <div class="text-muted small mt-1">5h ago</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <div class="row g-0 align-items-center">
+                                            <div class="col-2">
+                                                <i class="text-success" data-feather="user-plus"></i>
+                                            </div>
+                                            <div class="col-10">
+                                                <div class="text-dark">New connection</div>
+                                                <div class="text-muted small mt-1">Christina accepted your request.</div>
+                                                <div class="text-muted small mt-1">14h ago</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="dropdown-menu-footer">
+                                    <a href="#" class="text-muted">Show all notifications</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-toggle="dropdown">
+                                <div class="position-relative">
+                                    <i class="align-middle" data-feather="message-square"></i>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right py-0" aria-labelledby="messagesDropdown">
+                                <div class="dropdown-menu-header">
+                                    <div class="position-relative">
+                                        4 New Messages
                                     </div>
-                                    <div class="text-muted small mt-1">15m ago</div>
-                                 </div>
-                              </div>
-                           </a>
-                           <a href="#" class="list-group-item">
-                              <div class="row g-0 align-items-center">
-                                 <div class="col-2">
-                                    <img src="images/avatars/avatar-2.jpg" class="avatar img-fluid rounded-circle"
-                                       alt="William Harris">
-                                 </div>
-                                 <div class="col-10 pl-2">
-                                    <div class="text-dark">William Harris</div>
-                                    <div class="text-muted small mt-1">Curabitur ligula sapien euismod vitae.</div>
-                                    <div class="text-muted small mt-1">2h ago</div>
-                                 </div>
-                              </div>
-                           </a>
-                           <a href="#" class="list-group-item">
-                              <div class="row g-0 align-items-center">
-                                 <div class="col-2">
-                                    <img src="images/avatars/avatar-4.jpg" class="avatar img-fluid rounded-circle"
-                                       alt="Christina Mason">
-                                 </div>
-                                 <div class="col-10 pl-2">
-                                    <div class="text-dark">Christina Mason</div>
-                                    <div class="text-muted small mt-1">Pellentesque auctor neque nec urna.</div>
-                                    <div class="text-muted small mt-1">4h ago</div>
-                                 </div>
-                              </div>
-                           </a>
-                           <a href="#" class="list-group-item">
-                              <div class="row g-0 align-items-center">
-                                 <div class="col-2">
-                                    <img src="images/avatars/avatar-3.jpg" class="avatar img-fluid rounded-circle"
-                                       alt="Sharon Lessman">
-                                 </div>
-                                 <div class="col-10 pl-2">
-                                    <div class="text-dark">Sharon Lessman</div>
-                                    <div class="text-muted small mt-1">Aenean tellus metus, bibendum sed, posuere ac,
-                                       mattis non.</div>
-                                    <div class="text-muted small mt-1">5h ago</div>
-                                 </div>
-                              </div>
-                           </a>
-                        </div>
-                        <div class="dropdown-menu-footer">
-                           <a href="#" class="text-muted">Show all messages</a>
-                        </div>
-                     </div>
-                  </li>
-                  <li class="nav-item dropdown">
-                     <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-toggle="dropdown">
-                        <i class="align-middle" data-feather="settings"></i>
-                     </a>
+                                </div>
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item">
+                                        <div class="row g-0 align-items-center">
+                                            <div class="col-2">
+                                                <img src="images/avatars/avatar-5.jpg" class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
+                                            </div>
+                                            <div class="col-10 pl-2">
+                                                <div class="text-dark">Vanessa Tucker</div>
+                                                <div class="text-muted small mt-1">Nam pretium turpis et arcu. Duis arcu tortor.
+                                                </div>
+                                                <div class="text-muted small mt-1">15m ago</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <div class="row g-0 align-items-center">
+                                            <div class="col-2">
+                                                <img src="images/avatars/avatar-2.jpg" class="avatar img-fluid rounded-circle" alt="William Harris">
+                                            </div>
+                                            <div class="col-10 pl-2">
+                                                <div class="text-dark">William Harris</div>
+                                                <div class="text-muted small mt-1">Curabitur ligula sapien euismod vitae.</div>
+                                                <div class="text-muted small mt-1">2h ago</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <div class="row g-0 align-items-center">
+                                            <div class="col-2">
+                                                <img src="images/avatars/avatar-4.jpg" class="avatar img-fluid rounded-circle" alt="Christina Mason">
+                                            </div>
+                                            <div class="col-10 pl-2">
+                                                <div class="text-dark">Christina Mason</div>
+                                                <div class="text-muted small mt-1">Pellentesque auctor neque nec urna.</div>
+                                                <div class="text-muted small mt-1">4h ago</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <div class="row g-0 align-items-center">
+                                            <div class="col-2">
+                                                <img src="images/avatars/avatar-3.jpg" class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
+                                            </div>
+                                            <div class="col-10 pl-2">
+                                                <div class="text-dark">Sharon Lessman</div>
+                                                <div class="text-muted small mt-1">Aenean tellus metus, bibendum sed, posuere ac, mattis non.</div>
+                                                <div class="text-muted small mt-1">5h ago</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="dropdown-menu-footer">
+                                    <a href="#" class="text-muted">Show all messages</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-toggle="dropdown">
+                                <i class="align-middle" data-feather="settings"></i>
+                            </a>
 
-                     <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
-                        <img src="images/avatars/avatar.jpg" class="avatar img-fluid rounded mr-1" alt="Charles Hall" />
-                        <span class="text-dark">Charles Hall</span>
-                     </a>
-                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="pages-profile.html"><i class="align-middle mr-1"
+                            <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
+                                <img src="images/avatars/avatar.jpg" class="avatar img-fluid rounded mr-1" alt="Charles Hall" />
+                                <span class="text-dark">Charles Hall</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="pages-profile.html"><i class="align-middle mr-1"
                               data-feather="user"></i> Profile</a>
-                        <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="pie-chart"></i>
+                                <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="pie-chart"></i>
                            Analytics</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="pages-settings.html"><i class="align-middle mr-1"
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="pages-settings.html"><i class="align-middle mr-1"
                               data-feather="settings"></i> Settings & Privacy</a>
-                        <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="help-circle"></i>
+                                <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="help-circle"></i>
                            Help Center</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/login">Log out</a>
-                     </div>
-                  </li>
-               </ul>
-            </div>
-         </nav>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/login">Log out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
-         <main class="content formate">
-            <div id="map" class="map" style="display: block;">
-               <% include maptemplate %>
-            </div>
-            <div id="org" class="org" style="display: none;">
-                  <% include orgtemplate %>
-            </div>
-            <div id="chart" class="chart " style="display: none;">
-                  <% include orgtemplate %>
-            </div>
-         </main>
+            <main class="content formate">
+                <div id="map" class="map" style="display: block;">
+                    <% include template_map %>
+                </div>
+                <div id="org" class="org" style="display: none;">
+                    <% include template_org %>
+                </div>
+                <div id="chart" class="chart " style="display: none;">
+                    <!-- <% include template_profile %> -->
+                </div>
+                <div id="profile" class="profile " style="display: none;">
+                    <% include template_profile %>
+                </div>
+                <div id="album" class="album" style="display: none;">
+                    <% include template_album %>
+                </div>
+            </main>
 
-         <footer class="footer">
-            <div class="container-fluid">
-               <div class="row text-muted">
-                  <div class="col-6 text-left">
-                     <p class="mb-0">
-                        <a href="/main" class="text-muted"><strong>service</strong></a> &copy;
-                     </p>
-                  </div>
-                  <div class="col-6 text-right">
-                     <ul class="list-inline">
-                        <li class="list-inline-item">
-                           <a class="text-muted" href="#">Support</a>
-                        </li>
-                        <li class="list-inline-item">
-                           <a class="text-muted" href="#">Help Center</a>
-                        </li>
-                        <li class="list-inline-item">
-                           <a class="text-muted" href="#">Privacy</a>
-                        </li>
-                        <li class="list-inline-item">
-                           <a class="text-muted" href="#">Terms</a>
-                        </li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
-         </footer>
-      </div>
-   </div>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row text-muted">
+                        <div class="col-6 text-left">
+                            <p class="mb-0">
+                                <a href="/main" class="text-muted"><strong>service</strong></a> &copy;
+                            </p>
+                        </div>
+                        <div class="col-6 text-right">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a class="text-muted" href="#">Support</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="text-muted" href="#">Help Center</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="text-muted" href="#">Privacy</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="text-muted" href="#">Terms</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
 
 
 
