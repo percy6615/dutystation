@@ -2,25 +2,25 @@
 <html lang="en">
 
 <head>
-	<title></title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta charset='utf-8'>
-	<meta name="viewport"
-		content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, shrink-to-fit=no" />
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-	<meta name="format-detection" content="telephone=no,emial=no" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<!-- start iOS Safari Viewport -->
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no,emial=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- start iOS Safari Viewport -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--load all styles -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<link rel="stylesheet" href="css/logincss/css/loginstyle.css">
-	<!-- <style>
+    <link rel="stylesheet" href="css/logincss/css/loginstyle.css">
+    <!-- <style>
 		.fixedElement {
 			background-color: rgba(180, 180, 180, 0.5);
 			position: fixed;
@@ -30,96 +30,91 @@
 			z-index: 100;
 		}
 	</style> -->
-	
+
 
 </head>
 
 <body class="img js-fullheight" style="background-image: url(images/bg1.jpg);opacity:0.9">
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section"></h2>
-				</div>
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-md-6 col-lg-4">
-					<div class="login-wrap p-0">
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                    <h2 class="heading-section"></h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="login-wrap p-0">
 
-						<h3 class="mb-4 text-center" style="font-weight: bold;">Hope This Helps !!</h3>
-						<form action="/login" class="signin-form" method="post">
-							<div class="form-group">
-								<input  id="username-field" type="text" name="username" class="form-control" placeholder="Username" required>
-							</div>
-							<div class="form-group">
-								<input id="password-field" name="password" type="password" class="form-control"
-									placeholder="Password" required>
-								<span toggle="#password-field"
-									class="fa fa-fw fa-eye field-icon toggle-password"></span>
-							</div>
-							<div class="form-group">
-								<button type="submit" class="form-control btn btn-primary submit px-3" id="btn_login">登入</button>
-							</div>
-							<div class="form-group d-md-flex">
-								<div class="w-50">
-									<label class="checkbox-wrap checkbox-primary">Remember Me
+                        <h3 class="mb-4 text-center" style="font-weight: bold;">Hope This Helps !!</h3>
+                        <form action="/login" class="signin-form" method="post">
+                            <div class="form-group">
+                                <input id="username-field" type="text" name="username" class="form-control" placeholder="Username" required>
+                            </div>
+                            <div class="form-group">
+                                <input id="password-field" name="password" type="password" class="form-control" placeholder="Password" required>
+                                <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="form-control btn btn-primary submit px-3" id="btn_login">登入</button>
+                            </div>
+                            <div class="form-group d-md-flex">
+                                <div class="w-50">
+                                    <label class="checkbox-wrap checkbox-primary">Remember Me
 										<input type="checkbox" checked id="remember">
 										<span class="checkmark"></span>
 									</label>
-								</div>
-								<div class="w-50 text-md-right">
-									<a href="#" style="color: #fff">Forgot Password</a>
-								</div>
-							</div>
-						</form>
-						<% if (loginMessage.length) { %>
-							<div class="alert alert-danger">
-								<%= loginMessage %>
-							</div>
-							<% } %>
-								<p class="w-100 text-center">&mdash; Sign Up &mdash;</p>
-								<div class="social d-flex text-center">
-									<a href="#" class="mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span>
+                                </div>
+                                <div class="w-50 text-md-right">
+                                    <a href="#" style="color: #fff">Forgot Password</a>
+                                </div>
+                            </div>
+                        </form>
+                        <% if (loginMessage.length) { %>
+                            <div class="alert alert-danger">
+                                <%= loginMessage %>
+                            </div>
+                            <% } %>
+                                <p class="w-100 text-center">&mdash; Sign Up &mdash;</p>
+                                <div class="social d-flex text-center">
+                                    <a href="#" class="mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span>
 										註冊</a>
 
-								</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		<!-- <div class="fixedElement" onclick="fun()"> -->
-			
-		</div>
-	</section>
+        <!-- <div class="fixedElement" onclick="fun()"> -->
 
-	<script src="js/official/jquery.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-	<script src="js/official/popper.js"></script>
-	<script src="js/official/bootstrap.min.v5.1.1.js"></script>
-	<script src="js/login.js"></script>
+        </div>
+    </section>
+
+    <script src="js/official/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="js/official/popper.js"></script>
+    <script src="js/official/bootstrap.min.v5.1.1.js"></script>
+    <script src="js/login.js"></script>
 
 </body>
 <script>
+    // function fun() {
+    // 	var position = $('.fixedElement').position();
+    // 	var percentLeft = position.left / $(window).width() * 100;
+    // 	var percentTop = position.top / $(window).height() * 100;
 
-	// function fun() {
-	// 	var position = $('.fixedElement').position();
-	// 	var percentLeft = position.left / $(window).width() * 100;
-	// 	var percentTop = position.top / $(window).height() * 100;
+    // 	if (percentTop > 50) {
+    // 		$(".fixedElement").animate({
+    // 			top: "10%",
+    // 		}, 2000);
+    // 	} else {
+    // 		$(".fixedElement").animate({
+    // 			top: "95%",
+    // 		}, 2000);
+    // 	}
 
-	// 	if (percentTop > 50) {
-	// 		$(".fixedElement").animate({
-	// 			top: "10%",
-	// 		}, 2000);
-	// 	} else {
-	// 		$(".fixedElement").animate({
-	// 			top: "95%",
-	// 		}, 2000);
-	// 	}
-
-	// }
-
-
+    // }
 </script>
 
 </html>

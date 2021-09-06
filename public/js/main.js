@@ -90,39 +90,37 @@ $(function() {
             // window.console && console.log(m) || alert(m);
             // console.log(options)
             if (key == "refresh") {
-
-                // mapClass.overlay = mapClass.createOverlayer()
-                // mapClass.map = mapClass.createmap(mapClass.overlay);
+                mapClass.getMap().updateSize()
             }
         },
         items: {
             "refresh": {
                 name: "更新",
-                icon: "fa-solid fa-arrow-rotate-right"
+                icon: "fas fa-sync-alt"
             },
-            "cut": {
-                name: "Cut",
-                icon: "cut"
-            },
-            copy: {
-                name: "Copy",
-                icon: "copy"
-            },
-            "paste": {
-                name: "Paste",
-                icon: "paste"
-            },
-            "delete": {
-                name: "Delete",
-                icon: "delete"
-            },
-            "sep1": "---------",
-            "quit": {
-                name: "Quit",
-                icon: function() {
-                    return 'context-menu-icon context-menu-icon-quit';
-                }
-            }
+            // "cut": {
+            //     name: "Cut",
+            //     icon: "cut"
+            // },
+            // copy: {
+            //     name: "Copy",
+            //     icon: "copy"
+            // },
+            // "paste": {
+            //     name: "Paste",
+            //     icon: "paste"
+            // },
+            // "delete": {
+            //     name: "Delete",
+            //     icon: "delete"
+            // },
+            // "sep1": "---------",
+            // "quit": {
+            //     name: "Quit",
+            //     icon: function() {
+            //         return 'context-menu-icon context-menu-icon-quit';
+            //     }
+            // }
         }
     });
 

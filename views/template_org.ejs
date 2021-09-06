@@ -1,53 +1,68 @@
 <h2>人事管理區</h2>
 <div class="container" style="margin-right: 40px;margin-bottom: 0px;margin-left: 15px;">
-	<div class="row">
-		<div class="col">
-			<div class="tab" role="tabpanel">
-				<!-- Nav tabs -->
-				<ul class="nav nav-tabs" role="tablist" id="myTab" >
-					<li role="presentation" class="active"><a href="#Section1" aria-controls="home" role="tab"
-							data-toggle="tab" id="s1">組織管理</a></li>
-					<li role="presentation" ><a href="#Section2" aria-controls="profile" role="tab"
-							data-toggle="tab" id="s2">員工管理</a></li>
-					<li role="presentation" ><a href="#Section3" aria-controls="settings" role="tab"
-							data-toggle="tab" id="s3">職位管理</a></li>
-				</ul>
-				<!-- Tab panes -->
-				<div class="tab-content">
-					<div role="tabpanel" class="tab-pane fade in show active" id="Section1">
-						<h3>Section 1</h3>
-						<div class="chart">
-							<div class="title_dep">
-								<span id="help_dep" class="help_tip">說明</span>
-							</div>
-							<div class="frame" id="dept">
+    <div class="row">
+        <div class="col">
+            <div class="tab" role="tabpanel">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist" id="myTab">
+                    <li role="presentation" class="active"><a href="#Section1" aria-controls="home" role="tab" data-toggle="tab" id="s1">組織管理</a></li>
+                    <li role="presentation"><a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab" id="s2">員工管理</a></li>
+                    <li role="presentation"><a href="#Section3" aria-controls="settings" role="tab" data-toggle="tab" id="s3">職位管理</a></li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in show active" id="Section1">
+                        <h3>Section 1</h3>
+                        <div class="chart">
+                            <div class="title_dep">
+                                <span id="help_dep" class="help_tip">說明</span>
+                            </div>
+                            <div class="frame" id="dept">
 
-							</div>
-						</div>
-					</div>
+                            </div>
+                        </div>
+                    </div>
 
-					<div role="tabpanel" class="tab-pane fade" id="Section2">
-						<h3>Section 2</h3>
-						<div class="btn-group">
-							<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div role="tabpanel" class="tab-pane fade" id="Section2">
+                        <h3>Section 2</h3>
+                        <!-- <div class="btn-group">
+                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							  Action
 							</button>
-							<div class="dropdown-menu">
-							  <a class="dropdown-item" href="#">Action</a>
-							  <a class="dropdown-item" href="#">Another action</a>
-							  <a class="dropdown-item" href="#">Something else here</a>
-							  <div class="dropdown-divider"></div>
-							  <a class="dropdown-item" href="#">Separated link</a>
-							</div>
-						  </div>
-					</div>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Separated link</a>
+                            </div>
+                        </div>
+                    </div> -->
 
-					<div role="tabpanel" class="tab-pane fade" id="Section3">
-						<h3>Section 3</h3>
+                        <!-- Example split danger button -->
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-danger">Action</button>
+                            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
+								<span class="visually-hidden">Toggle Dropdown</span>
+							</button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                            </ul>
+                        </div>
 
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+
+                        <div role="tabpanel" class="tab-pane fade" id="Section3">
+                            <h3>Section 3</h3>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -27,6 +27,8 @@
     <!-- https://cdnjs.com/libraries/nanogallery2 -->
     <!-- <script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202108240101/show_ads_impl_fy2019.js"
       id="google_shimpl"></script> -->
+    <link href="static/fontawesome/css/all.css" rel="stylesheet">
+    <script defer src="static/fontawesome/js/fontawesome.js"></script>
 </head>
 
 <body>
@@ -64,7 +66,7 @@
                             <i class="align-middle" data-feather="user"></i> <span class="align-middle">帳戶資料</span>
                         </a>
                     </li>
-                    <% if (false) {%>
+                    <% if (true) {%>
                         <li class="sidebar-header">
                             Administrator
                         </li>
@@ -218,9 +220,25 @@
                </div>
             </form> -->
 
+
+
                 <div class="navbar-collapse collapse">
 
                     <ul class="navbar-nav navbar-align">
+                        <li class="nav-item dropdown">
+                            <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-toggle="dropdown">
+                                <div class="position-relative">
+                                    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false">
+                                       功能
+                                </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <li><button class="dropdown-item" type="button">災情通報</button></li>
+                                        <li><button class="dropdown-item" type="button">Another action</button></li>
+                                        <li><button class="dropdown-item" type="button">Something else here</button></li>
+                                    </ul>
+                                </div>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-icon js-fullscreen d-none d-lg-block" href="#" id="fullscreen">
                                 <div class="position-relative">
@@ -234,7 +252,7 @@
                             </a>
                         </li>
 
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown" style="display: none;">
                             <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-toggle="dropdown">
                                 <div class="position-relative">
                                     <i class="align-middle" data-feather="bell"></i>
@@ -300,7 +318,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown" style="display: none;">
                             <a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-toggle="dropdown">
                                 <div class="position-relative">
                                     <i class="align-middle" data-feather="message-square"></i>
