@@ -82,7 +82,9 @@ $(function() {
     $("#popup-closer").on("click", function(e) {
         mapClass.overlay.setVisible(false);
     })
-
+    $("#disasterreport").on("click", function(e) {
+        fun()
+    })
     $.contextMenu({
         selector: '.map',
         callback: function(key, options) {
@@ -122,11 +124,28 @@ $(function() {
             //     }
             // }
         }
+
     });
 
 
 
 })
+
+function fun() {
+    var position = $('.fixedElement').position();
+    var percentLeft = position.left / $(window).width() * 100;
+    var percentTop = position.top / $(window).height() * 100;
+
+    if (percentTop > 60) {
+        $(".fixedElement").animate({
+            top: "50%",
+        }, 250);
+    } else {
+        $(".fixedElement").animate({
+            top: "100%",
+        }, 100);
+    }
+}
 
 // window._map = _map
 // window.mapClass = mapClass
