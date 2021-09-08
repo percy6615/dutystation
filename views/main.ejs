@@ -117,8 +117,8 @@
                         </li>
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="icons-feather.html">
-                                <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Icons</span>
+                            <a class="sidebar-link" href=javascript:void(0);>
+                                <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">災情管制列表</span>
                             </a>
                         </li>
 
@@ -227,6 +227,8 @@
                     <i class="hamburger align-self-center"></i>
                 </a>
 
+
+
                 <!-- <form class="d-none d-sm-inline-block">
                <div class="input-group input-group-navbar">
                   <input type="text" class="form-control" placeholder="Search…" aria-label="Search">
@@ -241,12 +243,17 @@
                 <div class="navbar-collapse collapse">
 
                     <ul class="navbar-nav navbar-align">
+                        <li class="m-2 nav-item ">
+
+
+
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-toggle="dropdown">
                                 <div class="position-relative">
-                                    <a class="btn btn-primary dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false">
-                                       功能
-                                    </a>
+                                    <div class="btn btn-primary dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false">
+                                        功能
+                                    </div>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                         <li><a class="dropdown-item" href="#" id="disasterreport">災情通報</a></li>
                                         <li><a class="dropdown-item" href="#">災情管制表</a></li>
@@ -268,7 +275,7 @@
                             </a>
                         </li>
 
-                        <li class="nav-item dropdown" style="display: none;">
+                        <!-- <li class="nav-item dropdown" style="display: none;">
                             <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-toggle="dropdown">
                                 <div class="position-relative">
                                     <i class="align-middle" data-feather="bell"></i>
@@ -333,8 +340,8 @@
                                     <a href="#" class="text-muted">Show all notifications</a>
                                 </div>
                             </div>
-                        </li>
-                        <li class="nav-item dropdown" style="display: none;">
+                        </li> -->
+                        <!-- <li class="nav-item dropdown" style="display: none;">
                             <a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-toggle="dropdown">
                                 <div class="position-relative">
                                     <i class="align-middle" data-feather="message-square"></i>
@@ -401,7 +408,7 @@
                                     <a href="#" class="text-muted">Show all messages</a>
                                 </div>
                             </div>
-                        </li>
+                        </li> -->
                         <li class="nav-item dropdown">
                             <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-toggle="dropdown">
                                 <i class="align-middle" data-feather="settings"></i>
@@ -430,7 +437,7 @@
             </nav>
 
             <main class="content formate">
-                <div id="map" class="map" style="display: block;">
+                <div id="map" class="map" style="display: block; position: relative;">
                     <% include template_map %>
                 </div>
                 <div id="org" class="org" style="display: none;">
