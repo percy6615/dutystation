@@ -31,6 +31,9 @@
       id="google_shimpl"></script> -->
     <link href="static/fontawesome/css/all.css" rel="stylesheet">
     <script defer src="static/fontawesome/js/fontawesome.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/js/bootstrap-select.min.js" integrity="sha256-FXzZGmaRFZngOjUKy3lWZJq/MflaMpffBbu3lPT0izE=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/css/bootstrap-select.min.css" integrity="sha256-jwJEU4p1YdtymLFwAjYfam5Pj5NOnylms63k7LYQ9Jk=" crossorigin="anonymous" />
+
     <style>
         .subfixedElement {
             background-color: rgba(255, 255, 255, 0.8);
@@ -46,9 +49,22 @@
             height: 100%;
             z-index: 100;
         }
+        /* Scrollbar Styling */
         
-        #ui-datepicker-div {
-            z-index: 99999;
+        .style-2::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        .style-2::-webkit-scrollbar-track {
+            background-color: #ffffff;
+            -webkit-border-radius: 15px;
+            border-radius: 15px;
+        }
+        
+        .style-2::-webkit-scrollbar-thumb {
+            -webkit-border-radius: 15px;
+            border-radius: 15px;
+            background: rgba(118, 118, 118, 0.2);
         }
     </style>
 </head>
@@ -170,7 +186,7 @@
                     <div class="dropdown-menu-header" id="online-header" style="border-radius: 0.35em; border-style: unset;">
                         系統在線人數:20
                     </div>
-                    <div class="sidebar-cta-content" id="online-content" style="overflow:auto;margin: auto;padding: 0em;height: 0px;">
+                    <div class="sidebar-cta-content style-2" id="online-content" style="overflow:auto;margin: auto;padding: 0em;height: 0px;">
 
                         <!-- <strong class="d-inline-block mb-2">Upgrade to Pro</strong>
 						<div class="mb-3 text-sm">
@@ -263,6 +279,69 @@
                                 </ul>
                             </div>
                             <!-- </a> -->
+                        </li>
+                        <li class=" nav-item dropdown">
+                            <div class="position-relative">
+                                <a class="m-1 btn btn-info dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false">地區</a>
+                                <ul class="dropdown-menu style-2" aria-labelledby="dropdownMenu2" style="text-align: center;overflow:auto;height: 200px;">
+                                    <li class='text-center'>
+
+                                        <a type='button' class='btn btn-xs btn-danger clear close-dropdown' value='Clear' style="font-size: 0.5px;">清除</a>
+
+                                        <a type='button' class='btn btn-xs btn-success save' value='All' style="font-size: 0.5px;">全選</a>
+
+                                    </li>
+                                    <div class="dropdown-divider"></div>
+
+                                    <li>
+                                        <a href="#" class="medium" data-value="option1" tabindex="-1"><input type="checkbox" />Option 4</a>
+                                    </li>
+                                    <div class="dropdown-divider"></div>
+                                    <li>
+                                        <a href="#" class="medium" data-value="option2" tabindex="-1"><input type="checkbox" />Option 5</a>
+                                    </li>
+                                    <div class="dropdown-divider"></div>
+                                    <li>
+                                        <a href="#" class="medium" data-value="option3" tabindex="-1"><input type="checkbox" />Option 5</a>
+                                    </li>
+                                    <div class="dropdown-divider"></div>
+                                    <li>
+                                        <a href="#" class="medium" data-value="option4" tabindex="-1"><input type="checkbox" />Option 5</a>
+                                    </li>
+                                    <div class="dropdown-divider"></div>
+                                    <li>
+                                        <a href="#" class="medium" data-value="option5" tabindex="-1"><input type="checkbox" />Option 5</a>
+                                    </li>
+                                    <div class="dropdown-divider"></div>
+                                    <li>
+                                        <a href="#" class="medium" data-value="option6" tabindex="-1"><input type="checkbox" />Option 5</a>
+                                    </li>
+                                    <div class="dropdown-divider"></div>
+                                    <li>
+                                        <a href="#" class="medium" data-value="option8" tabindex="-1"><input type="checkbox" />Option 5</a>
+                                    </li>
+                                    <div class="dropdown-divider"></div>
+                                    <li>
+                                        <a href="#" class="medium" data-value="option7" tabindex="-1"><input type="checkbox" />Option 5</a>
+                                    </li>
+                                    <div class="dropdown-divider"></div>
+                                    <li>
+                                        <a href="#" class="medium" data-value="option8" tabindex="-1"><input type="checkbox" />Option 5</a>
+                                    </li>
+                                    <div class="dropdown-divider"></div>
+                                    <li>
+                                        <a href="#" class="medium" data-value="option9" tabindex="-1"><input type="checkbox" />Option 5</a>
+                                    </li>
+                                    <div class="dropdown-divider"></div>
+                                    <li>
+                                        <a href="#" class="medium" data-value="option11" tabindex="-1"><input type="checkbox" />Option 5</a>
+                                    </li>
+                                    <div class="dropdown-divider"></div>
+                                    <li>
+                                        <a href="#" class="medium" data-value="option111" tabindex="-1"><input type="checkbox" />Option 5</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="m-1 nav-item ">
                             <div class="navbar-expand input-group date" id="datetimepicker1" data-target-input="nearest" style="margin-right: 5px;margin-left: 5px;">
@@ -564,9 +643,31 @@
     //          updateDashboardStandbyEmitFn()
     //      }
     //  });
+    var options = [];
 
-    $(function() {
+    $('.dropdown-menu a').on('click', function(event) {
 
+        var $target = $(event.currentTarget),
+            val = $target.attr('data-value'),
+            $inp = $target.find('input'),
+            idx;
+
+        if ((idx = options.indexOf(val)) > -1) {
+            options.splice(idx, 1);
+            setTimeout(function() {
+                $inp.prop('checked', false)
+            }, 0);
+        } else {
+            options.push(val);
+            setTimeout(function() {
+                $inp.prop('checked', true)
+            }, 0);
+        }
+
+        $(event.target).blur();
+
+        console.log(options);
+        return false;
     });
 </script>
 
