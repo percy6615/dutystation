@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.ui.position.js"></script>
+    <script src="js/official/jquery-ui.min.js"></script>
+    <link href="css/jquery-ui.min.css" rel="stylesheet">
     <!-- <script src="js/official/popper.js"></script> -->
     <script src="/socket.io/socket.io.js" charset="utf-8"></script>
     <!-- https://cdnjs.com/libraries/nanogallery2 -->
@@ -31,7 +33,7 @@
     <script defer src="static/fontawesome/js/fontawesome.js"></script>
     <style>
         .subfixedElement {
-            background-color: rgba(180, 180, 180, 0.5);
+            background-color: rgba(255, 255, 255, 0.8);
             margin-left: 5%;
             margin-right: 5%;
             height: 100%;
@@ -43,6 +45,10 @@
             width: 100%;
             height: 100%;
             z-index: 100;
+        }
+        
+        #ui-datepicker-div {
+            z-index: 99999;
         }
     </style>
 </head>
@@ -118,11 +124,19 @@
 
                         <li class="sidebar-item">
                             <a class="sidebar-link" href=javascript:void(0);>
-                                <i class="align-middle" data-feather="tablet"></i> <span class="align-middle">災情管制列表</span>
+                                <i class="align-middle" data-feather="book"></i> <span class="align-middle">災情管制列表</span>
                             </a>
                         </li>
 
+
+
                         <li class="sidebar-item">
+                            <a class="sidebar-link" href=javascript:void(0); id="sysproject">
+                                <i class="align-middle" data-feather="share"></i> <span class="align-middle">發佈專案</span>
+                            </a>
+                        </li>
+
+                        <!-- <li class="sidebar-item">
                             <a data-target="#forms" data-toggle="collapse" class="sidebar-link collapsed">
                                 <i class="align-middle" data-feather="check-circle"></i> <span class="align-middle">Forms</span>
                             </a>
@@ -131,13 +145,7 @@
                                 <li class="sidebar-item"><a class="sidebar-link" href="forms-basic-inputs.html">Basic Inputs</a>
                                 </li>
                             </ul>
-                        </li>
-
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="tables-bootstrap.html">
-                                <i class="align-middle" data-feather="list"></i> <span class="align-middle">Tables</span>
-                            </a>
-                        </li>
+                        </li> -->
                         <%} %>
 
 
@@ -243,20 +251,31 @@
                 <div class="navbar-collapse collapse">
 
                     <ul class="navbar-nav navbar-align">
-
                         <li class="nav-item dropdown">
                             <!-- <a class="nav-icon dropdown-toggle" href="#"  data-toggle="dropdown"> -->
-                                <div class="position-relative">
-                                    <a class="m-1 btn btn-primary dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false">功能</a>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                        <li><a class="dropdown-item" href="#" id="disasterreport">災情通報</a></li>
-                                        <div class="dropdown-divider"></div>
-                                        <li><a class="dropdown-item" href="#">災情管制表</a></li>
+                            <div class="position-relative">
+                                <a class="m-1 btn btn-primary dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false">功能</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <li><a class="dropdown-item" href="#" id="disasterreport">災情通報</a></li>
+                                    <div class="dropdown-divider"></div>
+                                    <li><a class="dropdown-item" href="#">災情管制表</a></li>
 
-                                    </ul>
-                                </div>
+                                </ul>
+                            </div>
                             <!-- </a> -->
                         </li>
+                        <li class="m-1 nav-item ">
+                            <div class="navbar-expand input-group date" id="datetimepicker1" data-target-input="nearest" style="margin-right: 5px;margin-left: 5px;">
+                                <div class="input-group-prepend" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fas fa-calendar-alt"></i></div>
+                                </div>
+                                <span>
+                             <input type="text" class="form-control datetimepicker-input" id="datepicker1" style="z-index: 3; width: 100px;" data-target="#datetimepicker1" data-toggle="datetimepicker" readonly="readonly">
+                            </span>
+
+                            </div>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-icon js-fullscreen d-none d-lg-block" href="#" id="fullscreen">
                                 <div class="position-relative">
@@ -405,14 +424,16 @@
                             </div>
                         </li> -->
                         <li class="nav-item dropdown">
-                            <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-toggle="dropdown">
+                            <!-- <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-toggle="dropdown">
+                                <i class="align-middle" data-feather="settings"></i>
+                            </a> -->
+                            <a class="nav-icon dropdown-toggle" href="#" data-toggle="dropdown">
                                 <i class="align-middle" data-feather="settings"></i>
                             </a>
-
-                            <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
+                            <!-- <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
                                 <img src="images/avatars/avatar.jpg" class="avatar img-fluid rounded mr-1" alt="Charles Hall" />
                                 <span class="text-dark">Charles Hall</span>
-                            </a>
+                            </a> -->
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="pages-profile.html"><i class="align-middle mr-1"
                               data-feather="user"></i> Profile</a>
@@ -427,6 +448,7 @@
                                 <a class="dropdown-item" href="/login">Log out</a>
                             </div>
                         </li>
+
                     </ul>
                 </div>
             </nav>
@@ -485,11 +507,67 @@
     </div>
 
 
-
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalScrollableTitle">發佈專案</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                     </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                    <button type="button" class="btn btn-primary">發佈</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 
 <script src="js/official/app.js"></script>
 <script type="module" src="js/main.js"></script>
+<script>
+    //  $.fn.datetimepicker.Constructor.Default = $.extend({}, $.fn.datetimepicker.Constructor.Default, {
+    //      icons: {
+    //          time: 'fas fa-clock',
+    //          date: 'fas fa-calendar',
+    //          up: 'fas fa-arrow-up',
+    //          down: 'fas fa-arrow-down',
+    //          previous: 'fas fa-chevron-left',
+    //          next: 'fas fa-chevron-right',
+    //          today: 'fas fa-calendar-day',
+    //          clear: 'fas fa-trash',
+    //          close: 'fas fa-times'
+    //      }
+    //  });
+
+    //  $('#datetimepicker1').datetimepicker({
+    //      format: "yyyy/mm/dd",
+    //      defaultDate: moment(),
+    //      ignoreReadonly: true,
+    //      buttons: {
+    //          showToday: true,
+    //          showClose: true
+    //      }
+    //  });
+
+    //  $('#datetimepicker1').on('change.datetimepicker', function(e) {
+    //      var d = e.date
+    //      if (moment(d, dashboard.setting.dateFormat, true).isValid()) {
+    //          dashboard.setting.date = d.format(dashboard.setting.dateFormat)
+    //          updateDashboardStandbyEmitFn()
+    //      }
+    //  });
+
+    $(function() {
+
+    });
+</script>
 
 </html>

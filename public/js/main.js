@@ -9,7 +9,7 @@ $(function() {
 
         clickMenu(".map");
 
-    })
+    });
 
     $("#sysalbum").on("click", function(e) {
         clickMenu(".album");
@@ -23,6 +23,10 @@ $(function() {
 
     $("#sysprofile").on("click", function(e) {
         clickMenu(".profile");
+    });
+
+    $("#sysproject").on("click", function(e) {
+        $("#exampleModalScrollable").modal()
     });
 
     $(".sidebar-item").on("click", function() {
@@ -78,13 +82,21 @@ $(function() {
                 height: "125px",
             }, 500);
         }
-    })
+    });
     $("#popup-closer").on("click", function(e) {
         mapClass.overlay.setVisible(false);
     })
     $("#disasterreport").on("click", function(e) {
         fun()
-    })
+    });
+    $("#datepicker1").datepicker({
+        changeMonth: true,
+        changeYear: true
+    });
+    $("#datepicker1").datepicker('setDate', new Date());
+    $("#datepicker1").on("change", function(e) {
+        console.log(123)
+    });
     $.contextMenu({
         selector: '.map',
         callback: function(key, options) {
@@ -93,17 +105,24 @@ $(function() {
             // console.log(options)
             if (key == "refresh") {
                 mapClass.getMap().updateSize()
+                mapClass.overlay.setPosition(undefined);
+            } else if (key == "rotate") {
+                var angle = mapClass.getMap().getView().getRotation();
+                mapClass.getMap().getView().setRotation(angle + Math.PI / 2)
+            } else if (key == "quit") {
+                mapClass.getMap().getView().setRotation(0)
             }
         },
         items: {
+
             "refresh": {
                 name: "更新",
-                icon: "fas fa-sync-alt"
+                icon: "fas fa-retweet"
             },
-            // "cut": {
-            //     name: "Cut",
-            //     icon: "cut"
-            // },
+            "rotate": {
+                name: "向右90度",
+                icon: "fas fa-infinity"
+            },
             // copy: {
             //     name: "Copy",
             //     icon: "copy"
@@ -116,18 +135,19 @@ $(function() {
             //     name: "Delete",
             //     icon: "delete"
             // },
-            // "sep1": "---------",
-            // "quit": {
-            //     name: "Quit",
-            //     icon: function() {
-            //         return 'context-menu-icon context-menu-icon-quit';
-            //     }
-            // }
+            "sep1": "---------",
+            "quit": {
+                name: "Quit",
+                icon: function() {
+                    return 'context-menu-icon context-menu-icon-quit';
+                }
+            }
         }
 
     });
 
-
+    // window._map = _map
+    window.mapClass = mapClass
 
 })
 
@@ -138,7 +158,7 @@ function fun() {
 
     if (percentTop > 60) {
         $(".fixedElement").animate({
-            top: "50%",
+            top: "20%",
         }, 250);
     } else {
         $(".fixedElement").animate({
@@ -147,8 +167,8 @@ function fun() {
     }
 }
 
-// window._map = _map
-// window.mapClass = mapClass
+
+
 function clickMenu(type) {
     if ($(type).is(":hidden")) {
         $("main > div").css("display", "none");

@@ -17,9 +17,12 @@ export default class MapClass {
         return overlay;
     }
     createmap(overlay) {
+        var interactions = ol.interaction.defaults({ pinchRotate: false });
+
         var map = new ol.Map({
             target: 'map',
             renderer: 'webgl',
+            interactions: interactions,
             controls: ol.control.defaults({
                 attribution: false,
                 zoom: false,
