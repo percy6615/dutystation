@@ -91,12 +91,20 @@ $(function() {
     });
     $("#datepicker1").datepicker({
         changeMonth: true,
-        changeYear: true
+        changeYear: true,
+        // showOn:"both"
     });
     $("#datepicker1").datepicker('setDate', new Date());
     $("#datepicker1").on("change", function(e) {
         console.log(123)
     });
+    $("#btn1").click(function(e){
+        $("#datepicker1").datepicker("show");
+    });
+
+
+    
+
     $.contextMenu({
         selector: '.map',
         callback: function(key, options) {

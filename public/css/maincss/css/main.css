@@ -203,3 +203,21 @@ a:focus {
     background-color: rgba(50, 111, 121, 0.2);
     color: #858788;
 }
+
+/* Scrollbar Styling */
+        
+.style-2::-webkit-scrollbar {
+            width: 10px;
+}
+        
+.style-2::-webkit-scrollbar-track {
+            background-color: #ffffff;
+            -webkit-border-radius: 15px;
+            border-radius: 15px;
+}
+        
+.style-2::-webkit-scrollbar-thumb {
+            -webkit-border-radius: 15px;
+            border-radius: 15px;
+            background: rgba(118, 118, 118, 0.2);
+}
