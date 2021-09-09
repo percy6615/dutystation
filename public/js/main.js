@@ -89,11 +89,17 @@ $(function() {
     $("#disasterreport").on("click", function(e) {
         fun()
     });
+    var start = new Date();
+    // set end date to max one year period:
+    var end = new Date(new Date().setYear(start.getFullYear()+1));
+
     $("#datepicker1").datepicker({
         changeMonth: true,
         changeYear: true,
         // showOn:"both"
     });
+    $("#datepicker1").datepicker('option', 'maxDate', end);
+    $("#datepicker1").datepicker('option', 'minDate', start);
     $("#datepicker1").datepicker('setDate', new Date());
     $("#datepicker1").on("change", function(e) {
         console.log(123)
