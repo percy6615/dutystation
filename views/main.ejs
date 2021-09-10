@@ -55,9 +55,10 @@
                 display: none;
             }
         }
-        /* .dropdown-submenu {
+        
+        .dropdown-submenu {
             position: relative;
-        } */
+        }
         /* .dropdown-submenu a::after { */
         /* transform: rotate(-90deg); */
         /* position: absolute; */
@@ -284,10 +285,57 @@
                                         <ul class="dropdown-menu dropleft">
                                             <li class="dropdown-submenu ">
                                                 <a class="dropdown-item dropdown-toggle" href="#">Subsubmenu</a>
-                                                <ul class="dropdown-menu dropdown-menu-right">
-                                                    <li><a class="dropdown-item" href="#">Subsubmenu action</a></li>
-                                                    <li><a class="dropdown-item" href="#">Another subsubmenu action</a></li>
+                                                <ul class="dropdown-menu style-2 " aria-labelledby="dropdownMenu2" style="text-align: center;overflow:auto;height: 200px;width: fit-content;    margin-top: 8px;">
+                                                    <li class='text-center'>
+
+                                                        <a type='button' class='btn btn-xs btn-danger clear close-dropdown' value='Clear' style="font-size: 0.5px;">清除</a>
+
+                                                        <a type='button' class='btn btn-xs btn-success save' value='All' style="font-size: 0.5px;">全選</a>
+
+                                                    </li>
+                                                    <div class="dropdown-divider"></div>
+                                                    <div style="overflow: auto;height: 80px;">
+                                                        <li>
+                                                            <a href="#" class="medium" data-value="option1" tabindex="-1"><input type="checkbox" />Option 4</a>
+                                                        </li>
+                                                        <div class="dropdown-divider"></div>
+                                                        <li>
+                                                            <a href="#" class="medium" data-value="option2" tabindex="-1"><input type="checkbox" />Option 5</a>
+                                                        </li>
+
+                                                    </div>
+
+
+
                                                 </ul>
+                                            </li>
+                                            <div class="dropdown-divider"></div>
+                                            <li class="dropdown-submenu ">
+                                                <a class="dropdown-item dropdown-toggle" href="#">Subsubmenu</a>
+                                                <ul class="dropdown-menu style-2 " aria-labelledby="dropdownMenu2" style="text-align: center;overflow:auto;height: 200px;width: fit-content;    margin-top: 8px;">
+                                                    <li class='text-center'>
+
+                                                        <a type='button' class='btn btn-xs btn-danger clear close-dropdown' value='Clear' style="font-size: 0.5px;">清除</a>
+
+                                                        <a type='button' class='btn btn-xs btn-success save' value='All' style="font-size: 0.5px;">全選</a>
+
+                                                    </li>
+                                                    <div class="dropdown-divider"></div>
+                                                    <div style="overflow: auto;height: 80px;">
+                                                        <li>
+                                                            <a href="#" class="medium" data-value="option1" tabindex="-1"><input type="checkbox" />Option 4</a>
+                                                        </li>
+                                                        <div class="dropdown-divider"></div>
+                                                        <li>
+                                                            <a href="#" class="medium" data-value="option2" tabindex="-1"><input type="checkbox" />Option 5</a>
+                                                        </li>
+
+                                                    </div>
+
+
+
+                                                </ul>
+                                            </li>
                                         </ul>
 
                                         <!-- <ul class="dropdown-menu style-2 " aria-labelledby="dropdownMenu2" style="text-align: center;overflow:auto;height: 200px;width: fit-content;    margin-top: 8px;">
@@ -310,12 +358,12 @@
                                             </li>
 
                                         </ul> -->
-                                        </li>
+                                    </li>
                                 </ul>
                             </div>
                             <!-- </a> -->
-                            </li>
-                            <!-- <li class=" nav-item dropdown">
+                        </li>
+                        <!-- <li class=" nav-item dropdown">
                             <div class="position-relative">
                                 <a class="m-1 btn btn-info dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false">地區</a>
                                 <ul class="dropdown-menu style-2 dropdown-menu-right" aria-labelledby="dropdownMenu2" style="text-align: center;overflow:auto;height: 200px;">
@@ -341,39 +389,39 @@
                         </li> -->
 
 
-                            <!-- <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-toggle="dropdown">
+                        <!-- <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-toggle="dropdown">
                                 <i class="align-middle" data-feather="settings"></i>
                             </a> -->
-                            <!-- <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
+                        <!-- <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
                                 <img src="images/avatars/avatar.jpg" class="avatar img-fluid rounded mr-1" alt="Charles Hall" />
                                 <span class="text-dark">Charles Hall</span>
                             </a> -->
 
-                            <li class="m-1 nav-item  ">
-                                <div class="navbar-expand input-group date" id="datetimepicker1" data-target-input="nearest" style="margin-right: 5px;margin-left: 5px;">
-                                    <input type="text" class="form-control datetimepicker-input d-none d-sm-inline-block" id="datepicker1" style="z-index: 3; width: 100px;" data-target="#datetimepicker1" data-toggle="datetimepicker" readonly="readonly">
-                                    <div class="input-group-prepend" data-target="#datetimepicker1" data-toggle="datetimepicker">
-                                        <button class="input-group-text " id="btn1"><i class="fas fa-calendar-alt"></i></button>
-                                    </div>
-
-
+                        <li class="m-1 nav-item  ">
+                            <div class="navbar-expand input-group date" id="datetimepicker1" data-target-input="nearest" style="margin-right: 5px;margin-left: 5px;">
+                                <input type="text" class="form-control datetimepicker-input d-none d-sm-inline-block" id="datepicker1" style="z-index: 3; width: 100px;" data-target="#datetimepicker1" data-toggle="datetimepicker" readonly="readonly">
+                                <div class="input-group-prepend" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                                    <button class="input-group-text " id="btn1"><i class="fas fa-calendar-alt"></i></button>
                                 </div>
-                            </li>
 
-                            <li class="nav-item">
-                                <a class="nav-icon js-fullscreen d-none d-lg-block" href="#" id="fullscreen">
-                                    <div class="position-relative">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-maximize align-middle">
+
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-icon js-fullscreen d-none d-lg-block" href="#" id="fullscreen">
+                                <div class="position-relative">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-maximize align-middle">
                                         <path
                                             d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
                                         </path>
                                     </svg>
-                                    </div>
-                                    <div id="bigsmall" style="display: none;"></div>
-                                </a>
-                            </li>
+                                </div>
+                                <div id="bigsmall" style="display: none;"></div>
+                            </a>
+                        </li>
 
-                            <!-- <li class="nav-item dropdown" style="display: none;">
+                        <!-- <li class="nav-item dropdown" style="display: none;">
                             <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-toggle="dropdown">
                                 <div class="position-relative">
                                     <i class="align-middle" data-feather="bell"></i>
@@ -439,7 +487,7 @@
                                 </div>
                             </div>
                         </li> -->
-                            <!-- <li class="nav-item dropdown" style="display: none;">
+                        <!-- <li class="nav-item dropdown" style="display: none;">
                             <a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-toggle="dropdown">
                                 <div class="position-relative">
                                     <i class="align-middle" data-feather="message-square"></i>
@@ -507,28 +555,28 @@
                                 </div>
                             </div>
                         </li> -->
-                            <li class="nav-item dropdown">
-                                <!-- <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-toggle="dropdown">
+                        <li class="nav-item dropdown">
+                            <!-- <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-toggle="dropdown">
                                 <i class="align-middle" data-feather="settings"></i>
                             </a> -->
 
-                                <a class="nav-icon dropdown-toggle" href="#" data-toggle="dropdown">
-                                    <i class="align-middle" data-feather="settings"></i>
-                                </a>
-                                <!-- <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
+                            <a class="nav-icon dropdown-toggle" href="#" data-toggle="dropdown">
+                                <i class="align-middle" data-feather="settings"></i>
+                            </a>
+                            <!-- <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
                                 <img src="images/avatars/avatar.jpg" class="avatar img-fluid rounded mr-1" alt="Charles Hall" />
                                 <span class="text-dark">Charles Hall</span>
                             </a> -->
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="pages-profile.html"><i class="align-middle mr-1" data-feather="user"></i> Profile</a>
-                                    <!-- <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="pie-chart"></i> Analytics</a> -->
-                                    <div class="dropdown-divider"></div>
-                                    <!-- <a class="dropdown-item" href="pages-settings.html"><i class="align-middle mr-1" data-feather="settings"></i> Settings & Privacy</a> -->
-                                    <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="help-circle"></i>Help Center</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="/login">Log out</a>
-                                </div>
-                            </li>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="pages-profile.html"><i class="align-middle mr-1" data-feather="user"></i> Profile</a>
+                                <!-- <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="pie-chart"></i> Analytics</a> -->
+                                <div class="dropdown-divider"></div>
+                                <!-- <a class="dropdown-item" href="pages-settings.html"><i class="align-middle mr-1" data-feather="settings"></i> Settings & Privacy</a> -->
+                                <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="help-circle"></i>Help Center</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/login">Log out</a>
+                            </div>
+                        </li>
 
                     </ul>
                 </div>

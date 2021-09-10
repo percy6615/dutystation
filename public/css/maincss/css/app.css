@@ -12690,7 +12690,6 @@ button.close {
 }
 
 .dropdown .dropdown-menu.show {
-    width: fit-content;
     margin-top: 8px;
     animation-name: dropdownAnimation;
     animation-duration: .25s;
