@@ -112,7 +112,7 @@ $(function() {
     });
 
 
-
+    // https://codepen.io/kolibanuch/pen/QXveqV
 
     $.contextMenu({
         selector: '.map',
