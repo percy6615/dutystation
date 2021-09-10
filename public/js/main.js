@@ -91,12 +91,15 @@ $(function() {
     });
     var start = new Date();
     // set end date to max one year period:
-    var end = new Date(new Date().setYear(start.getFullYear()+1));
+    var end = new Date(new Date().setYear(start.getFullYear() + 1));
 
     $("#datepicker1").datepicker({
         changeMonth: true,
         changeYear: true,
-        // showOn:"both"
+        step: 5,
+        multidate: true,
+        closeOnDateSelect: true
+            // showOn:"both"
     });
     $("#datepicker1").datepicker('option', 'maxDate', end);
     $("#datepicker1").datepicker('option', 'minDate', start);
@@ -104,12 +107,12 @@ $(function() {
     $("#datepicker1").on("change", function(e) {
         console.log(123)
     });
-    $("#btn1").click(function(e){
+    $("#btn1").click(function(e) {
         $("#datepicker1").datepicker("show");
     });
 
 
-    
+
 
     $.contextMenu({
         selector: '.map',
