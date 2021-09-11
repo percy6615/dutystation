@@ -162,7 +162,9 @@ $(function() {
         }
 
     });
+    $("#syshelp").on("click", function(e) {
 
+    });
     // window._map = _map
     window.mapClass = mapClass
 
