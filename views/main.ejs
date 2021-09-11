@@ -23,7 +23,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.ui.position.js"></script>
     <script src="js/official/jquery-ui.min.js"></script>
-    <link href="css/jquery-ui.min.css" rel="stylesheet">
+    <link href="css/official/jquery-ui.min.css" rel="stylesheet">
     <!-- <script src="js/official/popper.js"></script> -->
     <script src="/socket.io/socket.io.js" charset="utf-8"></script>
     <!-- https://cdnjs.com/libraries/nanogallery2 -->
@@ -35,43 +35,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/css/bootstrap-select.min.css" integrity="sha256-jwJEU4p1YdtymLFwAjYfam5Pj5NOnylms63k7LYQ9Jk=" crossorigin="anonymous" />
 
     <style>
-        .subfixedElement {
-            background-color: rgba(255, 255, 255, 0.8);
-            margin-left: 5%;
-            margin-right: 5%;
-            height: 100%;
-        }
-        
-        .fixedElement {
-            position: fixed;
-            top: 100%;
-            width: 100%;
-            height: 100%;
-            z-index: 100;
-        }
-        
-        @media screen and (min-width:565px) {
-            .footer {
-                display: none;
-            }
-        }
-        
-        .dropdown-submenu {
-            position: relative;
-        }
-        
-        .dropdown-submenu a::after {
-            /* transform: rotate(-90deg); */
-            position: absolute;
-            right: 6px;
-            top: .8em;
-        }
-        /* .dropdown-submenu .dropdown-menu { */
-        /* top: 100%; */
-        /* right: 100%; */
-        /* margin-left: .1rem; */
-        /* margin-right: .1rem; */
-        /* } */
+
     </style>
 </head>
 
@@ -192,7 +156,7 @@
                     <div class="dropdown-menu-header" id="online-header" style="border-radius: 0.35em; border-style: unset;">
                         系統在線人數:20
                     </div>
-                    <div class="sidebar-cta-content style-2" id="online-content" style="overflow:auto;margin: auto;padding: 0em;height: 0px;">
+                    <div class="sidebar-cta-content scrollbar-style" id="online-content" style="overflow:auto;margin: auto;padding: 0em;height: 0px;">
 
                         <!-- <strong class="d-inline-block mb-2">Upgrade to Pro</strong>
 						<div class="mb-3 text-sm">
@@ -276,19 +240,23 @@
                         <li class="nav-item dropdown">
                             <!-- <a class="nav-icon dropdown-toggle" href="#"  data-toggle="dropdown"> -->
                             <div class="position-relative">
-                                <a class="m-1 btn btn-primary dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false">功能</a>
-                                <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu2">
+                                <a class="m-1 btn btn-primary dropdown-toggle d-none d-sm-inline-block" id="funct" data-toggle="dropdown" aria-expanded="false">功能</a>
+
+                                <a class=" input-group-text d-inline-block d-sm-none" id="filterdataicon" style="margin-right: 10px;" data-toggle="dropdown"><i class="fas fa-toolbox"></i></a>
+                                <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="funct">
                                     <li><a class="dropdown-item" href="#" id="disasterreport">災情通報</a></li>
-                                    <div class="dropdown-divider"></div>
-                                    <li><a class="dropdown-item" href="#">災情管制表</a></li>
-                                    <!-- <div class="dropdown-divider"></div> -->
-                                    <!-- <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">地區</a>
+                                    <% if (true) {%>
+                                        <div class="dropdown-divider"></div>
+                                        <li><a class="dropdown-item" href="#">Line發佈訊息</a></li>
+                                        <%} %>
+                                            <!-- <div class="dropdown-divider"></div> -->
+                                            <!-- <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">地區</a>
                                         <ul class="dropdown-menu dropleft">
 
                                             <div class="dropdown-divider"></div>
                                             <li class="dropdown-submenu ">
                                                 <a class="dropdown-item dropdown-toggle" href="#">Subsubmenu</a>
-                                                <ul class="dropdown-menu style-2 " aria-labelledby="dropdownMenu2" style="text-align: center;overflow:auto;height: 200px;width: fit-content;    margin-top: 8px;">
+                                                <ul class="dropdown-menu scrollbar-style " aria-labelledby="dropdownMenu2" style="text-align: center;overflow:auto;height: 200px;width: fit-content;    margin-top: 8px;">
                                                     <li class='text-center'>
 
                                                         <a type='button' class='btn btn-xs btn-danger clear close-dropdown' value='Clear' style="font-size: 0.5px;">清除</a>
@@ -314,7 +282,7 @@
                                             </li>
                                         </ul> -->
 
-                                    <!-- <ul class="dropdown-menu style-2 " aria-labelledby="dropdownMenu2" style="text-align: center;overflow:auto;height: 200px;width: fit-content;    margin-top: 8px;">
+                                            <!-- <ul class="dropdown-menu scrollbar-style " aria-labelledby="dropdownMenu2" style="text-align: center;overflow:auto;height: 200px;width: fit-content;    margin-top: 8px;">
 
                                             <li>
                                                 <a href="#" class="medium" data-value="option1" tabindex="-1"><input type="checkbox" />Option 4</a>
@@ -334,35 +302,12 @@
                                             </li>
 
                                         </ul> -->
-                                    <!-- </li> -->
+                                            <!-- </li> -->
                                 </ul>
                             </div>
                             <!-- </a> -->
                         </li>
-                        <!-- <li class=" nav-item dropdown">
-                            <div class="position-relative">
-                                <a class="m-1 btn btn-info dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false">地區</a>
-                                <ul class="dropdown-menu style-2 dropdown-menu-right" aria-labelledby="dropdownMenu2" style="text-align: center;overflow:auto;height: 200px;">
-                                    <li class='text-center'>
 
-                                        <a type='button' class='btn btn-xs btn-danger clear close-dropdown' value='Clear' style="font-size: 0.5px;">清除</a>
-
-                                        <a type='button' class='btn btn-xs btn-success save' value='All' style="font-size: 0.5px;">全選</a>
-
-                                    </li>
-                                    <div class="dropdown-divider"></div>
-
-                                    <li>
-                                        <a href="#" class="medium" data-value="option1" tabindex="-1"><input type="checkbox" />Option 4</a>
-                                    </li>
-                                    <div class="dropdown-divider"></div>
-                                    <li>
-                                        <a href="#" class="medium" data-value="option2" tabindex="-1"><input type="checkbox" />Option 5</a>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </li> -->
 
 
                         <!-- <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-toggle="dropdown">
@@ -372,17 +317,20 @@
                                 <img src="images/avatars/avatar.jpg" class="avatar img-fluid rounded mr-1" alt="Charles Hall" />
                                 <span class="text-dark">Charles Hall</span>
                             </a> -->
-
-                        <li class="m-1 nav-item  ">
+                        <li class="nav-item  ">
+                            <div class="position-relative">
+                                <a class="m-1 btn btn-primary d-none d-sm-inline-block" id="filterdata">資料過濾</a>
+                                <a class="input-group-text d-inline-block d-sm-none" id="filterdataicon"><i class="fas fa-filter"></i></a>
+                            </div>
+                        </li>
+                        <!-- <li class="m-1 nav-item  ">
                             <div class="navbar-expand input-group date" id="datetimepicker1" data-target-input="nearest" style="margin-right: 5px;margin-left: 5px;">
                                 <input type="text" class="form-control datetimepicker-input d-none d-sm-inline-block" id="datepicker1" style="z-index: 3; width: 100px;" data-target="#datetimepicker1" data-toggle="datetimepicker" readonly="readonly">
                                 <div class="input-group-prepend" data-target="#datetimepicker1" data-toggle="datetimepicker">
                                     <button class="input-group-text " id="btn1"><i class="fas fa-calendar-alt"></i></button>
+
                                 </div>
-
-
-                            </div>
-                        </li>
+                        </li> -->
 
                         <li class="nav-item">
                             <a class="nav-icon js-fullscreen d-none d-lg-block" href="#" id="fullscreen">
@@ -558,7 +506,7 @@
                 </div>
             </nav>
 
-            <main class="content formate">
+            <main class="content mainformate">
                 <div id="map" class="map" style="display: block; position: relative;">
                     <% include template_map %>
                 </div>
@@ -609,12 +557,7 @@
 
             </div>
         </div>
-        <div id="test" style="width: 10px;
-        height: 10px;
-        position: absolute;
-        background-color: black;">
 
-        </div>
     </div>
 
 
@@ -646,7 +589,7 @@
 <script>
     var options = [];
 
-    $('.style-2 a ').on('click', function(event) {
+    $('.scrollbar-style a ').on('click', function(event) {
 
         var $target = $(event.currentTarget),
             val = $target.attr('data-value'),
