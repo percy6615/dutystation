@@ -1,296 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-    <script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202108240101/show_ads_impl_fy2019.js" id="google_shimpl"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no,emial=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- start iOS Safari Viewport -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+
+
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            max-width: 1170px;
-            margin: 3rem auto;
-            background-color: #101010;
-            color: #fff;
-        }
-        
-        * {
-            box-sizing: border-box
-        }
-        
-        h1 {
-            margin-bottom: 3rem;
-        }
-        
-        .images {
-            width: 100%;
-            margin: 0 auto;
-            height: 100%;
-            display: grid;
-            grid-gap: 7.5px;
-            grid-template-columns: 50% 50%;
-        }
-        
-        @media (min-width: 580px) {
-            .images {
-                grid-template-columns: 25% 25% 25% 25%;
-            }
-        }
-        
-        img {
-            height: auto;
-            width: 100%;
-            max-width: 100%;
-            vertical-align: middle;
-        }
-        
-        .template {
-            transition: all 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-            opacity: 0;
-            position: relative;
-            background: #707070;
-        }
-        
-        .template p {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            color: #fff;
-            text-transform: uppercase;
-            font-size: 13px;
-            letter-spacing: 1px;
-            margin: 0;
-            width: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
-            padding: 25px 10px 10px 10px;
-        }
-        
-        .template.animate {
-            transform: scale(1);
-            opacity: 1;
-        }
-        
-        #gallery-pagination {
-            margin: 30px 0;
-        }
-        
-        #btnNext,
-        #btnPrevious {
-            background: transparent;
-            color: #609ea5;
-            padding: 8px 28px;
-            border: 0;
-            font-size: 18px;
-            cursor: pointer;
-            outline: none;
-        }
-        
-        #gallery-pagination #page {
-            margin-left: 15px;
-            margin-right: 15px;
-            color: #707070;
-            font-style: italic;
-            font-size: 13px
-        }
-        
-        .sr-only {
-            position: absolute !important;
-            overflow: hidden;
-            clip: rect(0 0 0 0);
-            height: 1px;
-            width: 1px;
-            margin: -1px;
-            padding: 0;
-            border: 0;
-        }
-        
-        #gallery-dots {
-            margin-bottom: 15px
-        }
-        
-        .gallery-dot {
-            background: #609ea5;
-            border: 0;
-            padding: 0;
-            width: 50px;
-            height: 8px;
-            margin: 5px;
-            opacity: 0.4;
-            outline: none;
-            cursor: pointer;
-        }
-        
-        .gallery-dot.active {
-            opacity: 1;
-        }
-        
-        #gallery-pagination {
-            display: grid;
-            grid-template-columns: 1fr 3fr 1fr;
-            align-items: start;
-        }
+
     </style>
 </head>
 
 <body>
-    <figure class="figure">
-        <a href="#">
-            <img src="http://lorempixel.com/400/200/" class="figure-img img-fluid rounded" alt="...">
-        </a>
-        <figcaption class="figure-caption text-end">A caption for the above image.</figcaption>
-    </figure>
-    <figure class="figure">
-        <img src="http://lorempixel.com/400/200/" class="figure-img img-fluid rounded" alt="...">
-        <figcaption class="figure-caption text-end">A caption for the above image.</figcaption>
-    </figure>
-    <figure class="figure">
-        <img src="http://lorempixel.com/400/200/" class="figure-img img-fluid rounded" alt="...">
-        <figcaption class="figure-caption text-end">A caption for the above image.</figcaption>
-    </figure>
-    <figure class="figure">
-        <img src="http://lorempixel.com/400/200/" class="figure-img img-fluid rounded" alt="...">
-        <figcaption class="figure-caption text-end">A caption for the above image.</figcaption>
-    </figure>
-    <figure class="figure">
-        <img src="http://lorempixel.com/400/200/" class="figure-img img-fluid rounded" alt="...">
-        <figcaption class="figure-caption text-end">A caption for the above image.</figcaption>
-    </figure>
+    <div style="width: 100%;height: 100%;background-color: aquamarine;">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btn1">
+            Launch demo modal
+          </button>
+
+    </div>
 
 
-    <div class="gallery">
-        <header>
-            <h1>Photo Gallery</h1>
-        </header>
-        <main id="image-gallery" class="images"></main>
-        <footer id="gallery-pagination">
-            <button id="btnPrevious">&larr; <span class="sr-only">Previous</span></button>
-            <div>
-                <div id="gallery-dots"></div>
-                <span id="page"></span>
+    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalScrollableTitle">發佈專案</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                     </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                    <button type="button" class="btn btn-primary">發佈</button>
+                </div>
             </div>
-            <button id="btnNext"><span class="sr-only">Next </span>&rarr;</button>
-        </footer>
+        </div>
     </div>
 </body>
+
 <script>
-    var previous = document.getElementById('btnPrevious')
-    var next = document.getElementById('btnNext')
-    var gallery = document.getElementById('image-gallery')
-    var pageIndicator = document.getElementById('page')
-    var galleryDots = document.getElementById('gallery-dots');
-
-    var images = [];
-    for (var i = 0; i < 36; i++) {
-        images.push({
-            title: "Image " + (i + 1),
-            source: "https://picsum.photos/500/500?random&img=" + i
-        });
-    }
-
-    var perPage = 8;
-    var page = 1;
-    var pages = Math.ceil(images.length / perPage)
-
-
-    // Gallery dots
-    for (var i = 0; i < pages; i++) {
-        var dot = document.createElement('button')
-        var dotSpan = document.createElement('span')
-        var dotNumber = document.createTextNode(i + 1)
-        dot.classList.add('gallery-dot');
-        dot.setAttribute('data-index', i);
-        dotSpan.classList.add('sr-only');
-
-        dotSpan.appendChild(dotNumber);
-        dot.appendChild(dotSpan)
-
-        dot.addEventListener('click', function(e) {
-            var self = e.target
-            goToPage(self.getAttribute('data-index'))
-        })
-
-        galleryDots.appendChild(dot)
-    }
-
-    // Previous Button
-    previous.addEventListener('click', function() {
-        if (page === 1) {
-            page = 1;
-        } else {
-            page--;
-            showImages();
-        }
+    $("#btn1").click(function() {
+        $("#exampleModalScrollable").modal("show")
     })
-
-    // Next Button
-    next.addEventListener('click', function() {
-        if (page < pages) {
-            page++;
-            showImages();
-        }
-    })
-
-    // Jump to page
-    function goToPage(index) {
-        index = parseInt(index);
-        page = index + 1;
-
-        showImages();
-    }
-
-    // Load images
-    function showImages() {
-        while (gallery.firstChild) gallery.removeChild(gallery.firstChild)
-
-        var offset = (page - 1) * perPage;
-        var dots = document.querySelectorAll('.gallery-dot');
-
-        for (var i = 0; i < dots.length; i++) {
-            dots[i].classList.remove('active');
-        }
-
-        dots[page - 1].classList.add('active');
-
-        for (var i = offset; i < offset + perPage; i++) {
-            if (images[i]) {
-                var template = document.createElement('div');
-                var title = document.createElement('p');
-                var titleText = document.createTextNode(images[i].title);
-                var img = document.createElement('img');
-
-                template.classList.add('template')
-                img.setAttribute("src", images[i].source);
-                img.setAttribute('alt', images[i].title);
-
-                title.appendChild(titleText);
-                template.appendChild(img);
-                template.appendChild(title);
-                gallery.appendChild(template);
-            }
-        }
-
-        // Animate images
-        var galleryItems = document.querySelectorAll('.template')
-        for (var i = 0; i < galleryItems.length; i++) {
-            var onAnimateItemIn = animateItemIn(i);
-            setTimeout(onAnimateItemIn, i * 100);
-        }
-
-        function animateItemIn(i) {
-            var item = galleryItems[i];
-            return function() {
-                item.classList.add('animate');
-            }
-        }
-
-        // Update page indicator
-        pageIndicator.textContent = "Page " + page + " of " + pages;
-
-    }
-
-    showImages();
 </script>
 
-<!-- Image gallery with pagination codepen -->
+</html>
