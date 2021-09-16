@@ -24,7 +24,8 @@
     <script defer src="static/fontawesome/js/fontawesome.js"></script>
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script> -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script> -->
+    <script src="js/official/daterangepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <style>
 
@@ -68,6 +69,7 @@
                             startDate: start,
                             endDate: end,
                             cancelButtonClasses: "btn-danger",
+
                             maxDate: end,
                             ranges: {
                                 "今天": [moment(), moment()],
@@ -99,6 +101,7 @@
                         });
                         // $('#reportrange').data('daterangepicker').setStartDate(moment('2014/03/01'));
                         // $('#reportrange').data('daterangepicker').setEndDate(moment('2014/03/31'));
+                        $('#reportrange').data('daterangepicker').setMinDate(start);
                         cb(start, end);
                     </script>
                 </div>
