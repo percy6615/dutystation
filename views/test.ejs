@@ -24,8 +24,8 @@
     <script defer src="static/fontawesome/js/fontawesome.js"></script>
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script> -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script> -->
-    <script src="js/official/daterangepicker.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <!-- <script src="js/official/daterangepicker.js"></script> -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <style>
 
@@ -63,14 +63,14 @@
                         function cb(start, end) {
                             $('#reportrange span').html(start.format('YYYY/MM/DD') + ' - ' + end.format('YYYY/MM/DD'));
                         }
-                        $("#reportrange").daterangepicker({
+                        var reportrange = $("#reportrange").daterangepicker({
                             "alwaysShowCalendars": true,
                             opens: "left",
                             startDate: start,
                             endDate: end,
                             cancelButtonClasses: "btn-danger",
 
-                            maxDate: end,
+
                             ranges: {
                                 "今天": [moment(), moment()],
                                 "過去 7 天": [moment().subtract(6, "days"), moment()],
@@ -92,6 +92,57 @@
                                 firstDay: 1
                             }
                         }, cb);
+                        daterange = reportrange.data('daterangepicker');
+                        daterange.setMinDate = function(minDate) {
+                            if (typeof minDate === 'string')
+                                this.minDate = moment(minDate, this.locale.format);
+
+                            if (typeof minDate === 'object')
+                                this.minDate = moment(minDate);
+
+                            if (!this.timePicker)
+                                this.minDate = this.minDate.startOf('day');
+
+                            if (this.timePicker && this.timePickerIncrement)
+                                this.minDate.minute(Math.round(this.minDate.minute() / this.timePickerIncrement) * this.timePickerIncrement);
+
+                            if (this.minDate && this.startDate.isBefore(this.minDate)) {
+                                this.startDate = this.minDate.clone();
+                                if (this.timePicker && this.timePickerIncrement)
+                                    this.startDate.minute(Math.round(this.startDate.minute() / this.timePickerIncrement) * this.timePickerIncrement);
+                            }
+
+                            if (!this.isShowing)
+                                this.updateElement();
+
+                            this.updateMonthsInView();
+                        }
+
+                        daterange.setMaxDate = function(maxDate) {
+                            if (typeof maxDate === 'string')
+                                this.maxDate = moment(maxDate, this.locale.format);
+
+                            if (typeof maxDate === 'object')
+                                this.maxDate = moment(maxDate);
+
+                            if (!this.timePicker)
+                                this.maxDate = this.maxDate.startOf('day');
+
+                            if (this.timePicker && this.timePickerIncrement)
+                                this.maxDate.minute(Math.round(this.maxDate.minute() / this.timePickerIncrement) * this.timePickerIncrement);
+
+                            if (this.maxDate && this.startDate.isAfter(this.maxDate)) {
+                                this.startDate = this.maxDate.clone();
+                                if (this.timePicker && this.timePickerIncrement)
+                                    this.startDate.minute(Math.floor(this.startDate.minute() / this.timePickerIncrement) * this.timePickerIncrement);
+                            }
+
+                            if (!this.isShowing)
+                                this.updateElement();
+
+                            this.updateMonthsInView();
+                        }
+
                         $("#reportrange").on("cancel.daterangepicker", function(ev, picker) {
                             $('#reportrange span').html("");
                         });
@@ -101,7 +152,8 @@
                         });
                         // $('#reportrange').data('daterangepicker').setStartDate(moment('2014/03/01'));
                         // $('#reportrange').data('daterangepicker').setEndDate(moment('2014/03/31'));
-                        $('#reportrange').data('daterangepicker').setMinDate(start);
+                        daterange.setMinDate(start);
+                        daterange.setMaxDate(end);
                         cb(start, end);
                     </script>
                 </div>
