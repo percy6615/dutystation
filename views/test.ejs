@@ -27,12 +27,27 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <!-- <script src="js/official/daterangepicker.js"></script> -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script type="text/javascript" src="js/official/bootstrap-multiselect.min.js"></script>
+    <link rel="stylesheet" href="css/official/bootstrap-multiselect.min.css" type="text/css" />
     <style>
         hr {
             margin-top: 1rem;
             margin-bottom: 1rem;
             border: 0;
             border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: green;
+        }
+        
+        .multiselect-container {
+            position: absolute;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            height: 75px;
+            overflow: auto;
         }
     </style>
 </head>
@@ -54,14 +69,38 @@
 
                 </div>
                 <div class="modal-body">
+                    <h6 style="color: gray;">區域</h6>
+
+                    <!-- Build your select: -->
+                    <select id="city">
+                        <!-- <option value="hide" selected disabled>-- Month --</option>
+                        <option value="cheese">Cheese</option>
+                        <option value="tomatoes">Tomatoes</option>
+                        <option value="mozarella">Mozzarella</option>
+                        <option value="mushrooms">Mushrooms</option>
+                        <option value="pepperoni">Pepperoni</option>
+                        <option value="onions">Onions</option> -->
+                    </select>
+
+                    <select id="country" multiple="multiple" style="padding:5px;height: 50px;">
+                            <!-- <option value="cheese">Cheese</option>
+                            <option value="tomatoes">Tomatoes</option>
+                            <option value="mozarella">Mozzarella</option>
+                            <option value="mushrooms">Mushrooms</option>
+                            <option value="pepperoni">Pepperoni</option>
+                            <option value="onions">Onions</option> -->
+                     </select>
+
+
+                    <hr></hr>
+
+
                     <h6 style="color: gray;">時間區間</h6>
 
                     <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
                         <i class="fa fa-calendar"></i>&nbsp;
                         <span></span> <i class="fa fa-caret-down"></i>
                     </div>
-                    <hr></hr>
-
                 </div>
 
 
@@ -86,7 +125,7 @@
     var end = moment();
 
     function cb(start, end) {
-        $('#reportrange span').html(start.format('YYYY/MM/DD hh:mm A') + ' - ' + end.format('YYYY/MM/DD hh:mm A'));
+        $('#reportrange span').html(start.format('YYYY/MM/DD ') + ' - ' + end.format('YYYY/MM/DD '));
     }
     var reportrange = $("#reportrange").daterangepicker({
         "alwaysShowCalendars": true,
@@ -180,5 +219,14 @@
     daterange.setMaxDate(end);
     cb(start, end);
 </script>
+<script>
+    $('#city').on('change', function() {
+        alert(this.value);
+    });
+</script>
+<script type="module">
+    import zhdata from "../js/official/data_tw.js"; $(document).ready(function() { $('#city').multiselect(); }); $(document).ready(function() { $('#country').multiselect({ numberDisplayed: 1 }); }); catagoryOption(); function catagoryOption() { var cityselect
+    = document.getElementById("city"); for (var i = 0; i
+    < zhdata[ "counties"].length; i++) { console.log(zhdata[ "counties"][i]); cityselect.add(new Option(zhdata[ "counties"][i], zhdata[ "counties"][i]), i); } } </script>
 
 </html>
