@@ -1,8 +1,8 @@
 import zhdata from "./official/data_tw.js";
 var isSelectedCountries = new Map();
 var tempCountries = new Set();
-tempCountries.add("大安區");
-isSelectedCountries.set("台北市", tempCountries)
+// tempCountries.add("大安區");
+// isSelectedCountries.set("台北市", tempCountries)
 
 
 $(document).ready(function() {
