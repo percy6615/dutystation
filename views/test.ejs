@@ -89,10 +89,10 @@
                     <hr></hr>
                     <h6 style="color: gray;">區域</h6>
 
-                    <select id="city"></select>
-                    <select id="country" multiple="multiple" style="padding:5px;height: 50px;"></select>
-
-                    <div id="areapane" class="list-group" style="margin-top: 5px; overflow: auto;max-height:100px"></div>
+                    <span style="font-size: 12px;color:dimgray">縣市: <select id="city"></select></span>
+                    <span style="font-size: 12px;color:dimgray"> 區域: <select id="country" multiple="multiple" style="padding:5px;height: 50px;"></select></span></br>
+                    <h7 style="font-size: 12px;color:dimgray">選擇區域: </h7>
+                    <div id="areapane" class="list-group" style="margin-top: 5px; overflow: auto;max-height:100px"></div></br>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">關閉</button>
@@ -110,105 +110,7 @@
 </script>
 
 <script>
-    var start = moment().subtract(29, 'days');
-    var end = moment();
 
-    function cb(start, end) {
-        $('#reportrange span').html(start.format('YYYY/MM/DD ') + ' - ' + end.format('YYYY/MM/DD '));
-    }
-    var reportrange = $("#reportrange").daterangepicker({
-        "alwaysShowCalendars": true,
-        opens: "left",
-        timePicker: true,
-        startDate: start,
-        endDate: end,
-        cancelButtonClasses: "btn-danger",
-        // ranges: {
-        //     "今天": [moment(), moment()],
-        //     "過去 7 天": [moment().subtract(6, "days"), moment()],
-        //     "本月": [moment().startOf("month"), moment().endOf("month")],
-        //     "上個月": [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")]
-        // },
-        locale: {
-            format: "YYYY-MM-DD hh:mm A",
-            separator: " ~ ",
-            applyLabel: "確定",
-            cancelLabel: "清除",
-            fromLabel: "開始日期",
-            toLabel: "結束日期",
-            customRangeLabel: "自訂日期區間",
-            daysOfWeek: ["日", "一", "二", "三", "四", "五", "六"],
-            monthNames: ["1月", "2月", "3月", "4月", "5月", "6月",
-                "7月", "8月", "9月", "10月", "11月", "12月"
-            ],
-            firstDay: 1
-        }
-    }, cb);
-
-    daterange = $("#reportrange").data('daterangepicker');
-    daterange.setMinDate = function(minDate) {
-        if (typeof minDate === 'string')
-            this.minDate = moment(minDate, this.locale.format);
-
-        if (typeof minDate === 'object')
-            this.minDate = moment(minDate);
-
-        if (!this.timePicker)
-            this.minDate = this.minDate.startOf('day');
-
-        if (this.timePicker && this.timePickerIncrement)
-            this.minDate.minute(Math.round(this.minDate.minute() / this.timePickerIncrement) * this.timePickerIncrement);
-
-        if (this.minDate && this.startDate.isBefore(this.minDate)) {
-            this.startDate = this.minDate.clone();
-            if (this.timePicker && this.timePickerIncrement)
-                this.startDate.minute(Math.round(this.startDate.minute() / this.timePickerIncrement) * this.timePickerIncrement);
-        }
-
-        if (!this.isShowing)
-            this.updateElement();
-
-        this.updateMonthsInView();
-    }
-
-    daterange.setMaxDate = function(maxDate) {
-        if (typeof maxDate === 'string')
-            this.maxDate = moment(maxDate, this.locale.format);
-
-        if (typeof maxDate === 'object')
-            this.maxDate = moment(maxDate);
-
-        if (!this.timePicker)
-            this.maxDate = this.maxDate.startOf('day');
-
-        if (this.timePicker && this.timePickerIncrement)
-            this.maxDate.minute(Math.round(this.maxDate.minute() / this.timePickerIncrement) * this.timePickerIncrement);
-
-        if (this.maxDate && this.startDate.isAfter(this.maxDate)) {
-            this.startDate = this.maxDate.clone();
-            if (this.timePicker && this.timePickerIncrement)
-                this.startDate.minute(Math.floor(this.startDate.minute() / this.timePickerIncrement) * this.timePickerIncrement);
-        }
-
-        if (!this.isShowing)
-            this.updateElement();
-
-        this.updateMonthsInView();
-    }
-
-    $("#reportrange").on("cancel.daterangepicker", function(ev, picker) {
-        $('#reportrange span').html("");
-    });
-    $('#reportrange').on('apply.daterangepicker', function(ev, picker) {
-        console.log(picker.startDate.format('YYYY-MM-DD hh:mm A'));
-        console.log(picker.endDate.format('YYYY-MM-DD hh:mm A'));
-        cb(picker.startDate, picker.endDate);
-    });
-    // $('#reportrange').data('daterangepicker').setStartDate(moment('2014/03/01'));
-    // $('#reportrange').data('daterangepicker').setEndDate(moment('2014/03/31'));
-    daterange.setMinDate(start);
-    daterange.setMaxDate(end);
-    cb(start, end);
 </script>
 
 
