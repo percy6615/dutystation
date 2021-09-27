@@ -255,6 +255,34 @@ a:focus {
     top: .8em;
 }
 
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.multiselect-container {
+    position: absolute;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height: 100px;
+    overflow: auto;
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: .05rem 1.25rem;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .125);
+}
+
+.list-group-item-heading {
+    padding: .2rem .25rem;
+}
+
 
 /* .dropdown-submenu .dropdown-menu {
     top: 100%;

@@ -41,17 +41,25 @@
             border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
         
-        h1 {
-            color: green;
-        }
-        
         .multiselect-container {
             position: absolute;
             list-style-type: none;
             margin: 0;
             padding: 0;
-            height: 75px;
+            height: 100px;
             overflow: auto;
+        }
+        
+        .list-group-item {
+            position: relative;
+            display: block;
+            padding: .05rem 1.25rem;
+            background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, .125);
+        }
+        
+        .list-group-item-heading {
+            padding: .2rem .25rem;
         }
     </style>
 
@@ -71,42 +79,25 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title" id="exampleModalScrollableTitle">條件設定</h3>
-
                 </div>
                 <div class="modal-body">
-
-
                     <h6 style="color: gray;">時間區間</h6>
-
                     <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
                         <i class="fa fa-calendar"></i>&nbsp;
                         <span></span> <i class="fa fa-caret-down"></i>
                     </div>
-
                     <hr></hr>
-
-
-
                     <h6 style="color: gray;">區域</h6>
 
-                    <!-- Build your select: -->
-                    <select id="city">
+                    <select id="city"></select>
+                    <select id="country" multiple="multiple" style="padding:5px;height: 50px;"></select>
 
-                    </select>
-
-                    <select id="country" multiple="multiple" style="padding:5px;height: 50px;">
-
-                     </select>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="margin-top: 5px;"></textarea>
+                    <div id="areapane" class="list-group" style="margin-top: 5px; overflow: auto;max-height:100px"></div>
                 </div>
-
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">關閉</button>
-                    <button type="button" class="btn btn-primary">發佈</button>
+                    <button type="button" class="btn btn-primary">確認</button>
                 </div>
-
-
             </div>
         </div>
     </div>

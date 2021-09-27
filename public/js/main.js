@@ -26,6 +26,7 @@ $(function() {
     });
 
     $("#sysproject").on("click", function(e) {
+        createprojectmodal();
         $("#exampleModalScrollable").modal()
     });
 
@@ -89,27 +90,37 @@ $(function() {
     $("#disasterreport").on("click", function(e) {
         fun()
     });
-    var start = new Date();
-    // set end date to max one year period:
-    var end = new Date(new Date().setYear(start.getFullYear() + 1));
 
-    $("#datepicker1").datepicker({
-        changeMonth: true,
-        changeYear: true,
-        step: 5,
-        multidate: true,
-        closeOnDateSelect: true
-            // showOn:"both"
+    $("#filterdata").on("click", function(e) {
+        createfiltermodal();
+        $("#exampleModalScrollable").modal()
     });
-    $("#datepicker1").datepicker('option', 'maxDate', end);
-    $("#datepicker1").datepicker('option', 'minDate', start);
-    $("#datepicker1").datepicker('setDate', new Date());
-    $("#datepicker1").on("change", function(e) {
-        console.log(123)
+    $("#filterdataicon").on("click", function(e) {
+        createfiltermodal();
+        $("#exampleModalScrollable").modal()
     });
-    $("#btn1").click(function(e) {
-        $("#datepicker1").datepicker("show");
-    });
+
+    // var start = new Date();
+    // // set end date to max one year period:
+    // var end = new Date(new Date().setYear(start.getFullYear() + 1));
+
+    // $("#datepicker1").datepicker({
+    //     changeMonth: true,
+    //     changeYear: true,
+    //     step: 5,
+    //     multidate: true,
+    //     closeOnDateSelect: true
+    //         // showOn:"both"
+    // });
+    // $("#datepicker1").datepicker('option', 'maxDate', end);
+    // $("#datepicker1").datepicker('option', 'minDate', start);
+    // $("#datepicker1").datepicker('setDate', new Date());
+    // $("#datepicker1").on("change", function(e) {
+    //     console.log(123)
+    // });
+    // $("#btn1").click(function(e) {
+    //     $("#datepicker1").datepicker("show");
+    // });
 
 
     // https://codepen.io/kolibanuch/pen/QXveqV
@@ -140,18 +151,6 @@ $(function() {
                 name: "向右90度",
                 icon: "fas fa-infinity"
             },
-            // copy: {
-            //     name: "Copy",
-            //     icon: "copy"
-            // },
-            // "paste": {
-            //     name: "Paste",
-            //     icon: "paste"
-            // },
-            // "delete": {
-            //     name: "Delete",
-            //     icon: "delete"
-            // },
             "sep1": "---------",
             "quit": {
                 name: "Quit",
@@ -168,7 +167,96 @@ $(function() {
     // window._map = _map
     window.mapClass = mapClass
 
-})
+});
+
+function createfiltermodal() {
+    if ($("#exampleModalScrollable > div").find(".modal-content").length > 0) {
+        $("#exampleModalScrollable > div").empty();
+    }
+    var header = $("<div>", {
+            class: "modal-header"
+        }).append($("<h3>", {
+            class: "modal-title",
+            id: "exampleModalScrollableTitle",
+            text: "條件設定"
+        }))
+        .append($("<button>", {
+            class: "close",
+            "data-dismiss": "modal",
+            "aria-label": "Close",
+            html: ' <span aria-hidden="true">&times;</span>'
+        }));
+    var body = $("<div>", {
+        class: "modal-body"
+    });
+    var foot = $("<div>", {
+        class: "modal-footer"
+    }).append($("<button>", {
+        class: "btn btn-secondary",
+        "data-dismiss": "modal",
+        id: "modalreportcancel",
+        text: "關閉",
+    })).append($("<button>", {
+        class: "btn btn-primary",
+        id: "modalreportconfirm",
+        text: "發佈",
+    }))
+    var content = $("<div>", {
+        class: "modal-content"
+    }).append(header).append(body).append(foot);
+    $("#exampleModalScrollable > div").append(content);
+}
+
+function createprojectmodal() {
+
+    if ($("#exampleModalScrollable > div").find(".modal-content").length > 0) {
+        $("#exampleModalScrollable > div").empty();
+    }
+    var header = $("<div>", {
+            class: "modal-header"
+        }).append($("<h3>", {
+            class: "modal-title",
+            id: "exampleModalScrollableTitle",
+            text: "發佈專案"
+        }))
+        .append($("<button>", {
+            class: "close",
+            "data-dismiss": "modal",
+            "aria-label": "Close",
+            html: ' <span aria-hidden="true">&times;</span>'
+        }));
+
+    var body = $("<div>", {
+        class: "modal-body"
+    });
+
+    var foot = $("<div>", {
+        class: "modal-footer"
+    }).append($("<button>", {
+        class: "btn btn-secondary",
+        "data-dismiss": "modal",
+        id: "modalreportcancel",
+        text: "關閉",
+    })).append($("<button>", {
+        class: "btn btn-primary",
+        id: "modalreportconfirm",
+        text: "發佈",
+    }))
+
+    var content = $("<div>", {
+        class: "modal-content"
+    }).append(header).append(body).append(foot);
+
+    $("#exampleModalScrollable > div").append(content);
+
+    $("#modalreportcancel").on("click", function(e) {
+
+    });
+
+    $("#modalreportconfirm").on("click", function(e) {
+
+    });
+}
 
 function fun() {
     var position = $('.fixedElement').position();
