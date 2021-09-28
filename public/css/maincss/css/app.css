@@ -21037,3 +21037,19 @@ span.flatpickr-weekday {
     background: #e6e6e6;
     color: #000
 }
+
+.sidebar-user {
+    padding: .75rem 1.5rem;
+}
+
+.sidebar-user-title,
+.sidebar-user-title:hover,
+body[data-theme=dark] .sidebar-user-title,
+body[data-theme=dark] .sidebar-user-title:hover {
+    color: #e9ecef;
+}
+
+.sidebar-user-subtitle,
+body[data-theme=dark] .sidebar-user-subtitle {
+    color: #adb5bd;
+}

@@ -36,6 +36,10 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <!-- <script defer type="module" src="js/filter_condition.js"></script> -->
+    <script type="text/javascript" src="js/official/bootstrap-multiselect.min.js"></script>
+    <link rel="stylesheet" href="css/official/bootstrap-multiselect.min.css" type="text/css" />
+
     <style>
 
     </style>
@@ -46,9 +50,23 @@
         <nav id="sidebar" class="sidebar">
             <div class="sidebar-content js-simplebar">
                 <a class="sidebar-brand" href="\main">
-                    <span class="align-middle">Home</span>
+                    <span class="align-middle"></span>
                 </a>
+                <div class="sidebar-user">
+                    <div class="d-flex justify-content-center">
+                        <div class="flex-shrink-0">
+                            <img src="images/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="">
+                        </div>
+                        <div class="flex-grow-1 ps-2">
+                            <a class="sidebar-user-title dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+								黃信愷
+							</a>
 
+
+                            <div class="sidebar-user-subtitle">死變態</div>
+                        </div>
+                    </div>
+                </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-header">
                         Common
@@ -56,7 +74,7 @@
 
                     <li class="sidebar-item active">
                         <a class="sidebar-link" href=javascript:void(0); id="sysmap">
-                            <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">地圖</span>
+                            <i class="align-middle" data-feather="map"></i> <span class="align-middle">地圖</span>
                         </a>
                     </li>
 
@@ -233,18 +251,40 @@
                   </button>
                </div>
             </form> -->
+                <!-- <form class="d-none d-sm-inline-block"> -->
+
+                <!-- <a class="nav-link" href="#" data-toggle="modal" data-target="#immediateTableModal">
+                    立即處理 <span class="badge badge-pill badge-danger" id="badge-immediate">0</span></a> -->
+                <!-- </form> -->
 
 
 
                 <div class="navbar-collapse collapse">
+                    <button style="margin: 3px;" class=" btn  btn-outline-secondary  d-none d-sm-inline-block" type="button">立 即 處 理 <i class="badge rounded-pill bg-danger" id="badge-immediate">0</i></button>
+                    <!-- <button style="margin: 3px;    max-height: 47px;" class=" btn  btn-light  d-inline-block d-sm-none" type="button">立即<i class="badge rounded-pill bg-danger" id="badge-immediate">0</i></button> -->
+                    <button class=" btn  btn-outline-secondary  d-none d-sm-inline-block" type="button">持 續 管 制 <i class="badge rounded-pill bg-danger" id="badge-continuous">0</i></button>
+                    <!-- <button style=" max-height: 47px;" class=" btn  btn-light  d-inline-block d-sm-none" type="button">持續<i class="badge rounded-pill bg-danger" id="badge-continuous">0</i></button> -->
+                    <button style="margin: 3px;" class=" btn  btn-outline-secondary  d-none d-sm-inline-block" type="button">解 除 管 制 <i class="badge rounded-pill bg-danger" id="badge-deregulation">0</i></button>
+                    <!-- <button style="margin: 3px;    max-height: 47px;" class=" btn  btn-light  d-inline-block d-sm-none" type="button">解除<i class="badge rounded-pill bg-danger" id="badge-deregulation">0</i></button> -->
+
+                    <div style="margin-left: 10px;" class="position-relative">
+                        <a class="input-group-lg input-group-text d-inline-block d-sm-none" id="disasterreport" style="margin-right: 10px;background-color: white;    border: 1px solid #dc3545" data-toggle="dropdown"><i style="color:red" class="far fa-file-alt"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="disasterreport">
+                            <li><a class="dropdown-item" href="#">立即處理 <i class="badge rounded-pill bg-danger" id="badge-immediate">0</i></a></li>
+                            <div class="dropdown-divider"></div>
+                            <li><a class="dropdown-item" href="#">持續管制 <i class="badge rounded-pill bg-danger" id="badge-continuous">0</i></a></li>
+                            <div class="dropdown-divider"></div>
+                            <li><a class="dropdown-item" href="#">解除管制 <i class="badge rounded-pill bg-danger"  id="badge-deregulation">0</i></a></li>
+                        </ul>
+                    </div>
 
                     <ul class="navbar-nav navbar-align">
                         <li class="nav-item dropdown">
+
                             <!-- <a class="nav-icon dropdown-toggle" href="#"  data-toggle="dropdown"> -->
                             <div class="position-relative">
                                 <a class="m-1 btn btn-primary dropdown-toggle d-none d-sm-inline-block" id="funct" data-toggle="dropdown" aria-expanded="false">功能</a>
-
-                                <a class=" input-group-text d-inline-block d-sm-none" id="filterdataicon" style="margin-right: 10px;" data-toggle="dropdown"><i class="fas fa-toolbox"></i></a>
+                                <a class=" input-group-text d-inline-block d-sm-none" id="funct" style="margin-right: 10px;" data-toggle="dropdown"><i class="fas fa-toolbox"></i></a>
                                 <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="funct">
                                     <li><a class="dropdown-item" href="#" id="disasterreport">災情通報</a></li>
                                     <% if (true) {%>
@@ -321,8 +361,8 @@
                             </a> -->
                         <li class="nav-item  ">
                             <div class="position-relative">
-                                <a class="m-1 btn btn-secondary d-none d-sm-inline-block" id="filterdata">過濾</a>
-                                <a class="input-group-text d-inline-block d-sm-none" id="filterdataicon"><i class="fas fa-filter"></i></a>
+                                <a class="m-1 btn btn-info d-none d-sm-inline-block" id="filterdata">過濾</a>
+                                <a class="input-group-text  d-inline-block d-sm-none" id="filterdataicon"><i class="fas fa-filter"></i></a>
                             </div>
                         </li>
                         <!-- <li class="m-1 nav-item  ">
@@ -584,7 +624,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="exampleModalScrollable1" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <!-- <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -599,10 +639,11 @@
                     <hr></hr>
                     <h6 style="color: gray;">區域</h6>
 
-                    <select id="city"></select>
-                    <select id="country" multiple="multiple" style="padding:5px;height: 50px;"></select>
-
+                    <span style="font-size: 12px;color:dimgray">縣市: <select id="city"></select></span>
+                    <span style="font-size: 12px;color:dimgray"> 區域: <select id="country" multiple="multiple" style="padding:5px;height: 50px;"></select></span></br>
+                    <h7 style="font-size: 12px;color:dimgray">選擇區域: </h7>
                     <div id="areapane" class="list-group" style="margin-top: 5px; overflow: auto;max-height:100px"></div>
+                    </br>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">關閉</button>
@@ -610,7 +651,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 </body>
 
@@ -689,106 +730,6 @@
     //     margin-left: .255em;
     //     vertical-align: .255em;
 </script>
-<script>
-    var start = moment().subtract(29, 'days');
-    var end = moment();
 
-    function cb(start, end) {
-        $('#reportrange span').html(start.format('YYYY/MM/DD ') + ' - ' + end.format('YYYY/MM/DD '));
-    }
-    var reportrange = $("#reportrange").daterangepicker({
-        "alwaysShowCalendars": true,
-        opens: "left",
-        timePicker: true,
-        startDate: start,
-        endDate: end,
-        cancelButtonClasses: "btn-danger",
-        // ranges: {
-        //     "今天": [moment(), moment()],
-        //     "過去 7 天": [moment().subtract(6, "days"), moment()],
-        //     "本月": [moment().startOf("month"), moment().endOf("month")],
-        //     "上個月": [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")]
-        // },
-        locale: {
-            format: "YYYY-MM-DD hh:mm A",
-            separator: " ~ ",
-            applyLabel: "確定",
-            cancelLabel: "清除",
-            fromLabel: "開始日期",
-            toLabel: "結束日期",
-            customRangeLabel: "自訂日期區間",
-            daysOfWeek: ["日", "一", "二", "三", "四", "五", "六"],
-            monthNames: ["1月", "2月", "3月", "4月", "5月", "6月",
-                "7月", "8月", "9月", "10月", "11月", "12月"
-            ],
-            firstDay: 1
-        }
-    }, cb);
-
-    daterange = $("#reportrange").data('daterangepicker');
-    daterange.setMinDate = function(minDate) {
-        if (typeof minDate === 'string')
-            this.minDate = moment(minDate, this.locale.format);
-
-        if (typeof minDate === 'object')
-            this.minDate = moment(minDate);
-
-        if (!this.timePicker)
-            this.minDate = this.minDate.startOf('day');
-
-        if (this.timePicker && this.timePickerIncrement)
-            this.minDate.minute(Math.round(this.minDate.minute() / this.timePickerIncrement) * this.timePickerIncrement);
-
-        if (this.minDate && this.startDate.isBefore(this.minDate)) {
-            this.startDate = this.minDate.clone();
-            if (this.timePicker && this.timePickerIncrement)
-                this.startDate.minute(Math.round(this.startDate.minute() / this.timePickerIncrement) * this.timePickerIncrement);
-        }
-
-        if (!this.isShowing)
-            this.updateElement();
-
-        this.updateMonthsInView();
-    }
-
-    daterange.setMaxDate = function(maxDate) {
-        if (typeof maxDate === 'string')
-            this.maxDate = moment(maxDate, this.locale.format);
-
-        if (typeof maxDate === 'object')
-            this.maxDate = moment(maxDate);
-
-        if (!this.timePicker)
-            this.maxDate = this.maxDate.startOf('day');
-
-        if (this.timePicker && this.timePickerIncrement)
-            this.maxDate.minute(Math.round(this.maxDate.minute() / this.timePickerIncrement) * this.timePickerIncrement);
-
-        if (this.maxDate && this.startDate.isAfter(this.maxDate)) {
-            this.startDate = this.maxDate.clone();
-            if (this.timePicker && this.timePickerIncrement)
-                this.startDate.minute(Math.floor(this.startDate.minute() / this.timePickerIncrement) * this.timePickerIncrement);
-        }
-
-        if (!this.isShowing)
-            this.updateElement();
-
-        this.updateMonthsInView();
-    }
-
-    $("#reportrange").on("cancel.daterangepicker", function(ev, picker) {
-        $('#reportrange span').html("");
-    });
-    $('#reportrange').on('apply.daterangepicker', function(ev, picker) {
-        console.log(picker.startDate.format('YYYY-MM-DD hh:mm A'));
-        console.log(picker.endDate.format('YYYY-MM-DD hh:mm A'));
-        cb(picker.startDate, picker.endDate);
-    });
-    // $('#reportrange').data('daterangepicker').setStartDate(moment('2014/03/01'));
-    // $('#reportrange').data('daterangepicker').setEndDate(moment('2014/03/31'));
-    daterange.setMinDate(start);
-    daterange.setMaxDate(end);
-    cb(start, end);
-</script>
 
 </html>

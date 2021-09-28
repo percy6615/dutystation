@@ -98,32 +98,7 @@ function initCity() {
     }
 }
 
-function inittaiwan() {
-    var countryselect = document.getElementById("country");
-    var tempCountries = new Set();
 
-    if (isSelectedCountries.has(zhdata["counties"][0])) {
-        tempCountries = isSelectedCountries.get(zhdata["counties"][0]);
-    }
-    for (var i = 0; i < zhdata['districts'][0][0].length; i++) {
-        var area = zhdata["districts"][0][0][i];
-        var isSelected = false;
-        for (var s of tempCountries) {
-            if (area == s) {
-                isSelected = true;
-                break;
-            }
-        }
-        if (isSelected) {
-            countryselect.add(new Option(area, area, true, true), i);
-        } else {
-            countryselect.add(new Option(area, area), i);
-        }
-    }
-
-    initareapane(isSelectedCountries);
-
-}
 
 function initareapane(isSelectedCountries) {
     $("#areapane").empty();
