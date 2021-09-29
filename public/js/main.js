@@ -55,10 +55,39 @@ $(function() {
 
     $("#fullscreen").on("click", function(e) {
         var content = document.getElementById('whole');
-        if (isFullscreenEnabled()) {
-            exitFullScreen();
+        if ((document.fullscreen)) {
+            //退出全屏
+            var el = document,
+                cfs = el.cancelFullScreen || el.webkitCancelFullScreen || el.mozCancelFullScreen || el.exitFullScreen,
+                wscript;
+
+            if (typeof cfs != "undefined" && cfs) {
+                cfs.call(el);
+                return;
+            }
+
+            if (typeof window.ActiveXObject != "undefined") {
+                wscript = new ActiveXObject("WScript.Shell");
+                if (wscript != null) {
+                    wscript.SendKeys("{F11}");
+                }
+            }
         } else {
-            fullScreen(content);
+            //進入全屏
+            var rfs = content.requestFullScreen || content.webkitRequestFullScreen || content.mozRequestFullScreen || content.msRequestFullScreen,
+                wscript;
+
+            if (typeof rfs != "undefined" && rfs) {
+                rfs.call(content);
+                return;
+            }
+
+            if (typeof window.ActiveXObject != "undefined") {
+                wscript = new ActiveXObject("WScript.Shell");
+                if (wscript) {
+                    wscript.SendKeys("{F11}");
+                }
+            }
         }
     });
 
@@ -174,56 +203,11 @@ $(function() {
 
 var isSelectedCountries = new Map();
 var tempCountries = new Set();
-tempCountries.add("大安區");
-isSelectedCountries.set("台北市", tempCountries)
+// tempCountries.add("大安區");
+// isSelectedCountries.set("台北市", tempCountries)
 
 
-// $(document).ready(function() {
-//     var lastSelected = $('#city option:selected').val();
-//     $('#city').multiselect({
-//         onChange: function(option, checked, select) {
-//             var countryselect = document.getElementById("country");
-//             if (isSelectedCountries.has(lastSelected)) {
-//                 var tempCountries = new Set();
-//                 for (var s of countryselect.options) {
-//                     if (s.selected) {
-//                         tempCountries.add(s.value);
-//                     }
-//                 }
-//                 isSelectedCountries.set(lastSelected, tempCountries);
-//             }
-//             lastSelected = $('#city').val()
-//             selectaction($('#city').val())
-//             $("#country").multiselect('rebuild');
-//         }
-//     });
-// });
-
-// $(document).ready(function() {
-//     $('#country').multiselect({
-//         numberDisplayed: 2,
-//         onChange: function(option, checked, select) {
-//             // alert('Changed option ' + $(option).val() + '.');
-//             console.log($(option))
-//             if (isSelectedCountries.has($('#city').val())) {
-//                 var tempCountries = isSelectedCountries.get($('#city').val());
-//                 if (checked) {
-//                     tempCountries.add($(option).val());
-//                 } else {
-//                     tempCountries.delete($(option).val())
-//                 }
-//             }
-
-//             initareapane(isSelectedCountries)
-//         }
-//     });
-// });
-
-
-// initCity();
-// selectaction("台北市");
-
-function selectaction(setCity) {
+function selectaction(isSelectedCountries, setCity) {
     var cityselect = document.getElementById("city");
     var countryselect = document.getElementById("country");
     var tempCountries = new Set();
@@ -261,7 +245,7 @@ function getCityNum(setCity) {
     return -1;
 }
 
-function initCity() {
+function initCity(isSelectedCountries) {
     var cityselect = document.getElementById("city");
     for (var i = 0; i < zhdata["counties"].length; i++) {
         cityselect.add(new Option(zhdata["counties"][i], zhdata["counties"][i]), i);
@@ -340,7 +324,7 @@ function createfiltermodal() {
         })).append($("<div>", {
             id: "areapane",
             class: "list-group",
-            style: "margin-top: 5px; overflow: auto;max-height:150px;border-style:ridge;;margin-left:10px;"
+            style: "margin-top: 5px; overflow: auto;max-height:150px;border-style:double;margin-left:10px;"
         }));
     var foot = $("<div>", {
         class: "modal-footer"
@@ -364,11 +348,11 @@ function createfiltermodal() {
     createcalendar(start, end, start, end);
 
 
-    initCity();
-    selectaction("台北市");
+    initCity(isSelectedCountries);
+    selectaction(isSelectedCountries, "台北市");
 
 
-    // $(document).ready(function() {
+
     var lastSelected = $('#city option:selected').val();
     $('#city').multiselect({
         onChange: function(option, checked, select) {
@@ -383,13 +367,11 @@ function createfiltermodal() {
                 isSelectedCountries.set(lastSelected, tempCountries);
             }
             lastSelected = $('#city').val()
-            selectaction($('#city').val())
+            selectaction(isSelectedCountries, $('#city').val())
             $("#country").multiselect('rebuild');
         }
     });
-    // });
 
-    // $(document).ready(function() {
     $('#country').multiselect({
         numberDisplayed: 2,
         onChange: function(option, checked, select) {
@@ -407,7 +389,7 @@ function createfiltermodal() {
             initareapane(isSelectedCountries)
         }
     });
-    // });
+
 
 
 
@@ -590,45 +572,4 @@ function clickMenu(type) {
         $(type).css("display", "block");
     }
 
-}
-
-//進入全屏
-function fullScreen(el) {
-    var rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen,
-        wscript;
-
-    if (typeof rfs != "undefined" && rfs) {
-        rfs.call(el);
-        return;
-    }
-
-    if (typeof window.ActiveXObject != "undefined") {
-        wscript = new ActiveXObject("WScript.Shell");
-        if (wscript) {
-            wscript.SendKeys("{F11}");
-        }
-    }
-}
-
-//退出全屏
-function exitFullScreen() {
-    var el = document,
-        cfs = el.cancelFullScreen || el.webkitCancelFullScreen || el.mozCancelFullScreen || el.exitFullScreen,
-        wscript;
-
-    if (typeof cfs != "undefined" && cfs) {
-        cfs.call(el);
-        return;
-    }
-
-    if (typeof window.ActiveXObject != "undefined") {
-        wscript = new ActiveXObject("WScript.Shell");
-        if (wscript != null) {
-            wscript.SendKeys("{F11}");
-        }
-    }
-}
-
-function isFullscreenEnabled() {
-    return (document.fullscreen);
 }

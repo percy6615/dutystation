@@ -2996,7 +2996,7 @@ progress {
     -ms-user-select: none;
     user-select: none;
     background-color: initial;
-    border: 1px solid transparent;
+    border: 1.5px solid transparent;
     padding: .25rem .7rem;
     font-size: .875rem;
     border-radius: .2rem;

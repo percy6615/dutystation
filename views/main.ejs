@@ -89,11 +89,11 @@
                             <i class="align-middle" data-feather="image"></i> <span class="align-middle">照片集</span>
                         </a>
                     </li>
-                    <li class="sidebar-item">
+                    <!-- <li class="sidebar-item">
                         <a class="sidebar-link" href=javascript:void(0); id="sysprofile">
                             <i class="align-middle" data-feather="user"></i> <span class="align-middle">帳戶資料</span>
                         </a>
-                    </li>
+                    </li> -->
                     <% if (true) {%>
                         <li class="sidebar-header">
                             Administrator
@@ -244,13 +244,13 @@
 
 
                 <!-- <form class="d-none d-sm-inline-block">
-               <div class="input-group input-group-navbar">
-                  <input type="text" class="form-control" placeholder="Search…" aria-label="Search">
-                  <button class="btn" type="button">
+                    <div class="input-group input-group-navbar">
+                        <input type="text" class="form-control" placeholder="Search…" aria-label="Search">
+                        <button class="btn" type="button">
                      <i class="align-middle" data-feather="search"></i>
                   </button>
-               </div>
-            </form> -->
+                    </div>
+                </form> -->
                 <!-- <form class="d-none d-sm-inline-block"> -->
 
                 <!-- <a class="nav-link" href="#" data-toggle="modal" data-target="#immediateTableModal">
@@ -260,16 +260,16 @@
 
 
                 <div class="navbar-collapse collapse">
-                    <button style="margin: 3px;" class=" btn  btn-outline-secondary  d-none d-sm-inline-block" type="button">立 即 處 理 <i class="badge rounded-pill bg-danger" id="badge-immediate">0</i></button>
+                    <button style="margin: 5px;" class=" btn  btn-outline-secondary  d-none d-sm-inline-block" type="button">立 即 處 理 <i class="badge rounded-pill bg-danger" id="badge-immediate">0</i></button>
                     <!-- <button style="margin: 3px;    max-height: 47px;" class=" btn  btn-light  d-inline-block d-sm-none" type="button">立即<i class="badge rounded-pill bg-danger" id="badge-immediate">0</i></button> -->
                     <button class=" btn  btn-outline-secondary  d-none d-sm-inline-block" type="button">持 續 管 制 <i class="badge rounded-pill bg-danger" id="badge-continuous">0</i></button>
                     <!-- <button style=" max-height: 47px;" class=" btn  btn-light  d-inline-block d-sm-none" type="button">持續<i class="badge rounded-pill bg-danger" id="badge-continuous">0</i></button> -->
-                    <button style="margin: 3px;" class=" btn  btn-outline-secondary  d-none d-sm-inline-block" type="button">解 除 管 制 <i class="badge rounded-pill bg-danger" id="badge-deregulation">0</i></button>
+                    <button style="margin: 5px;" class=" btn  btn-outline-secondary  d-none d-sm-inline-block" type="button">解 除 管 制 <i class="badge rounded-pill bg-danger" id="badge-deregulation">0</i></button>
                     <!-- <button style="margin: 3px;    max-height: 47px;" class=" btn  btn-light  d-inline-block d-sm-none" type="button">解除<i class="badge rounded-pill bg-danger" id="badge-deregulation">0</i></button> -->
 
                     <div style="margin-left: 10px;" class="position-relative">
-                        <a class="input-group-lg input-group-text d-inline-block d-sm-none" id="disasterreport" style="margin-right: 10px;background-color: white;    border: 1px solid #dc3545" data-toggle="dropdown"><i style="color:red" class="far fa-file-alt"></i></a>
-                        <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="disasterreport">
+                        <a class="input-group-lg input-group-text d-inline-block d-sm-none" id="disastermerge" style="margin-right: 10px;background-color: white;    border: 1px solid #dc3545" data-toggle="dropdown"><i style="color:red" class="far fa-file-alt"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="disastermerge">
                             <li><a class="dropdown-item" href="#">立即處理 <i class="badge rounded-pill bg-danger" id="badge-immediate">0</i></a></li>
                             <div class="dropdown-divider"></div>
                             <li><a class="dropdown-item" href="#">持續管制 <i class="badge rounded-pill bg-danger" id="badge-continuous">0</i></a></li>
@@ -283,7 +283,7 @@
 
                             <!-- <a class="nav-icon dropdown-toggle" href="#"  data-toggle="dropdown"> -->
                             <div class="position-relative">
-                                <a class="m-1 btn btn-primary dropdown-toggle d-none d-sm-inline-block" id="funct" data-toggle="dropdown" aria-expanded="false">功能</a>
+                                <a class="m-1 btn btn-outline-info dropdown-toggle d-none d-sm-inline-block" id="funct" data-toggle="dropdown" aria-expanded="false">功能</a>
                                 <a class=" input-group-text d-inline-block d-sm-none" id="funct" style="margin-right: 10px;" data-toggle="dropdown"><i class="fas fa-toolbox"></i></a>
                                 <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="funct">
                                     <li><a class="dropdown-item" href="#" id="disasterreport">災情通報</a></li>
@@ -361,7 +361,7 @@
                             </a> -->
                         <li class="nav-item  ">
                             <div class="position-relative">
-                                <a class="m-1 btn btn-info d-none d-sm-inline-block" id="filterdata">過濾</a>
+                                <a class="m-1 btn btn-outline-dark  d-none d-sm-inline-block" id="filterdata">時間區域</a>
                                 <a class="input-group-text  d-inline-block d-sm-none" id="filterdataicon"><i class="fas fa-filter"></i></a>
                             </div>
                         </li>
@@ -534,7 +534,7 @@
                                 <span class="text-dark">Charles Hall</span>
                             </a> -->
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="pages-profile.html"><i class="align-middle mr-1" data-feather="user"></i> Profile</a>
+                                <a class="dropdown-item" href=javascript:void(0); id="sysprofile"><i class="align-middle mr-1" data-feather="user"></i> Profile</a>
                                 <!-- <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="pie-chart"></i> Analytics</a> -->
                                 <div class="dropdown-divider"></div>
                                 <!-- <a class="dropdown-item" href="pages-settings.html"><i class="align-middle mr-1" data-feather="settings"></i> Settings & Privacy</a> -->
