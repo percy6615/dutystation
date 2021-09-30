@@ -51,6 +51,9 @@ app.use(sessionControlMiddleware.session); // required for sessionControl to pas
 // view engine setup
 app.set('views', paths.appView);
 app.set('view engine', 'ejs');
+// app.use(express.static(__dirname + '/public'));
+// app.set('views', __dirname + '/public/views');
+app.engine('html', require('ejs').renderFile);
 //app.use(logger('dev')); // command line show express log
 //app.use(morganLoggerMiddleware); // command line show express log
 app.use(express.static(paths.appPublic));
@@ -112,6 +115,15 @@ const isAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res
 app.get(['/main'], (req, res) => {
     // , isAuthenticated
     res.render('main.ejs', {
+        // "FULLNAME": req.userinfo.user.FULLNAME || staticSetting.error.string,
+
+    });
+
+});
+
+app.get(['/mainnew'], (req, res) => {
+    // , isAuthenticated
+    res.render('mainnew.ejs', {
         // "FULLNAME": req.userinfo.user.FULLNAME || staticSetting.error.string,
 
     });

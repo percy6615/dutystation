@@ -323,7 +323,7 @@ function createfiltermodal() {
             text: "所選擇區域:"
         })).append($("<div>", {
             id: "areapane",
-            class: "list-group",
+            class: "list-group scrollbar-style",
             style: "margin-top: 5px; overflow: auto;max-height:150px;border-style:double;margin-left:10px;"
         }));
     var foot = $("<div>", {
