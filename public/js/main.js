@@ -30,9 +30,15 @@ $(function() {
         $("#exampleModalScrollable").modal()
     });
 
-    $(".sidebar-item").on("click", function() {
-        $(".sidebar-item.active").removeClass('active')
+    $(".sidebar-nav .sidebar-item").on("click", function() {
+        $(".sidebar-nav .sidebar-item.active").removeClass('active')
         $(this).addClass('active')
+    });
+
+    $(".sidebar-link").on("click", function() {
+        // $(".sidebar-nav .sidebar-item .sidebar-item.active").removeClass('active');
+        // $(this).addClass('active');
+        console.log($(this))
     });
 
     $("#orgmanager").on("click", function(e) {
