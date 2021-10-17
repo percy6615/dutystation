@@ -30,14 +30,14 @@ $(function() {
         $("#exampleModalScrollable").modal()
     });
 
-    $(".sidebar-nav .sidebar-item").on("click", function() {
-        $(".sidebar-nav .sidebar-item.active").removeClass('active')
+    $(".sidebar-nav > .sidebar-item").on("click", function() {
+        $(".sidebar-nav > .sidebar-item.active").removeClass('active')
         $(this).addClass('active')
     });
 
-    $(".sidebar-link").on("click", function() {
-        // $(".sidebar-nav .sidebar-item .sidebar-item.active").removeClass('active');
-        // $(this).addClass('active');
+    $(".sidebar-nav + .sidebar-item + .sidebar-item.active + .sidebar-link").on("click", function() {
+        $(".sidebar-nav + .sidebar-item  + .sidebar-item.active").removeClass('active');
+        $(this).addClass('active');
         console.log($(this))
     });
 

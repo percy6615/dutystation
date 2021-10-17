@@ -7992,7 +7992,7 @@ button.close {
     visibility: hidden!important
 }
 
-@media (min-width:576px) {
+@media (min-width:585px) {
     .float-sm-left {
         float: left!important
     }
