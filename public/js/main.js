@@ -27,16 +27,26 @@ $(function() {
 
     $("#sysproject").on("click", function(e) {
         createprojectmodal();
-        $("#exampleModalScrollable").modal()
+        // $("#exampleModalScrollable").modal()
+        var myModal = new bootstrap.Modal(document.getElementById('exampleModalScrollable'))
+        myModal.show()
     });
 
-    $(".sidebar-nav > .sidebar-item").on("click", function() {
-        $(".sidebar-nav > .sidebar-item.active").removeClass('active')
+    $(".sidebar-content > .sidebar-nav  .sidebar-item").on("click", function() {
+        $(" .sidebar-content .sidebar-nav .sidebar-item.active").removeClass('active')
         $(this).addClass('active')
+        console.log($(this));
     });
 
-    $(".sidebar-nav + .sidebar-item + .sidebar-item.active + .sidebar-link").on("click", function() {
-        $(".sidebar-nav + .sidebar-item  + .sidebar-item.active").removeClass('active');
+    // $(".sidebar-nav .sidebar-item  .sidebar-item .sidebar-link").on("click", function() {
+    //     $(".sidebar-nav.sidebar-item.sidebar-item.active").removeClass('active');
+    //     $(this).addClass('active');
+    //     console.log($(this))
+    // });
+
+
+    $("#ui  .1sidebar-item .sidebar-link").on("click", function() {
+        $("#ui  .sidebar-item.active").removeClass('active');
         $(this).addClass('active');
         console.log($(this))
     });
@@ -57,6 +67,13 @@ $(function() {
         clickMenu(".org");
         $(' #s3 ').trigger("click");
         $('#s3').tab('show');
+    });
+
+    $("#floatLayerSetting").on("click", function(e) {
+        createmaptoolmodal();
+        var myModal = new bootstrap.Modal(document.getElementById('exampleModalScrollable'))
+        myModal.show()
+        console.log(123)
     });
 
     $("#fullscreen").on("click", function(e) {
@@ -128,12 +145,16 @@ $(function() {
 
     $("#filterdata").on("click", function(e) {
         createfiltermodal();
-        $("#exampleModalScrollable").modal()
+        // $("#exampleModalScrollable").modal()
+        var myModal = new bootstrap.Modal(document.getElementById('exampleModalScrollable'))
+        myModal.show()
     });
 
     $("#filterdataicon").on("click", function(e) {
         createfiltermodal();
-        $("#exampleModalScrollable").modal()
+        // $("#exampleModalScrollable").modal()
+        var myModal = new bootstrap.Modal(document.getElementById('exampleModalScrollable'))
+        myModal.show()
     });
 
     // var start = new Date();
@@ -300,7 +321,7 @@ function createfiltermodal() {
         }))
         .append($("<button>", {
             class: "close",
-            "data-dismiss": "modal",
+            "data-bs-dismiss": "modal",
             "aria-label": "Close",
             html: ' <span aria-hidden="true">&times;</span>'
         }));
@@ -336,7 +357,7 @@ function createfiltermodal() {
         class: "modal-footer"
     }).append($("<button>", {
         class: "btn btn-secondary",
-        "data-dismiss": "modal",
+        "data-bs-dismiss": "modal",
         id: "modalreportcancel",
         text: "關閉",
     })).append($("<button>", {
@@ -382,7 +403,7 @@ function createfiltermodal() {
         numberDisplayed: 2,
         onChange: function(option, checked, select) {
             // alert('Changed option ' + $(option).val() + '.');
-            console.log($(option))
+            // console.log($(option))
             if (isSelectedCountries.has($('#city').val())) {
                 var tempCountries = isSelectedCountries.get($('#city').val());
                 if (checked) {
@@ -397,6 +418,14 @@ function createfiltermodal() {
     });
 
 
+    $("#modalreportcancel").on("click", function(e) {
+        //TODO
+
+    });
+
+    $("#modalreportconfirm").on("click", function(e) {
+        //TODO
+    });
 
 
 }
@@ -514,7 +543,7 @@ function createprojectmodal() {
         }))
         .append($("<button>", {
             class: "close",
-            "data-dismiss": "modal",
+            "data-bs-dismiss": "modal",
             "aria-label": "Close",
             html: ' <span aria-hidden="true">&times;</span>'
         }));
@@ -527,7 +556,7 @@ function createprojectmodal() {
         class: "modal-footer"
     }).append($("<button>", {
         class: "btn btn-secondary",
-        "data-dismiss": "modal",
+        "data-bs-dismiss": "modal",
         id: "modalreportcancel",
         text: "關閉",
     })).append($("<button>", {
@@ -567,7 +596,9 @@ function fixedElementanimate() {
     }
 }
 
+function createmaptoolmodal() {
 
+}
 
 function clickMenu(type) {
     if ($(type).is(":hidden")) {
