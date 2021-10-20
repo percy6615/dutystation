@@ -32,24 +32,16 @@ $(function() {
         myModal.show()
     });
 
-    $(".sidebar-content > .sidebar-nav  .sidebar-item").on("click", function() {
-        $(" .sidebar-content .sidebar-nav .sidebar-item.active").removeClass('active')
-        $(this).addClass('active')
-        console.log($(this));
+    $(".sidebar-content  .sidebar-nav  .sidebar-item .sidebar-link").on("click", function() {
+        var idname = $(this).attr("id");
+        $(" .sidebar-content .sidebar-nav  .sidebar-item.active").removeClass('active')
+        if (idname == "orgmanager" || idname == "permanager" || idname == "jobmanager") {
+            $(" .sidebar-content .sidebar-nav  .sidebar-item .sidebar-item.active").removeClass('active')
+            $(this).parent().parent().parent().addClass('active');
+        }
+        $(this).parent().addClass('active');
     });
 
-    // $(".sidebar-nav .sidebar-item  .sidebar-item .sidebar-link").on("click", function() {
-    //     $(".sidebar-nav.sidebar-item.sidebar-item.active").removeClass('active');
-    //     $(this).addClass('active');
-    //     console.log($(this))
-    // });
-
-
-    $("#ui  .1sidebar-item .sidebar-link").on("click", function() {
-        $("#ui  .sidebar-item.active").removeClass('active');
-        $(this).addClass('active');
-        console.log($(this))
-    });
 
     $("#orgmanager").on("click", function(e) {
         clickMenu(".org");
