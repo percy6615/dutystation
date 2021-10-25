@@ -1,5 +1,6 @@
 import MapClass from "/js/map/map_class.js";
 import zhdata from "./official/data_tw.js";
+import e from "connect-flash";
 
 
 $(function() {
@@ -589,7 +590,81 @@ function fixedElementanimate() {
 }
 
 function createmaptoolmodal() {
+    if ($("#exampleModalScrollable > div").find(".modal-content").length > 0) {
+        $("#exampleModalScrollable > div").empty();
+    }
+    var header = $("<div>", {
+            class: "modal-header"
+        }).append($("<h3>", {
+            class: "modal-title",
+            id: "exampleModalScrollableTitle",
+            text: "圖層選取"
+        }))
+        .append($("<button>", {
+            class: "close",
+            "data-bs-dismiss": "modal",
+            "aria-label": "Close",
+            html: ' <span aria-hidden="true">&times;</span>'
+        }));
 
+    var body = $("<div>", {
+        class: "modal-body"
+    });
+    var foot = $("<div>", {
+        class: "modal-footer"
+    });
+}
+
+function maptool() {
+    var jsondata = [
+        { "vistual": true, "header": "氣象", "body": [{ "name": "單日累積雨量", "num": 1, "id": "one_day_rain" }, { "name": "雷達回波圖", "num": 2, "id": "radar_echo" }] },
+        { "vistual": true, "header": "水情", "body": [{ "name": "水位站", "num": 1, "id": "water_level_setting" }, { "name": "雨量站", "num": 2, "id": "rain_level_setting" }] },
+        { "vistual": true, "header": "CCTV", "body": [{ "name": "水利署", "num": 1, "id": "cctv_wra_setting" }, { "name": "公路總局", "num": 2, "id": "cctv_road_setting" }] },
+        { "vistual": true, "header": "資源", "body": [{ "name": "自主災防社區", "num": 1, "id": "community_setting" }, { "name": "警察局派出所", "num": 2, "id": "police_station_setting" }] },
+        { "vistual": true, "header": "熱點", "body": [{ "name": "社福機構", "num": 1, "id": "social_welfare_setting" }, { "name": "防汛熱點", "num": 2, "id": "prevent_place_setting" }] }
+    ];
+
+}
+
+function subheadermaptool(headername) {
+    var element = $("<div>", {
+        class: "row",
+        style: "margin-bottom:5px;"
+    });
+    return element.append($("<div>", {
+        class: "col-md-3",
+        style: "font-size: 18px; font-weight:bold",
+        text: headername
+    })).append($("<hr>", {
+        style: "margin:5px;"
+    }));
+}
+
+function subbodymaptool(layername, layerid) {
+    var element = $("<div>", {
+        class: "row",
+        style: "margin-bottom:5px"
+    });
+    element.append($("<div>", {
+        class: "col-md-4",
+        style: "font-size: 16px; text-align: end; padding:0px",
+        text: layername
+    })).append($("<div>", {
+        class: "col-md-1"
+    })).append($("<div>", {
+        class: "col-md-5",
+        style: "padding-right: 0px; padding-left: 0px; margin-left: 10px;"
+    }).append($("<label>", {
+        class: "switch"
+    }).append($("<input>", {
+        id: layerid,
+        type: "checkbox",
+        "data-toggle": "toggle",
+        "data-width": "50",
+        "data-size": "xs"
+    })).append($("<span>", {
+        class: "slider round"
+    }))));
 }
 
 function clickMenu(type) {

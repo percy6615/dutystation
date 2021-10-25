@@ -103,8 +103,8 @@
                             <div class="col-md-5" style="padding-right: 0px; padding-left: 0px; margin-left: 10px;">
                                 <label class="switch">
                                     <input id="radar_echo" type="checkbox" data-toggle="toggle"  data-width="50"data-size="xs">
-                            <span class="slider round"></span>
-                          </label>
+                                    <span class="slider round"></span>
+                                </label>
                             </div>
                         </div>
                         <div class="row" style="margin-bottom:5px;">
@@ -221,10 +221,10 @@
                     </div>
 
                 </div>
-                <div class="modal-footer">
+                <!-- <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">關閉</button>
                     <button type="button" class="btn btn-primary">確認</button>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -253,8 +253,9 @@
     })
 
     $(function() {
-        $('#toggle-event').change(function() {
-            $('#console-event').html('Toggle: ' + $(this).prop('checked'))
+        $('#one_day_rain').change(function() {
+            //$('#console-event').html('Toggle: ' + $(this).prop('checked'))
+            console.log('Toggle: ' + $(this).prop('checked'))
         })
     })
 </script>
