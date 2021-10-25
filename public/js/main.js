@@ -556,7 +556,7 @@ function createprojectmodal() {
         class: "btn btn-primary",
         id: "modalreportconfirm",
         text: "發佈",
-    }))
+    }));
 
     var content = $("<div>", {
         class: "modal-content"
@@ -613,6 +613,12 @@ function createmaptoolmodal() {
     var foot = $("<div>", {
         class: "modal-footer"
     });
+
+    var content = $("<div>", {
+        class: "modal-content"
+    }).append(header).append(body).append(foot);
+
+    $("#exampleModalScrollable > div").append(content);
 }
 
 function maptool() {
@@ -623,7 +629,9 @@ function maptool() {
         { "vistual": true, "header": "資源", "body": [{ "name": "自主災防社區", "num": 1, "id": "community_setting" }, { "name": "警察局派出所", "num": 2, "id": "police_station_setting" }] },
         { "vistual": true, "header": "熱點", "body": [{ "name": "社福機構", "num": 1, "id": "social_welfare_setting" }, { "name": "防汛熱點", "num": 2, "id": "prevent_place_setting" }] }
     ];
+    for (var i = 0; i < jsondata.length; i++) {
 
+    }
 }
 
 function subheadermaptool(headername) {
