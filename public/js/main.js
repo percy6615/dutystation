@@ -1,15 +1,13 @@
 import MapClass from "/js/map/map_class.js";
 import zhdata from "./official/data_tw.js";
-import e from "connect-flash";
+
 
 
 $(function() {
     var mapClass = new MapClass();
 
     $("#sysmap").on("click", function(e) {
-
         clickMenu(".map");
-
     });
 
     $("#sysalbum").on("click", function(e) {
@@ -20,7 +18,6 @@ $(function() {
     $("#syschart").on("click", function(e) {
         clickMenu(".chart");
     });
-
 
     $("#sysprofile").on("click", function(e) {
         clickMenu(".profile");
@@ -43,7 +40,6 @@ $(function() {
         $(this).parent().addClass('active');
     });
 
-
     $("#orgmanager").on("click", function(e) {
         clickMenu(".org");
         $(' #s1 ').trigger("click");
@@ -65,8 +61,8 @@ $(function() {
     $("#floatLayerSetting").on("click", function(e) {
         createmaptoolmodal();
         var myModal = new bootstrap.Modal(document.getElementById('exampleModalScrollable'))
-        myModal.show()
-        console.log(123)
+        myModal.show('toggle')
+        $("#exampleModalScrollable > div input").bootstrapToggle();
     });
 
     $("#fullscreen").on("click", function(e) {
@@ -76,12 +72,10 @@ $(function() {
             var el = document,
                 cfs = el.cancelFullScreen || el.webkitCancelFullScreen || el.mozCancelFullScreen || el.exitFullScreen,
                 wscript;
-
             if (typeof cfs != "undefined" && cfs) {
                 cfs.call(el);
                 return;
             }
-
             if (typeof window.ActiveXObject != "undefined") {
                 wscript = new ActiveXObject("WScript.Shell");
                 if (wscript != null) {
@@ -92,12 +86,10 @@ $(function() {
             //進入全屏
             var rfs = content.requestFullScreen || content.webkitRequestFullScreen || content.mozRequestFullScreen || content.msRequestFullScreen,
                 wscript;
-
             if (typeof rfs != "undefined" && rfs) {
                 rfs.call(content);
                 return;
             }
-
             if (typeof window.ActiveXObject != "undefined") {
                 wscript = new ActiveXObject("WScript.Shell");
                 if (wscript) {
@@ -150,28 +142,6 @@ $(function() {
         myModal.show()
     });
 
-    // var start = new Date();
-    // // set end date to max one year period:
-    // var end = new Date(new Date().setYear(start.getFullYear() + 1));
-
-    // $("#datepicker1").datepicker({
-    //     changeMonth: true,
-    //     changeYear: true,
-    //     step: 5,
-    //     multidate: true,
-    //     closeOnDateSelect: true
-    //         // showOn:"both"
-    // });
-    // $("#datepicker1").datepicker('option', 'maxDate', end);
-    // $("#datepicker1").datepicker('option', 'minDate', start);
-    // $("#datepicker1").datepicker('setDate', new Date());
-    // $("#datepicker1").on("change", function(e) {
-    //     console.log(123)
-    // });
-    // $("#btn1").click(function(e) {
-    //     $("#datepicker1").datepicker("show");
-    // });
-
 
     // https://codepen.io/kolibanuch/pen/QXveqV
 
@@ -192,7 +162,6 @@ $(function() {
             }
         },
         items: {
-
             "refresh": {
                 name: "更新",
                 icon: "fas fa-retweet"
@@ -209,23 +178,17 @@ $(function() {
                 }
             }
         }
-
     });
-    $("#syshelp").on("click", function(e) {
-
-    });
+    $("#syshelp").on("click", function(e) {});
     // window._map = _map
     window.mapClass = mapClass
-
 });
 
 
 
 var isSelectedCountries = new Map();
 var tempCountries = new Set();
-// tempCountries.add("大安區");
-// isSelectedCountries.set("台北市", tempCountries)
-
+var maptoolDic = {};
 
 function selectaction(isSelectedCountries, setCity) {
     var cityselect = document.getElementById("city");
@@ -275,8 +238,6 @@ function initCity(isSelectedCountries) {
     }
 }
 
-
-
 function initareapane(isSelectedCountries) {
     $("#areapane").empty();
     for (var i = 0; i < zhdata["counties"].length; i++) {
@@ -299,7 +260,6 @@ function initareapane(isSelectedCountries) {
         }
     }
 }
-
 
 function createfiltermodal() {
     if ($("#exampleModalScrollable > div").find(".modal-content").length > 0) {
@@ -367,11 +327,8 @@ function createfiltermodal() {
     var end = moment();
     createcalendar(start, end, start, end);
 
-
     initCity(isSelectedCountries);
     selectaction(isSelectedCountries, "台北市");
-
-
 
     var lastSelected = $('#city option:selected').val();
     $('#city').multiselect({
@@ -409,7 +366,6 @@ function createfiltermodal() {
             initareapane(isSelectedCountries)
         }
     });
-
 
     $("#modalreportcancel").on("click", function(e) {
         //TODO
@@ -593,6 +549,13 @@ function createmaptoolmodal() {
     if ($("#exampleModalScrollable > div").find(".modal-content").length > 0) {
         $("#exampleModalScrollable > div").empty();
     }
+    var jsondata = [
+        { "vistual": true, "header": "氣象", "body": [{ "name": "單日累積雨量", "num": 1, "id": "one_day_rain" }, { "name": "雷達回波圖", "num": 2, "id": "radar_echo" }] },
+        { "vistual": true, "header": "水情", "body": [{ "name": "水位站", "num": 1, "id": "water_level_setting" }, { "name": "雨量站", "num": 2, "id": "rain_level_setting" }] },
+        { "vistual": true, "header": "CCTV", "body": [{ "name": "水利署", "num": 1, "id": "cctv_wra_setting" }, { "name": "公路總局", "num": 2, "id": "cctv_road_setting" }] },
+        { "vistual": true, "header": "資源", "body": [{ "name": "自主災防社區", "num": 1, "id": "community_setting" }, { "name": "警察局派出所", "num": 2, "id": "police_station_setting" }] },
+        { "vistual": true, "header": "熱點", "body": [{ "name": "社福機構", "num": 1, "id": "social_welfare_setting" }, { "name": "防汛熱點", "num": 2, "id": "prevent_place_setting" }] }
+    ];
     var header = $("<div>", {
             class: "modal-header"
         }).append($("<h3>", {
@@ -612,26 +575,73 @@ function createmaptoolmodal() {
     });
     var foot = $("<div>", {
         class: "modal-footer"
-    });
-
+    }).append($("<button>", {
+        class: "btn btn-primary",
+        id: "modalreportconfirm",
+        text: "儲存",
+    }));
+    body.append(maptool(jsondata));
     var content = $("<div>", {
         class: "modal-content"
     }).append(header).append(body).append(foot);
 
     $("#exampleModalScrollable > div").append(content);
+
+    $("#modalreportconfirm").on("click", function(e) {
+        //TODO
+        // var elements = $("#exampleModalScrollable > div input");
+        // console.log(elements)
+        // for (var i = 0; i < elements.length; i++) {
+
+        //     maptoolDic[elements[i]["id"]] = elements[i]["checked"];
+        // }
+    });
+    $("#exampleModalScrollable > div input").change(function(e) {
+        var idn = $(this).attr("id");
+        maptoolDic[idn] = $(this).prop('checked');
+        if (idn == "one_day_rain") {
+
+        } else if ("radar_echo") {
+
+        } else if ("water_level_setting") {
+
+        } else if ("rain_level_setting") {
+
+        } else if ("cctv_wra_setting") {
+
+        } else if ("cctv_road_setting") {
+
+        } else if ("community_setting") {
+
+        } else if ("police_station_setting") {
+
+        } else if ("social_welfare_setting") {
+
+        } else if ("prevent_place_setting") {
+
+        }
+    });
+
 }
 
-function maptool() {
-    var jsondata = [
-        { "vistual": true, "header": "氣象", "body": [{ "name": "單日累積雨量", "num": 1, "id": "one_day_rain" }, { "name": "雷達回波圖", "num": 2, "id": "radar_echo" }] },
-        { "vistual": true, "header": "水情", "body": [{ "name": "水位站", "num": 1, "id": "water_level_setting" }, { "name": "雨量站", "num": 2, "id": "rain_level_setting" }] },
-        { "vistual": true, "header": "CCTV", "body": [{ "name": "水利署", "num": 1, "id": "cctv_wra_setting" }, { "name": "公路總局", "num": 2, "id": "cctv_road_setting" }] },
-        { "vistual": true, "header": "資源", "body": [{ "name": "自主災防社區", "num": 1, "id": "community_setting" }, { "name": "警察局派出所", "num": 2, "id": "police_station_setting" }] },
-        { "vistual": true, "header": "熱點", "body": [{ "name": "社福機構", "num": 1, "id": "social_welfare_setting" }, { "name": "防汛熱點", "num": 2, "id": "prevent_place_setting" }] }
-    ];
-    for (var i = 0; i < jsondata.length; i++) {
+function maptool(jsondata) {
+    var element = $("<div>", { class: "container-fluid bd-example-row" });
 
+    for (var i = 0; i < jsondata.length; i++) {
+        if (jsondata[i]["vistual"]) {
+            element.append(subheadermaptool(jsondata[i]["header"]));
+            if (jsondata[i]["body"].length > 0) {
+                element.append($("<hr>", {
+                    style: "margin:5px;"
+                }))
+                for (var j = 0; j < jsondata[i]["body"].length; j++) {
+                    element.append(subbodymaptool(jsondata[i]["body"][j]["name"], jsondata[i]["body"][j]["id"]));
+
+                }
+            }
+        }
     }
+    return element;
 }
 
 function subheadermaptool(headername) {
@@ -643,17 +653,20 @@ function subheadermaptool(headername) {
         class: "col-md-3",
         style: "font-size: 18px; font-weight:bold",
         text: headername
-    })).append($("<hr>", {
-        style: "margin:5px;"
     }));
 }
 
 function subbodymaptool(layername, layerid) {
+
     var element = $("<div>", {
         class: "row",
         style: "margin-bottom:5px"
     });
-    element.append($("<div>", {
+    var ch = undefined;
+    if (maptoolDic.hasOwnProperty(layerid) && maptoolDic[layerid]) {
+        ch = "checked";
+    }
+    return element.append($("<div>", {
         class: "col-md-4",
         style: "font-size: 16px; text-align: end; padding:0px",
         text: layername
@@ -669,10 +682,12 @@ function subbodymaptool(layername, layerid) {
         type: "checkbox",
         "data-toggle": "toggle",
         "data-width": "50",
-        "data-size": "xs"
+        "data-size": "xs",
+        "checked": ch
     })).append($("<span>", {
         class: "slider round"
     }))));
+
 }
 
 function clickMenu(type) {
