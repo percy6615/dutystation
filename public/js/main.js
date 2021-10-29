@@ -578,6 +578,7 @@ function createmaptoolmodal() {
     }).append($("<button>", {
         class: "btn btn-primary",
         id: "modalreportconfirm",
+        "data-bs-dismiss": "modal",
         text: "儲存",
     }));
     body.append(maptool(jsondata));
@@ -595,6 +596,7 @@ function createmaptoolmodal() {
 
         //     maptoolDic[elements[i]["id"]] = elements[i]["checked"];
         // }
+        console.log(123)
     });
     $("#exampleModalScrollable > div input").change(function(e) {
         var idn = $(this).attr("id");
