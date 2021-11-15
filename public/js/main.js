@@ -8,6 +8,7 @@ $(function() {
 
     $("#sysmap").on("click", function(e) {
         clickMenu(".map");
+        mapClass.getMap().updateSize()
     });
 
     $("#sysalbum").on("click", function(e) {
@@ -550,11 +551,11 @@ function createmaptoolmodal() {
         $("#exampleModalScrollable > div").empty();
     }
     var jsondata = [
-        { "vistual": true, "header": "氣象", "body": [{ "name": "單日累積雨量", "num": 1, "id": "one_day_rain" }, { "name": "雷達回波圖", "num": 2, "id": "radar_echo" }] },
-        { "vistual": true, "header": "水情", "body": [{ "name": "水位站", "num": 1, "id": "water_level_setting" }, { "name": "雨量站", "num": 2, "id": "rain_level_setting" }] },
-        { "vistual": true, "header": "CCTV", "body": [{ "name": "水利署", "num": 1, "id": "cctv_wra_setting" }, { "name": "公路總局", "num": 2, "id": "cctv_road_setting" }] },
-        { "vistual": true, "header": "資源", "body": [{ "name": "自主災防社區", "num": 1, "id": "community_setting" }, { "name": "警察局派出所", "num": 2, "id": "police_station_setting" }] },
-        { "vistual": true, "header": "熱點", "body": [{ "name": "社福機構", "num": 1, "id": "social_welfare_setting" }, { "name": "防汛熱點", "num": 2, "id": "prevent_place_setting" }] }
+        { "vistual": true, "header": "氣象", "icon": "static/icon/weather-forecast.png", "body": [{ "name": "單日累積雨量", "num": 1, "id": "one_day_rain" }, { "name": "雷達回波圖", "num": 2, "id": "radar_echo" }] },
+        { "vistual": true, "header": "水情", "icon": "static/icon/flow.png", "body": [{ "name": "水位站", "num": 1, "id": "water_level_setting" }, { "name": "雨量站", "num": 2, "id": "rain_level_setting" }] },
+        { "vistual": true, "header": "CCTV", "icon": "static/icon/cctv.png", "body": [{ "name": "水利署", "num": 1, "id": "cctv_wra_setting" }, { "name": "公路總局", "num": 2, "id": "cctv_road_setting" }] },
+        { "vistual": true, "header": "資源", "icon": "static/icon/meeting.png", "body": [{ "name": "自主災防社區", "num": 1, "id": "community_setting" }, { "name": "警察局派出所", "num": 2, "id": "police_station_setting" }] },
+        { "vistual": true, "header": "熱點", "icon": "static/icon/promotional.png", "body": [{ "name": "社福機構", "num": 1, "id": "social_welfare_setting" }, { "name": "防汛熱點", "num": 2, "id": "prevent_place_setting" }] }
     ];
     var header = $("<div>", {
             class: "modal-header"
@@ -631,7 +632,7 @@ function maptool(jsondata) {
 
     for (var i = 0; i < jsondata.length; i++) {
         if (jsondata[i]["vistual"]) {
-            element.append(subheadermaptool(jsondata[i]["header"]));
+            element.append(subheadermaptool(jsondata[i]["header"], jsondata[i]['icon']));
             if (jsondata[i]["body"].length > 0) {
                 element.append($("<hr>", {
                     style: "margin:5px;"
@@ -646,11 +647,15 @@ function maptool(jsondata) {
     return element;
 }
 
-function subheadermaptool(headername) {
+function subheadermaptool(headername, icon) {
     var element = $("<div>", {
         class: "row",
         style: "margin-bottom:5px;"
     });
+    element.append($("<div>", {
+        class: "col-md-1",
+        html: "<img src=" + icon + ">"
+    }));
     return element.append($("<div>", {
         class: "col-md-3",
         style: "font-size: 18px; font-weight:bold",

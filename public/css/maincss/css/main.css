@@ -367,3 +367,79 @@ body[data-theme=dark] .sidebar-user-subtitle {
     font-weight: 400;
     padding: .625rem 1.5rem .625rem 3.25rem;
 }
+
+
+/* ---------------------------------------------------CONTENT STYLE----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    min-height: 100%;
+    transition: all 0.3s;
+    padding: 0.5em;
+}
+
+.sticky-footer {
+    background-color: #404448;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 64px;
+    line-height: 64px;
+    z-index: 0;
+}
+
+.card:not(:first-child) {
+    margin-top: 0.5em;
+}
+
+#meter-container {
+    padding: 0.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #009999;
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+
+#meter-container .meter-col {
+    padding: 10px;
+    text-align: center;
+    display: table;
+    border-radius: 10px;
+    opacity: .5;
+}
+
+#meter-container .meter-col.active {
+    opacity: 1;
+}
+
+#meter-container .meter-col:hover {
+    box-shadow: 0 .3rem .5rem rgba(33, 33, 33, .5);
+}
+
+#meter-container .meter-col div:first-child {
+    width: 100px;
+    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 0 auto;
+}
+
+#meter-container .meter-col span {
+    vertical-align: middle;
+    display: table-row;
+}
+
+#meter-container .meter-col span a {
+    font-size: 1.5rem;
+}
+
+#echart_demo {
+    width: 100%;
+    height: calc(100vh * 0.6);
+}
+
+
+/* ---------------------------------------------------MEDIAQUERIES----------------------------------------------------- */

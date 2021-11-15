@@ -62,6 +62,82 @@
         .list-group-item-heading {
             padding: .2rem .25rem;
         }
+        
+        #content {
+            width: 100%;
+            min-height: 100%;
+            transition: all 0.3s;
+            padding: 0.5em;
+        }
+        
+        .sticky-footer {
+            background-color: #404448;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 64px;
+            line-height: 64px;
+            z-index: 0;
+        }
+        
+        .card:not(:first-child) {
+            margin-top: 0.5em;
+        }
+        
+        #meter-container {
+            padding: 0.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            background-color: #009999;
+            border-bottom-right-radius: 0.25rem;
+            border-bottom-left-radius: 0.25rem;
+        }
+        
+        #meter-container .meter-col {
+            padding: 10px;
+            text-align: center;
+            display: table;
+            border-radius: 10px;
+            opacity: .5;
+        }
+        
+        #meter-container .meter-col.active {
+            opacity: 1;
+        }
+        
+        #meter-container .meter-col:hover {
+            box-shadow: 0 .3rem .5rem rgba(33, 33, 33, .5);
+        }
+        
+        #meter-container .meter-col div:first-child {
+            width: 100px;
+            height: 100px;
+            max-width: 100px;
+            max-height: 100px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin: 0 auto;
+        }
+        
+        #meter-container .meter-col span {
+            vertical-align: middle;
+            display: table-row;
+        }
+        
+        #meter-container .meter-col span a {
+            font-size: 1.5rem;
+        }
+        
+        #map {
+            width: 100%;
+            min-height: 300px;
+            height: calc(100vh * 0.7);
+        }
+        
+        #echart_demo {
+            width: 100%;
+            height: calc(100vh * 0.6);
+        }
     </style>
 
 </head>
@@ -82,141 +158,59 @@
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid bd-example-row">
-                        <div class="row" style="margin-bottom:5px;">
-                            <div class="col-md-3" style="font-size: 18px; font-weight:bold">氣象</div>
-                        </div>
-                        <hr style="margin:5px;">
-                        <div class="row" style="margin-bottom:5px;">
-                            <div class="col-md-4" style="font-size: 16px; text-align: end; padding:0px">單日累積雨量
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-12 col-md-auto mr-auto">災情數量統計</div>
+                                    <div class="col-12 col-md-auto ml-auto"><small>最後更新時間:&nbsp;<span class="update_time"></span></small></div>
+                                </div>
                             </div>
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5" style="padding-right: 0px; padding-left: 0px; margin-left: 10px;">
-                                <label class="switch">
-                                    <input id="one_day_rain" type="checkbox" data-toggle="toggle"  data-width="50"data-size="xs">
-                            <span class="slider round"></span>
-                          </label>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-bottom:5px;">
-                            <div class="col-md-4" style="font-size: 16px; text-align: end; padding:0px">雷達回波圖</div>
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5" style="padding-right: 0px; padding-left: 0px; margin-left: 10px;">
-                                <label class="switch">
-                                    <input id="radar_echo" type="checkbox" data-toggle="toggle"  data-width="50"data-size="xs">
-                                    <span class="slider round"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-bottom:5px;">
-                            <div class="col-md-3" style="font-size: 18px; font-weight:bold">水情</div>
-                        </div>
-                        <hr style="margin:5px;">
-                        <div class="row" style="margin-bottom:5px;">
-                            <div class="col-md-4" style="font-size: 16px; text-align: end; padding:0px">水位站
-                            </div>
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5" style="padding-right: 0px; padding-left: 0px; margin-left: 10px;">
-                                <label class="switch">
-                                    <input id="water_level_setting" type="checkbox" data-toggle="toggle"  data-width="50"data-size="xs">
-                           
-                            <span class="slider round"></span>
-                          </label>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-bottom:5px;">
-                            <div class="col-md-4" style="font-size: 16px; text-align: end; padding:0px">雨量站</div>
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5" style="padding-right: 0px; padding-left: 0px; margin-left: 10px;">
-                                <label class="switch">
-                                    <input id="rain_level_setting" type="checkbox" data-toggle="toggle"  data-width="50"data-size="xs">
-                            
-                            <span class="slider round"></span>
-                          </label>
-                            </div>
-                        </div>
-
-                        <div class="row" style="margin-bottom:5px;">
-                            <div class="col-md-3" style="font-size: 18px; font-weight:bold">CCTV</div>
-                        </div>
-                        <hr style="margin:5px;">
-                        <div class="row" style="margin-bottom:5px;">
-                            <div class="col-md-4" style="font-size: 16px; text-align: end; padding:0px">水利署
-                            </div>
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5" style="padding-right: 0px; padding-left: 0px; margin-left: 10px;">
-                                <label class="switch">
-                                    <input id="cctv_wra_setting" type="checkbox" data-toggle="toggle"  data-width="50"data-size="xs">
-                            
-                            <span class="slider round"></span>
-                          </label>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-bottom:5px;">
-                            <div class="col-md-4" style="font-size: 16px; text-align: end; padding:0px">公路總局</div>
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5" style="padding-right: 0px; padding-left: 0px; margin-left: 10px;">
-                                <label class="switch">
-                                    <input id="cctv_road_setting" type="checkbox" data-toggle="toggle"  data-width="50"data-size="xs">
-                           
-                            <span class="slider round"></span>
-                          </label>
+                            <div id="meter-container">
+                                <div class="col-sm-3 col-md-3 col-6 col-lg-2 meter-col" data-original-title="2021-11-09: 0 件<br/>2021-11-10: 0 件<br/>2021-11-11: 0 件<br/>2021-11-12: 0 件<br/>2021-11-13: 0 件<br/>2021-11-14: 0 件<br/>2021-11-15: 0 件">
+                                    <div style="background-image: url(images/icons/路樹災情.png);" title="路樹災情"></div><span>路樹災情</span><span><a data-meter="路樹災情">0</a>件</span>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-6 col-lg-2 meter-col">
+                                    <div style="background-image: url(images/icons/廣告招牌災情.png);" title="廣告招牌災情"></div> <span>廣告招牌災情</span> <span><a data-meter="廣告招牌災情">0</a>件</span>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-6 col-lg-2 meter-col">
+                                    <div style="background-image: url(images/icons/道路、隧道災情.png);" title="道路、隧道災情"></div> <span>道路、隧道災情</span> <span><a data-meter="道路、隧道災情">0</a>件</span>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-6 col-lg-2 meter-col">
+                                    <div style="background-image: url(images/icons/橋梁災情.png);" title="橋梁災情"></div> <span>橋梁災情</span> <span><a data-meter="橋梁災情">0</a>件</span>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-6 col-lg-2 meter-col">
+                                    <div style="background-image: url(images/icons/鐵路、高鐵及捷運災情.png);" title="鐵路、高鐵及捷運災情"></div> <span>鐵路、高鐵及捷運災情</span> <span><a data-meter="鐵路、高鐵及捷運災情">0</a>件</span>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-6 col-lg-2 meter-col">
+                                    <div style="background-image: url(images/icons/積淹水災情.png);" title="積淹水災情"></div> <span>積淹水災情</span> <span><a data-meter="積淹水災情">0</a>件</span>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-6 col-lg-2 meter-col">
+                                    <div style="background-image: url(images/icons/土石災情.png);" title="土石災情"></div> <span>土石災情</span> <span><a data-meter="土石災情">0</a>件</span>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-6 col-lg-2 meter-col">
+                                    <div style="background-image: url(images/icons/建物損毀.png);" title="建物損毀"></div> <span>建物損毀</span> <span><a data-meter="建物損毀">0</a>件</span>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-6 col-lg-2 meter-col">
+                                    <div style="background-image: url(images/icons/水利設施災害.png);" title="水利設施災害"></div> <span>水利設施災害</span> <span><a data-meter="水利設施災害">0</a>件</span>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-6 col-lg-2 meter-col">
+                                    <div style="background-image: url(images/icons/民生、基礎設施災害.png);" title="民生、基礎設施災害"></div> <span>民生、基礎設施災害</span> <span><a data-meter="民生、基礎設施災害">0</a>件</span>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-6 col-lg-2 meter-col">
+                                    <div style="background-image: url(images/icons/車輛因災損毀.png);" title="車輛因災損毀"></div> <span>車輛因災損毀</span> <span><a data-meter="車輛因災損毀">0</a>件</span>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-6 col-lg-2 meter-col">
+                                    <div style="background-image: url(images/icons/環境汙染.png);" title="環境汙染"></div> <span>環境汙染</span> <span><a data-meter="環境汙染">0</a>件</span>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-6 col-lg-2 meter-col">
+                                    <div style="background-image: url(images/icons/火災.png);" title="火災"></div> <span>火災</span> <span><a data-meter="火災">0</a>件</span>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-6 col-lg-2 meter-col">
+                                    <div style="background-image: url(images/icons/其他.png);" title="其他"></div> <span>其他</span> <span><a data-meter="其他">0</a>件</span>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="row" style="margin-bottom:5px;">
-                            <div class="col-md-3" style="font-size: 18px; font-weight:bold">資源</div>
-                        </div>
-                        <hr style="margin:5px;">
-
-                        <div class="row" style="margin-bottom:5px;">
-                            <div class="col-md-4" style="font-size: 16px; text-align: end; padding:0px">自主災防社區</div>
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5" style="padding-right: 0px; padding-left: 0px; margin-left: 10px;">
-                                <label class="switch">
-                                    <input id="community_setting" type="checkbox" data-toggle="toggle"  data-width="50"data-size="xs">
-                            
-                            <span class="slider round"></span>
-                          </label>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-bottom:5px;">
-                            <div class="col-md-4" style="font-size: 16px; text-align: end; padding:0px">警察局派出所</div>
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5" style="padding-right: 0px; padding-left: 0px; margin-left: 10px;">
-                                <label class="switch">
-                                    <input id="police_station_setting" type="checkbox" data-toggle="toggle"  data-width="50"data-size="xs">
-                            
-                            <span class="slider round"></span>
-                          </label>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-bottom:5px;">
-                            <div class="col-md-3" style="font-size: 18px; font-weight:bold">熱點</div>
-                        </div>
-                        <hr style="margin:5px;">
-                        <div class="row" style="margin-bottom:5px;">
-                            <div class="col-md-4" style="font-size: 16px; text-align: end; padding:0px">社福機構
-                            </div>
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5" style="padding-right: 0px; padding-left: 0px; margin-left: 10px;">
-                                <label class="switch">
-                                    <input id="social_welfare_setting" type="checkbox" data-toggle="toggle"  data-width="50"data-size="xs">
-                            
-                            <span class="slider round"></span>
-                          </label>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-bottom:5px;">
-                            <div class="col-md-4" style="font-size: 16px; text-align: end; padding:0px">防汛熱點</div>
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5" style="padding-right: 0px; padding-left: 0px; margin-left: 10px;">
-                                <label class="switch">
-                                    <input id="prevent_place_setting" type="checkbox" data-toggle="toggle"  data-width="50"data-size="xs">
-                          
-                            <span class="slider round"></span>
-                          </label>
-                            </div>
-                        </div>
 
                     </div>
 
