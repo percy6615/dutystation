@@ -2,8 +2,21 @@ import MapClass from "/js/map/map_class.js";
 import zhdata from "./official/data_tw.js";
 
 
+var dashboard = {
+    notify: {
+        cd: 5,
+        prev: null
+    },
+    setting: {
+        dateFormat: 'YYYY-MM-DD',
+        date: null
+    }
+}
 
 $(function() {
+    window.addEventListener("resize", function(e) {
+        dashboard.chartobj.el.resize();
+    });
     var mapClass = new MapClass();
 
     $("#sysmap").on("click", function(e) {
@@ -18,6 +31,7 @@ $(function() {
 
     $("#syschart").on("click", function(e) {
         clickMenu(".chart");
+        dashboard.chartobj.el.resize();
     });
 
     $("#sysprofile").on("click", function(e) {
@@ -706,4 +720,273 @@ function clickMenu(type) {
         $(type).css("display", "block");
     }
 
+}
+
+dashboard.chartobj = {
+    el: echarts.init(document.getElementById('echart_demo')),
+    optfn: function opt(legendData, xAxisData, seriesData) {
+        return {
+            title: {
+                x: 'center',
+                y: 'top',
+                padding: 10,
+                text: '近' + xAxisData.length + '日災情統計圖表',
+                //subtext: 'Rainbow bar example',
+                textStyle: {
+                    fontSize: 36
+                }
+            },
+            tooltip: {
+                trigger: 'axis', // axis, item
+                textStyle: {
+                    align: 'left',
+                    baseline: 'middle'
+                }
+            },
+            toolbox: {
+                show: true,
+                orient: 'vertical',
+                x: 'right',
+                y: 'center',
+                itemSize: 24,
+                itemGap: 18,
+                feature: {
+                    mark: {
+                        show: true
+                    },
+                    dataView: {
+                        show: false,
+                        readOnly: true
+                    },
+                    magicType: {
+                        show: true,
+                        type: ['line', 'stack']
+                    },
+                    restore: {
+                        show: true
+                    },
+                    saveAsImage: {
+                        show: true
+                    }
+                }
+            },
+            legend: {
+                type: 'scroll',
+                orient: 'horizontal', // vertical horizontal
+                padding: [60, 30],
+                data: legendData //labelsTypeArr
+
+            },
+            grid: {
+                y: 150
+            },
+            textStyle: {
+                fontSize: 24
+            },
+            calculable: true,
+            dataZoom: {
+                type: 'slider',
+                show: true,
+                dataBackgroundColor: "red"
+            },
+            xAxis: [{
+                type: 'category',
+                data: xAxisData //result.rangeDate
+            }],
+            yAxis: {
+                type: 'value',
+                name: '筆數',
+                minInterval: 1,
+                min: 0,
+                max: function max(val) {
+                    return val.max + 2;
+                }
+            },
+            series: seriesData //seriesArr
+        };
+    }
+};
+
+// 使用刚指定的配置项和数据显示图表。
+// var option = dashboard.chartobj.optfn(dashboard.labelsTypeArr, result.rangeDate, seriesArr);
+var option = {
+    dataset: {
+        source: [
+            ['score', 'amount', 'product'],
+            [89.3, 58212, 'Matcha Latte'],
+            [57.1, 78254, 'Milk Tea'],
+            [74.4, 41032, 'Cheese Cocoa'],
+            [50.1, 12755, 'Cheese Brownie'],
+            [89.7, 20145, 'Matcha Cocoa'],
+            [68.1, 79146, 'Tea'],
+            [19.6, 91852, 'Orange Juice'],
+            [10.6, 101852, 'Lemon Juice'],
+            [32.7, 20112, 'Walnut Brownie']
+        ]
+    },
+    xAxis: {},
+    yAxis: { type: 'category' },
+    series: [{
+        type: 'bar',
+        encode: {
+            // 将 "amount" 列映射到 X 轴。
+            x: 'amount',
+            // 将 "product" 列映射到 Y 轴。
+            y: 'product'
+        }
+    }]
+};
+dashboard.chartobj.el.setOption(option);
+
+
+var missionTable = function(id, json) {
+    return $(id).DataTable({
+        data: json,
+        destroy: true, //重新配置
+        processing: true,
+        deferRender: true, //当处理大数据时，延迟渲染数据，有效提高Datatables处理能力
+        order: [
+            [0, 'desc']
+        ], //td:1 遞減
+        //"order": [], //不排序
+        searching: false, //本地搜索
+        stateSave: false, //保存状态
+        paging: true, //本地分页
+        //pagingType: 'full_numbers', //分页按钮显示选项
+        fixedHeader: true, //表頭固定
+        autoWidth: true, //自适应宽度
+        //responsive: true, //響應佈局
+        scrollX: true,
+        pageLength: 10, //每页長度
+        columnDefs: [
+            //{searchable: false,orderable: false,targets: 0},
+            {
+                className: "text-center",
+                targets: "_all",
+                //render: isEmpty  //longdata make dom heavy
+            },
+            {
+                visible: false,
+                targets: [-1, -2, -3, -4, -5]
+            }
+            //{ responsivePriority: 6, targets: -1 }
+        ],
+        responsive: {
+            "details": {
+                display: $.fn.dataTable.Responsive.display.modal({
+                    header: function(row) {
+                        //var data = row.data();
+                        return '詳情';
+                    }
+                }),
+                renderer: function(api, rowIdx, columns) {
+                    var data = $.map(columns, function(col, i) {
+                        return Boolean(col.data) ?
+                            '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+                            '<td>' + col.title + ':' + '</td>' + '<td>' + col.data + '</td>' + '</tr>' :
+                            false;
+                    }).join('');
+
+                    return data ?
+                        $('<table class="dtr-details table table-dark table-sm table-striped table-bordered table-hover" width="100%" />').append(data) : false;
+                }
+            }
+        },
+        drawCallback: function(settings) {
+            //console.log(id, 'drawCallback')
+            $(id).parents("div.dataTables_wrapper").css("width", "100%")
+            $(id).addClass("collapsed")
+        },
+        initComplete: function(settings, json) {
+            //console.log(id, 'initComplete')
+            //var api = new $.fn.dataTable.Api( settings );
+            setTimeout(function() {
+                //api.$("td").parents('table').not("collapsed").addClass("collapsed")
+                //api.$("td").parents('table').parents('div.dataTables_wrapper').css("width", "100%")
+                $(id).parents("div.dataTables_wrapper").css("width", "100%")
+                $(id).addClass("collapsed")
+            }, 200);
+        },
+        columns: [{
+                title: "案件編號",
+                data: "show_id",
+            },
+            {
+                title: "派遣單位",
+                data: "reportUnit",
+            },
+            {
+                title: "發生地點",
+                data: "address",
+            },
+            {
+                title: "災情類別",
+                data: "type",
+                render: disasterType
+            },
+            {
+                title: "類別項目",
+                data: "type",
+                render: disasterSubType
+            },
+
+            {
+                title: "更新時間",
+                data: "createTime",
+                render: convertTimeStamp
+            },
+            {
+                title: "通報次數",
+                data: "reportTimes",
+            },
+
+            {
+                title: "傷亡簡述",
+                data: "casualties",
+            },
+            {
+                title: "災情描述",
+                data: "description",
+            },
+            {
+                title: "處理情形",
+                data: "handleSituation",
+            },
+            {
+                title: "地圖資訊",
+                render: dtRowBtnMapInfo
+            },
+            {
+                title: "災前照片",
+                data: "beforeFileID",
+                render: dtRowDrawImage,
+            },
+            {
+                title: "災後照片",
+                data: "afterFileID",
+                render: dtRowDrawImage,
+            }
+        ],
+        language: {
+            "processing": "處理中...",
+            "loadingRecords": "載入中...",
+            "lengthMenu": "顯示 _MENU_ 項結果",
+            "zeroRecords": "沒有符合的結果",
+            "info": "顯示第 _START_ 至 _END_ 項結果，共 _TOTAL_ 項",
+            "infoEmpty": "顯示第 0 至 0 項結果，共 0 項",
+            "infoFiltered": "(從 _MAX_ 項結果中過濾)",
+            "infoPostFix": "",
+            "search": "搜尋:",
+            "paginate": {
+                "first": "第一頁",
+                "previous": "上一頁",
+                "next": "下一頁",
+                "last": "最後一頁"
+            },
+            "aria": {
+                "sortAscending": ": 升冪排列",
+                "sortDescending": ": 降冪排列"
+            }
+        }
+    });
 }
