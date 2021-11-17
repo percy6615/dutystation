@@ -35,9 +35,23 @@
     <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
     <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
-    <style>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+    <script src="https://cdn.datatables.net/searchpanes/1.4.0/js/dataTables.searchPanes.min.js"></script>
 
+    <link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+
+    <!-- <link href=" https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet"> -->
+    <link href="https://cdn.datatables.net/searchpanes/1.4.0/css/searchPanes.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css" rel="stylesheet">
+
+
+
+    <style>
+        td.highlight {
+            font-weight: bold;
+            color: blue;
+        }
     </style>
 
 </head>
@@ -72,7 +86,7 @@
         </div>
     </div>
 
-    <table id="example" class="display" style="width:100%">
+    <table id="example" class="display compact" style="width:100%">
         <thead>
             <tr>
                 <th>Name</th>
@@ -541,25 +555,118 @@
                 <td>$112,000</td>
             </tr>
         </tbody>
-        <tfoot>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </tfoot>
+
     </table>
 </body>
 
 <script>
     $(document).ready(function() {
-        $('#example').DataTable({
-            "pagingType": "full_numbers"
+        // Create the chart with initial data
+
+
+
+        var table = $('#example').DataTable({
+            dom: 'Pfrtip',
+            "pagingType": "full_numbers",
+            "scrollX": true,
+            "scrollY": 300,
+            "createdRow": function(row, data, index) {
+                if (data[5].replace(/[\$,]/g, '') * 1 > 150000) {
+                    $('td', row).eq(5).addClass('highlight');
+                }
+            },
+            "destroy": true, //重新配置
+            processing: true,
+            scrollCollapse: true,
+            deferRender: true, //当处理大数据时，延迟渲染数据，有效提高Datatables处理能力
+            order: [
+                [0, 'desc']
+            ], //td:1 遞減
+            // //"order": [], //不排序
+            // searching: false, //本地搜索
+            stateSave: false, //保存状态
+            paging: true, //本地分页
+            "bInfo": false,
+            // //pagingType: 'full_numbers', //分页按钮显示选项
+            fixedHeader: true, //表頭固定
+            columnDefs: [
+                //{searchable: false,orderable: false,targets: 0},
+                {
+                    className: "text-center",
+                    targets: "_all",
+                    //render: isEmpty  //longdata make dom heavy
+                },
+                //{ responsivePriority: 6, targets: -1 }
+            ],
+            responsive: {
+                "details": {
+
+                    renderer: function(api, rowIdx, columns) {
+                        var data = $.map(columns, function(col, i) {
+                            return Boolean(col.data) ?
+                                '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
+                                '<td>' + col.title + ':' + '</td>' + '<td>' + col.data + '</td>' + '</tr>' :
+                                false;
+                        }).join('');
+
+                        return data ?
+                            $('<table class="dtr-details table table-dark table-sm table-striped table-bordered table-hover" width="100%" />').append(data) : false;
+                    }
+                }
+            },
         });
+        $('#example tbody').on('click', 'tr', function() {
+            var data = table.row(this).data();
+            console.log('You clicked on ' + data[0] + '\'s row')
+        });
+        var container = $('<div/>').insertBefore(table.table().container());
+
+        var chart = Highcharts.chart(container[0], {
+            chart: {
+                type: 'pie',
+            },
+            title: {
+                text: 'Staff Count Per Position',
+            },
+            series: [{
+                data: chartData(table),
+            }, ],
+        });
+        // On each draw, update the data in the chart
+        table.on('draw', function() {
+            chart.series[0].setData(chartData(table));
+        });
+
+        function chartData(table) {
+            var counts = {};
+
+            // Count the number of entries for each position
+            table
+                .column(1, {
+                    search: 'applied'
+                })
+                .data()
+                .each(function(val) {
+                    if (counts[val]) {
+                        counts[val] += 1;
+                    } else {
+                        counts[val] = 1;
+                    }
+                });
+
+            // And map it to the format highcharts uses
+            return $.map(counts, function(val, key) {
+                return {
+                    name: key,
+                    y: val,
+                };
+            });
+        }
+
     });
+
+
+
     $("#btn1").click(function() {
         $("#immediateTableModal").modal("show")
     })
