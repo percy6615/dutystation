@@ -14,10 +14,13 @@ var dashboard = {
 }
 
 $(function() {
+    var mapClass = new MapClass();
     window.addEventListener("resize", function(e) {
         dashboard.chartobj.el.resize();
+        mapClass.getMap().updateSize();
+     
     });
-    var mapClass = new MapClass();
+  
 
     $("#sysmap").on("click", function(e) {
         clickMenu(".map");
