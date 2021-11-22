@@ -990,3 +990,45 @@ var missionTable = function(id, json) {
         }
     });
 }
+
+var options = [];
+
+$('.scrollbar-style a ').on('click', function(event) {
+
+    var $target = $(event.currentTarget),
+        val = $target.attr('data-value'),
+        $inp = $target.find('input'),
+        idx;
+
+    if ((idx = options.indexOf(val)) > -1) {
+        options.splice(idx, 1);
+        setTimeout(function() {
+            $inp.prop('checked', false)
+        }, 0);
+    } else {
+        options.push(val);
+        setTimeout(function() {
+            $inp.prop('checked', true)
+        }, 0);
+    }
+
+    $(event.target).blur();
+
+    return false;
+});
+
+$('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+    if (!$(this).next().hasClass('show')) {
+        $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+    }
+    var $subMenu = $(this).next(".dropdown-menu");
+    $subMenu.toggleClass('show');
+
+
+    $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+        $('.dropdown-submenu .show').removeClass("show");
+    });
+
+
+    return false;
+});
